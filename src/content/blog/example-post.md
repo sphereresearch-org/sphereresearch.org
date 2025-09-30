@@ -1,7 +1,7 @@
 ---
-title: "Welcome to the SPHERE Blog"
-description: "A placeholder post to verify Content Collections are wired up."
-pubDate: 2025-09-30
+title: Welcome to the SPHERE Blog
+description: A placeholder post to verify Content Collections are wired up.
+pubDate: 2025-09-30T00:00:00.000Z
 ---
 
-This is a stub post. Replace me once the blog is ready.
+Updated from Tina CMS
