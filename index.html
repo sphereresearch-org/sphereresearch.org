@@ -1,1 +1,142 @@
-Welcome to Sphere Research & Advocacy
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SPHERE — Launching Soon</title>
+    <meta
+      name="description"
+      content="SPHERE: Website launching soon. Human rights, digital rights, and community action in Sri Lanka."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f9fafb;
+        --surface: #ffffff;
+        --muted: #475569;
+        --text: #0f172a;
+        --primary: #060719;
+        --primary-700: #008b70;
+        --accent: #0284c7;
+        --warning: #f59e0b;
+        --link: #0369a1;
+        --border: #e5e7eb;
+        --shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+        --radius: 16px;
+        --radius-sm: 12px;
+        --radius-lg: 22px;
+        --container: 1180px;
+        --fbc-gray-20: #ffffff;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        background:
+          radial-gradient(1200px 600px at 80% -10%, rgba(2,132,199,.06), transparent 60%),
+          radial-gradient(1000px 600px at 10% 10%, rgba(0,163,130,.08), transparent 60%),
+          var(--bg);
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      /* Layout */
+      .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+      .section { padding: 80px 0; border-top: 1px solid var(--border); }
+      .section--hero {
+        padding: 120px 0 88px;
+        background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.6));
+        position: relative;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex; align-items: center; gap: 10px;
+        padding: 10px 14px; border-radius: 999px; text-decoration: none;
+        color: #fff; background: var(--primary); font-weight: 700;
+        border: 1px solid rgba(2,6,23,.06); box-shadow: var(--shadow); cursor: pointer;
+      }
+      .btn:hover { background: var(--primary-700); }
+      .btn--ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+      .btn--ghost:hover { background-color: #ccc; }
+
+      /* Hero */
+      .hero { display: grid; gap: 24px; grid-template-columns: 1fr; }
+      .hero__eyebrow {
+        color: var(--muted); font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+        font-size: 12px; line-height: 1.5;
+      }
+      .hero__title { font-size: clamp(22px, 6vw, 40px); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+      .hero__desc { font-size: clamp(14px, 2.2vw, 16px); color: #334155; max-width: 62ch; line-height: 1.5; }
+      .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+
+      /* Cards */
+      .cards { display: grid; gap: 18px; grid-template-columns: 1fr; }
+      .card { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; background: var(--surface); box-shadow: var(--shadow); }
+      .card__title { margin: 0 0 8px; font-size: 18px; }
+      .card__desc { margin: 0; color: #334155; font-size: 14px; line-height: 1.4; }
+
+      /* Footer */
+      .footer { padding: 36px 0 60px; color: #475569; font-size: 14px; border-top: 1px solid var(--border); background: rgba(255,255,255,.6); }
+      .footer__grid { display: grid; gap: 18px; grid-template-columns: 1fr; font-size: 13px; }
+      .footer a { color: var(--link); text-decoration: none; }
+
+      /* Form */
+      .form__label { font-size: 14px; color: #334155; }
+      .input { background: var(--fbc-gray-20); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; color: var(--text); width: 100%; }
+
+      /* Utilities */
+      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+      .mt-8 { margin-top: 8px; }
+      .text--muted { color: var(--muted); }
+      .link { color: var(--link); text-decoration: none; }
+
+      /* Responsive */
+      @media (min-width: 880px) {
+        .hero { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+        .cards { grid-template-columns: repeat(2, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero -->
+    <section class="section section--hero">
+      <div class="container">
+        <div class="hero">
+          <div>
+            <div class="hero__eyebrow">Sri Lanka</div>
+            <h1 class="hero__title">Our website is launching soon.</h1>
+            <p class="hero__desc">
+              We’re preparing resources, research, and actions to support human and digital rights.
+              Contact us for launch updates and announcements.
+            </p>
+            <div class="hero__actions">
+              <a class="btn" href="mailto:hello@sphereresearch.org">Contact us</a>
+              <!-- <a class="btn btn--ghost" href="#updates">Get updates</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div style="font-size: smaller;line-height: 1.6;">
+          <strong>SPHERE</strong> — Society for the Progress, Human Rights, Empowerment & Equity<br />
+          <span>© <span id="year"></span> SPHERE Research and Advocacy. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
