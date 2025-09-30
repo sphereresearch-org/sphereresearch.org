@@ -6,11 +6,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "tinacms build",
     "preview": "astro preview",
     "format": "prettier --write ."
   },
   "dependencies": {
-    "astro": "^4.15.0"
+    "@tinacms/cli": "^1.11.0",
+    "astro": "^4.15.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tinacms": "^2.9.0"
   },
   "devDependencies": {
     "prettier": "^3.3.3",

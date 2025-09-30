@@ -16,3 +16,5 @@ pnpm-debug.log*
 # Editor
 .vscode/
 .DS_Store
+
+.env
