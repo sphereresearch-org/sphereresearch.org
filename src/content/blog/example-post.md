@@ -5,5 +5,3 @@ pubDate: 2025-09-30
 ---
 
 This is a stub post. Replace me once the blog is ready.
-
-asds
