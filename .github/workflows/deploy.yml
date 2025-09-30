@@ -2,7 +2,7 @@ name: Deploy Astro to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+      TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,6 +27,8 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # Optional sanity check (prints true/false, not the values)
+      - run: node -e "console.log('TINA vars present:', !!process.env.TINA_PUBLIC_CLIENT_ID, !!process.env.TINA_TOKEN)"
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

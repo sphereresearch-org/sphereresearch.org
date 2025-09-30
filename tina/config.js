@@ -2,7 +2,7 @@ import { defineConfig } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
-  process.env.GITHUB_BRANCH ||
+  process.env.GITHUB_HEAD_REF ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
   "main";
@@ -21,7 +21,7 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "",
+      mediaRoot: "uploads",
       publicFolder: "public",
     },
   },
@@ -29,9 +29,10 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
+        name: "blog",
+        label: "Blog",
+        path: "src/content/blog",
+        format: "md",
         fields: [
           {
             type: "string",
@@ -39,6 +40,16 @@ export default defineConfig({
             label: "Title",
             isTitle: true,
             required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+          },
+          {
+            type: "datetime",
+            name: "pubDate",
+            label: "Publish Date",
           },
           {
             type: "rich-text",
