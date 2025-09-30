@@ -1,5 +1,3 @@
 Hello World!
 
-This post was created using GitPress. 
-
-:).
+This post was created using GitPress. :).
