@@ -20,8 +20,12 @@ jobs:
     env:
       TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
       TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+      HEAD: ${{ github.ref_name }}
+      NEXT_PUBLIC_TINA_BRANCH: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -30,6 +34,7 @@ jobs:
       # Optional sanity check (prints true/false, not the values)
       - run: node -e "console.log('TINA vars present:', !!process.env.TINA_PUBLIC_CLIENT_ID, !!process.env.TINA_TOKEN)"
       - run: npm run build
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
