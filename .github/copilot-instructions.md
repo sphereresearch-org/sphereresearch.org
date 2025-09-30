@@ -28,6 +28,7 @@ Checklist — SPHERE Astro Project Setup
   - README added with run/build instructions. This checklist cleaned of HTML comments.
 
 Execution Guidelines
+
 - Work through each checklist item systematically.
 - Keep communication concise and focused.
 - Follow development best practices.
