@@ -1,13 +1,14 @@
 ---
 title: "SPHERE"
 description: "Intro"
-pubDate: "2025-09-30T00:00:00.000Z"
+pubDate: 2025-10-05T00:00:00.000Z
 excerpt: "Our website is launching soon."
 date: 2025-09-30T00:00:00.000Z
 draft: false
-tags: ["sphere", "digital-rights"]
-updatedDate: "2025-10-05T18:30:54.098Z"
+tags: []
+updatedDate: 2025-10-05T19:10:02.563Z
 ---
+
 
 # SPHERE
 
