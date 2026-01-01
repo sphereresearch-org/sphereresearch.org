@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 export interface Props {
   title?: string;
   description?: string;
@@ -17,9 +19,78 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
+    <header class="header">
+      <div class="container header__wrap">
+        <a class="brand" href="/" aria-label="SPHERE">
+          <img class="brand__mark" src="/logo.png" alt="" aria-hidden="true" />
+          <div>
+            <span class="brand__name">SPHERE</span>
+            <span class="brand__tag">Sphere Research and Advocacy</span>
+          </div>
+        </a>
+        <div class="header__wrap-right">
+          <nav class="nav" id="primary-nav" aria-label="Primary">
+            <a class="nav__link" href="/#mission">Mission</a>
+            <a class="nav__link" href="/#impact">Impact</a>
+            <a class="nav__link" href="/#priorities">2025-2026</a>
+            <a class="nav__link" href="/#cdpr">CDPR</a>
+            <a class="nav__link" href="/#team">Team</a>
+            <a class="nav__link" href="/blog">Blog</a>
+            <a class="nav__link nav__link--mobile" href="/#contact">Contact</a>
+          </nav>
+          <div class="header__cta">
+            <a class="btn" href="/#contact">Get in touch</a>
+          </div>
+          <button
+            class="menu"
+            id="nav-toggle"
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+          >
+            &equiv;
+          </button>
+        </div>
+      </div>
+    </header>
     <slot />
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brandtext nowrap">
+          <strong>SPHERE</strong> — Society for the Progress, Human Rights,
+          Empowerment & Equity<br />
+          <span>
+            © <span id="year"></span> SPHERE Research and Advocacy. All rights reserved.
+          </span>
+        </div>
+        <div class="footer__meta">
+          <span class="block">Legal status: Incorporation pending (Section 32)</span>
+          <span class="block">Focus: Sri Lanka</span>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const navToggle = document.getElementById("nav-toggle");
+      const primaryNav = document.getElementById("primary-nav");
+      if (navToggle && primaryNav) {
+        navToggle.addEventListener("click", () => {
+          const isOpen = primaryNav.classList.toggle("is-open");
+          navToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+        document.addEventListener("click", (event) => {
+          if (
+            !primaryNav.contains(event.target) &&
+            !navToggle.contains(event.target)
+          ) {
+            primaryNav.classList.remove("is-open");
+            navToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+    </script>
   </body>
 </html>

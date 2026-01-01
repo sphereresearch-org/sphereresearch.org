@@ -10,17 +10,30 @@ const posts = (await getCollection('blog'))
   <section class="section">
     <div class="container">
       <h1 class="hero__title" style="font-size:28px;">Blog</h1>
-      <div class="cards mt-8">
-        {posts.map((post) => (
-          <article class="card">
-            <h3 class="card__title">
-              <a class="link" href={`/blog/${post.slug}/`}>{post.data.title}</a>
-            </h3>
-            {post.data.description && <p class="card__desc">{post.data.description}</p>}
-            <small class="text--muted">{new Date(post.data.pubDate).toLocaleDateString()}</small>
-          </article>
-        ))}
-      </div>
+      {posts.length ? (
+        <div class="cards mt-8">
+          {posts.map((post) => (
+            <article class="card card--post">
+              <h3 class="card__title">
+                <a class="link" href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </h3>
+              {post.data.description && <p class="card__desc">{post.data.description}</p>}
+              <div class="post__meta">
+                <span class="text--muted">{new Date(post.data.pubDate).toLocaleDateString()}</span>
+                {post.data.tags?.length ? (
+                  <div class="tags">
+                    {post.data.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="text--muted mt-8">No posts yet. Check back soon.</p>
+      )}
     </div>
   </section>
 </BaseLayout>

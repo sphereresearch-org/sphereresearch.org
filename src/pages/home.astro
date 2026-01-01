@@ -1,446 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-      SPHERE — Society for the Progress, Human Rights, Empowerment & Equity
-    </title>
-    <meta
-      name="description"
-      content="SPHERE: Bridging human rights advocacy and community action in Sri Lanka. Centre for Digital Policy Research (CDPR), digital rights, trainings, and civic empowerment."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        /* Light theme – activist/formal */
-        --bg: #f9fafb; /* page background */
-        --surface: #ffffff; /* cards / header */
-        --muted: #475569; /* slate-600 */
-        --text: #0f172a; /* slate-900 */
-        --primary: #060719; /* activist green (lighter-safe) */
-        --primary-700: #008b70;
-        --accent: #0284c7; /* digital blue */
-        --warning: #f59e0b; /* amber */
-        --link: #0369a1; /* cyan/blue for text links */
-        --border: #e5e7eb; /* light gray */
-        --shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
-        --radius: 16px;
-        --radius-sm: 12px;
-        --radius-lg: 22px;
-        --container: 1180px;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
-          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        background: radial-gradient(
-            1200px 600px at 80% -10%,
-            rgba(2, 132, 199, 0.06),
-            transparent 60%
-          ),
-          radial-gradient(
-            1000px 600px at 10% 10%,
-            rgba(0, 163, 130, 0.08),
-            transparent 60%
-          ),
-          var(--bg);
-        color: var(--text);
-        font-size: 14px;
-      }
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
 
-      /* Layout */
-      .container {
-        width: 100%;
-        max-width: var(--container);
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      .section {
-        padding: 72px 0;
-        border-top: 1px solid var(--border);
-      }
-      .section--hero {
-        padding: 80px 0 88px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 0.6)
-        );
-        position: relative;
-      }
-
-      /* Header */
-      .header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        backdrop-filter: saturate(180%) blur(8px);
-        background: rgba(255, 255, 255, 0.85);
-        border-bottom: 1px solid var(--border);
-      }
-      .header__wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 64px;
-      }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: var(--text);
-      }
-      .brand__logo {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        box-shadow: var(--shadow);
-        display: grid;
-        place-items: center;
-        font-weight: 800;
-        letter-spacing: 0.5px;
-        color: #ffffff;
-      }
-      .brand__name {
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 1;
-      }
-      .brand__tag {
-        display: block;
-        font-weight: 400;
-        font-size: 11px;
-        color: var(--muted);
-      }
-
-      .nav {
-        display: none;
-        gap: 18px;
-      }
-      .nav__link {
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 600;
-        opacity: 0.9;
-      }
-      .nav__link:hover {
-        color: var(--link);
-      }
-
-      .header__cta {
-        display: none;
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        text-decoration: none;
-        color: #ffffff;
-        background: var(--primary);
-        font-weight: 700;
-        border: 1px solid rgba(2, 6, 23, 0.06);
-        box-shadow: var(--shadow);
-        cursor: pointer;
-      }
-      .btn:hover {
-        background: var(--primary-700);
-      }
-      .btn--ghost {
-        background: transparent;
-        color: var(--text);
-        border: 1px solid var(--border);
-      }
-      .btn--ghost:hover {
-        background-color: #ccc;
-      }
-
-      .menu {
-        display: inline-flex;
-        background: transparent;
-        color: var(--text);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        height: 36px;
-        width: 40px;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Hero */
-      .hero {
-        display: grid;
-        gap: 24px;
-        grid-template-columns: 1fr;
-      }
-      .hero__eyebrow {
-        color: var(--muted);
-        font-weight: 800;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        font-size: 12px;
-        line-height: 1.5;
-      }
-      .hero__title {
-        font-size: clamp(18px, 6vw, 38px);
-        line-height: 1.1;
-        margin: 0;
-        letter-spacing: -0.02em;
-      }
-      .hero__desc {
-        font-size: clamp(14px, 2.2vw, 16px);
-        color: #334155;
-        max-width: 62ch;
-        line-height: 1.5;
-      }
-      .hero__badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 12px;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        font-size: 12px;
-        color: var(--text);
-        background: rgba(2, 6, 23, 0.03);
-      }
-      .badge--amber {
-        background: rgba(245, 158, 11, 0.08);
-        border-color: rgba(245, 158, 11, 0.35);
-        color: #92400e;
-      }
-
-      .hero__actions {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 6px;
-      }
-      .hero__panel {
-        padding: 16px;
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.85),
-          rgba(255, 255, 255, 1)
-        );
-        display: grid;
-        gap: 12px;
-        box-shadow: var(--shadow);
-      }
-      .hero__list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 8px;
-      }
-      .hero__list li {
-        display: grid;
-        grid-template-columns: 20px 1fr;
-        gap: 10px;
-        align-items: baseline;
-      }
-
-      /* Cards */
-      .cards {
-        display: grid;
-        gap: 18px;
-        grid-template-columns: 1fr;
-      }
-      .card {
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 18px;
-        background: var(--surface);
-        box-shadow: var(--shadow);
-      }
-      .card__title {
-        margin: 0 0 8px;
-        font-size: 18px;
-      }
-      .card__desc {
-        margin: 0;
-        color: #334155;
-        font-size: 14px;
-        line-height: 1.4;
-      }
-
-      /* Section specifics */
-      .grid-2 {
-        display: grid;
-        gap: 24px;
-        grid-template-columns: 1fr;
-      }
-      .grid-3 {
-        display: grid;
-        gap: 18px;
-        grid-template-columns: 1fr;
-      }
-
-      .section__title {
-        margin: 0 0 8px;
-        font-size: 28px;
-        letter-spacing: -0.01em;
-      }
-      .section__kicker {
-        margin: 0 0 18px;
-        color: var(--muted);
-      }
-
-      .list {
-        padding-left: 18px;
-        color: #334155;
-        line-height: 1.6;
-      }
-
-      /* Footer */
-      .footer {
-        padding: 36px 0 60px;
-        color: #475569;
-        font-size: 14px;
-        border-top: 1px solid var(--border);
-        background: rgba(255, 255, 255, 0.6);
-      }
-      .footer__grid {
-        display: grid;
-        gap: 18px;
-        grid-template-columns: 1fr;
-        font-size: 13px;
-      }
-      .footer a {
-        color: var(--link);
-        text-decoration: none;
-      }
-
-      /* Utilities + extracted inline styles */
-      .block {
-        display: block;
-      }
-      .nowrap {
-        text-wrap: nowrap;
-      }
-      .btn-row {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-      .mt-8 {
-        margin-top: 8px;
-      }
-      .link {
-        color: var(--link);
-        text-decoration: none;
-      }
-      .form__label {
-        font-size: 14px;
-        color: #c9d1d9;
-      }
-      .input {
-        background: var(--fbc-gray-20);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 12px 14px;
-        color: var(--text);
-      }
-      .text--muted {
-        color: var(--muted);
-      }
-      .impact__note {
-        margin-top: 14px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-      .footer__brandtext {
-        line-height: 1.6;
-      }
-      .footer__meta {
-        font-size: small;
-        line-height: 1.5;
-      }
-
-      /* Responsive */
-      @media (min-width: 880px) {
-        .nav {
-          display: inline-flex;
-        }
-        .header__cta {
-          display: inline-flex;
-        }
-        .menu {
-          display: none;
-        }
-        .hero {
-          grid-template-columns: 1.1fr 0.9fr;
-          align-items: center;
-        }
-        .grid-2 {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .grid-3 {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        .cards {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="container header__wrap">
-        <a class="brand" href="#home" aria-label="SPHERE home">
-          <div class="brand__logo" aria-hidden="true">S</div>
-          <div>
-            <span class="brand__name">SPHERE</span>
-            <span class="brand__tag"
-              >Human Rights • Digital Rights • Community</span
-            >
-          </div>
-        </a>
-        <nav class="nav" aria-label="Primary">
-          <a class="nav__link" href="#mission">Mission</a>
-          <a class="nav__link" href="#impact">Impact</a>
-          <a class="nav__link" href="#priorities">2025–2026</a>
-          <a class="nav__link" href="#cdpr">CDPR</a>
-          <a class="nav__link" href="#team">Team</a>
-          <a class="nav__link" href="#contact">Contact</a>
-        </nav>
-        <div class="header__cta">
-          <a class="btn btn--ghost" href="#contact">Get in touch</a>
-        </div>
-        <button
-          class="menu"
-          aria-label="Open menu"
-          onclick="document.querySelector('.nav').style.display='inline-flex'"
-        >
-          ≡
-        </button>
-      </div>
-    </header>
-
+<BaseLayout
+  title="SPHERE — Society for the Progress, Human Rights, Empowerment & Equity"
+  description="SPHERE: Bridging human rights advocacy and community action in Sri Lanka. Centre for Digital Policy Research (CDPR), digital rights, trainings, and civic empowerment."
+>
+  <main class="page page--home">
     <!-- Hero -->
     <section id="home" class="section section--hero">
       <div class="container">
@@ -459,9 +25,7 @@
             <div class="hero__badges" aria-label="Key facts" style="padding: 8px 0px;">
               <span class="badge">National focus</span>
               <span class="badge">Incorporation pending (Section 32)</span>
-              <span class="badge badge--amber"
-                >Advocacy • Research • Training</span
-              >
+              <span class="badge badge--amber">Advocacy • Research • Training</span>
             </div>
             <div class="hero__actions">
               <a class="btn" href="#priorities">See 2025–2026 Priorities</a>
@@ -473,25 +37,25 @@
               <strong>Recent actions</strong>
               <ul class="hero__list">
                 <li>
-                  <span>•</span
-                  ><span
-                    >HRCSL complaint regarding the blocking of activist media on
-                    Facebook by police.</span
-                  >
+                  <span>•</span>
+                  <span>
+                    HRCSL complaint regarding the blocking of activist media on
+                    Facebook by police.
+                  </span>
                 </li>
                 <li>
-                  <span>•</span
-                  ><span
-                    >Case monitoring: detention of
-                    <em>Rifai Mohamed Suhail</em> under the PTA.</span
-                  >
+                  <span>•</span>
+                  <span>
+                    Case monitoring: detention of
+                    <em>Rifai Mohamed Suhail</em> under the PTA.
+                  </span>
                 </li>
                 <li>
-                  <span>•</span
-                  ><span
-                    >RTI request on staffing at the Presidential Media Division
-                    (PMD).</span
-                  >
+                  <span>•</span>
+                  <span>
+                    RTI request on staffing at the Presidential Media Division
+                    (PMD).
+                  </span>
                 </li>
               </ul>
               <div class="btn-row">
@@ -523,7 +87,7 @@
             for <em>SPHERE Research and Advocacy</em>.
           </p>
         </div>
-        <div class="cards">
+        <div class="cards cards--three">
           <article class="card">
             <h3 class="card__title">Advocacy</h3>
             <p class="card__desc">
@@ -608,7 +172,7 @@
             </li>
           </ul>
         </div>
-        <div class="cards">
+        <div class="cards cards--three">
           <article class="card">
             <h3 class="card__title">Institutional Strength</h3>
             <p class="card__desc">
@@ -651,7 +215,7 @@
             policy response capacity.
           </p>
         </div>
-        <div class="cards">
+        <div class="cards cards--three">
           <article class="card">
             <h3 class="card__title">Focus Areas</h3>
             <p class="card__desc">
@@ -690,7 +254,7 @@
             <li><strong>Grassroots Network</strong> — Community partners, local organizers, and field trainers across Sri Lanka.</li>
           </ul>
         </div>
-        <div class="cards">
+        <div class="cards cards--three">
           <article class="card">
             <h3 class="card__title">How we work</h3>
             <p class="card__desc">
@@ -724,9 +288,9 @@
           </p>
           <p style="line-height: 1.5">
             Email us at
-            <a class="link" href="mailto:hello@sphereresearch.org"
-              >hello@sphereresearch.org</a
-            >
+            <a class="link" href="mailto:hello@sphereresearch.org">
+              hello@sphereresearch.org
+            </a>
             or follow updates via our upcoming channels. For partnership
             inquiries, please include your organization name and area of
             interest.
@@ -759,36 +323,12 @@
               class="input"
             />
             <button class="btn" type="submit">Subscribe</button>
-            <small class="text--muted"
-              >We respect privacy. No spam; easy opt‑out.</small
-            >
+            <small class="text--muted">
+              We respect privacy. No spam; easy opt‑out.
+            </small>
           </div>
         </form>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container footer__grid">
-        <div class="footer__brandtext nowrap">
-          <strong>SPHERE</strong> — Society for the Progress, Human Rights,
-          Empowerment & Equity<br />
-          <span
-            >© <span id="year"></span> SPHERE Research and Advocacy. All rights
-            reserved.</span
-          >
-        </div>
-        <div class="footer__meta">
-          <span class="block"
-            >Legal status: Incorporation pending (Section 32)</span
-          >
-          <span class="block">Focus: Sri Lanka</span>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
-</html>
+  </main>
+</BaseLayout>

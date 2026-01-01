@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "tinacms build",
     "build": "astro build",
     "preview": "astro preview",
     "format": "prettier --write ."
