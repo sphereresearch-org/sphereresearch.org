@@ -1,142 +1,335 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SPHERE — Launching Soon</title>
-    <meta
-      name="description"
-      content="SPHERE: Website launching soon. Human rights, digital rights, and community action in Sri Lanka."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #f9fafb;
-        --surface: #ffffff;
-        --muted: #475569;
-        --text: #0f172a;
-        --primary: #060719;
-        --primary-700: #008b70;
-        --accent: #0284c7;
-        --warning: #f59e0b;
-        --link: #0369a1;
-        --border: #e5e7eb;
-        --shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
-        --radius: 16px;
-        --radius-sm: 12px;
-        --radius-lg: 22px;
-        --container: 1180px;
-        --fbc-gray-20: #ffffff;
-      }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        background:
-          radial-gradient(1200px 600px at 80% -10%, rgba(2,132,199,.06), transparent 60%),
-          radial-gradient(1000px 600px at 10% 10%, rgba(0,163,130,.08), transparent 60%),
-          var(--bg);
-        color: var(--text);
-        font-size: 14px;
-      }
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from 'astro:content';
 
-      /* Layout */
-      .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 20px; }
-      .section { padding: 80px 0; border-top: 1px solid var(--border); }
-      .section--hero {
-        padding: 120px 0 88px;
-        background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.6));
-        position: relative;
-      }
+// Get recent blog posts
+const recentPosts = (await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+})).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+---
 
-      /* Buttons */
-      .btn {
-        display: inline-flex; align-items: center; gap: 10px;
-        padding: 10px 14px; border-radius: 999px; text-decoration: none;
-        color: #fff; background: var(--primary); font-weight: 700;
-        border: 1px solid rgba(2,6,23,.06); box-shadow: var(--shadow); cursor: pointer;
-      }
-      .btn:hover { background: var(--primary-700); }
-      .btn--ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-      .btn--ghost:hover { background-color: #ccc; }
-
-      /* Hero */
-      .hero { display: grid; gap: 24px; grid-template-columns: 1fr; }
-      .hero__eyebrow {
-        color: var(--muted); font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
-        font-size: 12px; line-height: 1.5;
-      }
-      .hero__title { font-size: clamp(22px, 6vw, 40px); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
-      .hero__desc { font-size: clamp(14px, 2.2vw, 16px); color: #334155; max-width: 62ch; line-height: 1.5; }
-      .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
-
-      /* Cards */
-      .cards { display: grid; gap: 18px; grid-template-columns: 1fr; }
-      .card { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; background: var(--surface); box-shadow: var(--shadow); }
-      .card__title { margin: 0 0 8px; font-size: 18px; }
-      .card__desc { margin: 0; color: #334155; font-size: 14px; line-height: 1.4; }
-
-      /* Footer */
-      .footer { padding: 36px 0 60px; color: #475569; font-size: 14px; border-top: 1px solid var(--border); background: rgba(255,255,255,.6); }
-      .footer__grid { display: grid; gap: 18px; grid-template-columns: 1fr; font-size: 13px; }
-      .footer a { color: var(--link); text-decoration: none; }
-
-      /* Form */
-      .form__label { font-size: 14px; color: #334155; }
-      .input { background: var(--fbc-gray-20); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; color: var(--text); width: 100%; }
-
-      /* Utilities */
-      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
-      .mt-8 { margin-top: 8px; }
-      .text--muted { color: var(--muted); }
-      .link { color: var(--link); text-decoration: none; }
-
-      /* Responsive */
-      @media (min-width: 880px) {
-        .hero { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
-        .cards { grid-template-columns: repeat(2, 1fr); }
-      }
-    </style>
-  </head>
-  <body>
+<BaseLayout
+  title="SPHERE — Society for the Progress, Human Rights, Empowerment & Equity"
+  description="SPHERE: Bridging human rights advocacy and community action in Sri Lanka. Centre for Digital Policy Research (CDPR), digital rights, trainings, and civic empowerment."
+>
+  <main class="page page--home page-animate">
     <!-- Hero -->
-    <section class="section section--hero">
+    <section id="home" class="section section--hero">
       <div class="container">
         <div class="hero">
           <div>
-            <div class="hero__eyebrow">Sri Lanka</div>
-            <h1 class="hero__title">Our website is launching soon.</h1>
+            <div class="hero__eyebrow">Born of the 2022 People’s Struggle</div>
+            <h1 class="hero__title">
+              Bridging human rights advocacy and community action in Sri Lanka.
+            </h1>
             <p class="hero__desc">
-              We’re preparing resources, research, and actions to support human and digital rights.
-              Contact us for launch updates and announcements.
+              SPHERE (Society for the Progress, Human Rights, Empowerment &
+              Equity) sustains the momentum of civic participation—defending
+              civil and political rights, advancing digital rights, and
+              empowering communities to shape a just, democratic future.
             </p>
-            <div class="hero__actions">
-              <a class="btn" href="mailto:hello@sphereresearch.org">Contact us</a>
-              <!-- <a class="btn btn--ghost" href="#updates">Get updates</a> -->
+          </div>
+          <div>
+            {recentPosts.length > 0 ? (
+              <a href={`/blog/${recentPosts[0].slug}`} class="featured-article">
+                <img 
+                  src={recentPosts[0].data.coverImage} 
+                  alt={recentPosts[0].data.title}
+                  class="featured-article__image"
+                />
+                <div class="featured-article__content">
+                  <span class="featured-article__label">Latest Article</span>
+                  <h3 class="featured-article__title">{recentPosts[0].data.title}</h3>
+                  <p class="featured-article__desc">{recentPosts[0].data.description}</p>
+                </div>
+              </a>
+            ) : (
+              <div class="hero__panel">
+                <strong>Articles coming soon...</strong>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why SPHERE -->
+    <section id="mission" class="section">
+      <div class="container">
+        <h2 class="section__title" style="text-align: center; margin-bottom: 8px;">
+          Why SPHERE?
+        </h2>
+        <p class="section__kicker" style="text-align: center; margin-bottom: 40px;">
+          What makes us different
+        </p>
+        <div class="grid-3">
+          <div class="icon-box">
+            <div class="icon-box__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="icon-box__content">
+              <h3>Community-Rooted</h3>
+              <p>
+                Born from the 2022 people's struggle, we bridge grassroots activism with strategic advocacy, ensuring our work reflects real community needs and experiences.
+              </p>
+            </div>
+          </div>
+          <div class="icon-box">
+            <div class="icon-box__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <div class="icon-box__content">
+              <h3>Evidence-First</h3>
+              <p>
+                We base our interventions on rigorous legal research and documented evidence through CDPR, ensuring credibility and maximum impact in policy reform.
+              </p>
+            </div>
+          </div>
+          <div class="icon-box">
+            <div class="icon-box__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="icon-box__content">
+              <h3>Long-Term Commitment</h3>
+              <p>
+                We're building durable institutions for sustained civic participation, not just responding to crises—creating lasting change for human rights in Sri Lanka.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container footer__grid">
-        <div style="font-size: smaller;line-height: 1.6;">
-          <strong>SPHERE</strong> — Society for the Progress, Human Rights, Empowerment & Equity<br />
-          <span>© <span id="year"></span> SPHERE Research and Advocacy. All rights reserved.</span>
-        </div>
-      </div>
-    </footer>
 
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
-</html>
+
+    <!-- Contact / CTA -->
+    <section id="contact" class="section">
+      <div class="container grid-2">
+        <div>
+          <h2 class="section__title">Stay in touch</h2>
+          <p class="section__kicker">
+            Stay informed about our advocacy, research, and trainings.
+          </p>
+          <p style="line-height: 1.5">
+            Email us at
+            <a class="link" href="mailto:hello@sphereresearch.org">
+              hello@sphereresearch.org
+            </a>
+            or follow updates via our upcoming channels. For partnership
+            inquiries, please include your organization name and area of
+            interest.
+          </p>
+          <div class="btn-row mt-8">
+            <a
+              class="btn"
+              href="mailto:hello@sphereresearch.org?subject=Partnership%20Inquiry%20—%20SPHERE"
+              >Partnerships</a
+            >
+            <a class="btn btn--ghost" href="#home">Back to top</a>
+          </div>
+        </div>
+        <form
+          class="card"
+          onsubmit="event.preventDefault(); alert('Thanks! We\'ll keep you posted.');"
+        >
+          <h3 class="card__title">Get updates</h3>
+          <p class="card__desc">
+            Leave your email. We’ll reach out when the full site and campaigns
+            go live.
+          </p>
+          <div style="display: grid; gap: 10px; margin-top: 8px">
+            <label for="email" class="form__label">Email address</label>
+            <input
+              id="email"
+              type="email"
+              required
+              placeholder="you@example.org"
+              class="input"
+            />
+            <button class="btn" type="submit">Subscribe</button>
+            <small class="text--muted">
+              We respect privacy. No spam; easy opt‑out.
+            </small>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Featured Article Card */
+  .featured-article {
+    display: block;
+    text-decoration: none;
+    border-radius: var(--radius, 12px);
+    overflow: hidden;
+    background: var(--surface, #fff);
+    border: 1px solid var(--border, #e5e7eb);
+    box-shadow: var(--shadow, 0 1px 3px rgba(0,0,0,0.1));
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .featured-article:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.15));
+  }
+
+  .featured-article__image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .featured-article__content {
+    padding: 14px;
+  }
+
+  .featured-article__label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary, #c97a4a);
+    margin-bottom: 6px;
+  }
+
+  .featured-article__title {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text, #1a1a1a);
+    line-height: 1.3;
+  }
+
+  .featured-article__desc {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted, #666);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Mobile-first responsive adjustments - consistent left alignment */
+  @media (max-width: 767px) {
+    /* Hero section on mobile */
+    .page--home .section--hero {
+      padding: 32px 0 40px;
+      min-height: auto;
+    }
+
+    .page--home .hero {
+      gap: 24px;
+    }
+
+    .page--home .hero__title {
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .page--home .hero__desc {
+      font-size: 14px;
+    }
+
+    .page--home .hero__eyebrow {
+      font-size: 10px;
+    }
+
+    /* Featured article on mobile - full width */
+    .featured-article {
+      max-width: 100%;
+    }
+
+    .featured-article__image {
+      height: 200px;
+    }
+
+    /* Sections on mobile */
+    .page--home .section {
+      padding: 36px 0;
+    }
+
+    .page--home .section__title {
+      font-size: 20px;
+    }
+
+    .page--home .section__kicker {
+      font-size: 13px;
+    }
+
+    /* Grid layouts on mobile - stack vertically */
+    .page--home .grid-2 {
+      gap: 20px;
+    }
+
+    /* Cards grid on mobile */
+    .page--home .cards--three {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .page--home .card {
+      padding: 16px;
+    }
+
+    .page--home .card__title {
+      font-size: 16px;
+    }
+
+    .page--home .card__desc {
+      font-size: 13px;
+    }
+
+    /* Button rows on mobile - stack or left align */
+    .page--home .btn-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .page--home .btn-row .btn {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  /* Tablet and up */
+  @media (min-width: 768px) {
+    .featured-article__image {
+      height: 180px;
+    }
+
+    .featured-article__content {
+      padding: 16px;
+    }
+
+    .featured-article__label {
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .featured-article__title {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .featured-article__desc {
+      font-size: 13px;
+    }
+  }
+</style>

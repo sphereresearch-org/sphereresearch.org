@@ -1,13 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FeaturedPost from "../components/FeaturedPost.astro";
+import HomeGallery from "../components/HomeGallery.astro";
+import { getCollection } from 'astro:content';
+
+// Get recent blog posts
+const recentPosts = (await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+})).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
 ---
 
 <BaseLayout
   title="SPHERE — Society for the Progress, Human Rights, Empowerment & Equity"
   description="SPHERE: Bridging human rights advocacy and community action in Sri Lanka. Centre for Digital Policy Research (CDPR), digital rights, trainings, and civic empowerment."
 >
-  <main class="page page--home">
-    <!-- Hero -->
+  <main class="page page--home page-animate">
+
     <section id="home" class="section section--hero">
       <div class="container">
         <div class="hero">
@@ -22,53 +30,32 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               civil and political rights, advancing digital rights, and
               empowering communities to shape a just, democratic future.
             </p>
-            <div class="hero__badges" aria-label="Key facts" style="padding: 8px 0px;">
-              <span class="badge">National focus</span>
-              <span class="badge">Incorporation pending (Section 32)</span>
-              <span class="badge badge--amber">Advocacy • Research • Training</span>
-            </div>
-            <div class="hero__actions">
-              <a class="btn" href="#priorities">See 2025–2026 Priorities</a>
-              <a class="btn btn--ghost" href="#impact">Our Impact</a>
-            </div>
           </div>
           <div>
-            <div class="hero__panel" role="note" aria-label="Recent actions">
-              <strong>Recent actions</strong>
-              <ul class="hero__list">
-                <li>
-                  <span>•</span>
-                  <span>
-                    HRCSL complaint regarding the blocking of activist media on
-                    Facebook by police.
-                  </span>
-                </li>
-                <li>
-                  <span>•</span>
-                  <span>
-                    Case monitoring: detention of
-                    <em>Rifai Mohamed Suhail</em> under the PTA.
-                  </span>
-                </li>
-                <li>
-                  <span>•</span>
-                  <span>
-                    RTI request on staffing at the Presidential Media Division
-                    (PMD).
-                  </span>
-                </li>
-              </ul>
-              <div class="btn-row">
-                <a class="btn btn--ghost" href="#mission">About SPHERE</a>
-                <a class="btn btn--ghost" href="#cdpr">About CDPR</a>
+            {recentPosts.length > 0 ? (
+              <a href={`/blog/${recentPosts[0].slug}`} class="featured-article">
+                <img 
+                  src={recentPosts[0].data.coverImage} 
+                  alt={recentPosts[0].data.title}
+                  class="featured-article__image"
+                />
+                <div class="featured-article__content">
+                  <span class="featured-article__label">Latest Article</span>
+                  <h3 class="featured-article__title">{recentPosts[0].data.title}</h3>
+                  <p class="featured-article__desc">{recentPosts[0].data.description}</p>
+                </div>
+              </a>
+            ) : (
+              <div class="hero__panel">
+                <strong>Articles coming soon...</strong>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Mission -->
+
     <section id="mission" class="section">
       <div class="container grid-2">
         <div>
@@ -80,11 +67,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             with community‑level action—standing up for freedom of expression,
             association, and privacy while strengthening everyday democratic
             practice.
-          </p>
-          <p style="line-height: 1.6; font-size: small;">
-            <strong>Legal status:</strong> Incorporation in progress as a
-            company limited by guarantee (Section 32). Name reservation approved
-            for <em>SPHERE Research and Advocacy</em>.
           </p>
         </div>
         <div class="cards cards--three">
@@ -113,222 +95,431 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
-    <!-- Impact -->
-    <section id="impact" class="section">
+
+
+    <section id="cdpr" class="section" style="background-color: #f9fafb;">
+      <div class="container grid-2">
+        <div class="cdpr-content">
+          <div class="hero__eyebrow" style="margin-bottom: 12px; color: var(--primary, #c97a4a);">Legal & Policy Engine</div>
+          <h2 class="section__title">Centre for Digital Policy Research (CDPR)</h2>
+          <p class="section__kicker">Defending rights in the digital age</p>
+          <p style="line-height: 1.6; margin-bottom: 24px;">
+            CDPR is SPHERE's specialized arm for digital rights advocacy. We produce legal analysis, policy briefs, and research to ensure that technological progress in Sri Lanka strengthens democracy rather than undermining it.
+          </p>
+          <div class="btn-row">
+            <a href="/cdpr" class="btn">Visit CDPR</a>
+            <a href="/blog?category=cdpr" class="btn btn--ghost">Read Analysis</a>
+          </div>
+        </div>
+        <div class="cdpr-visual" style="display: flex; align-items: center; justify-content: center;">
+             <div style="background: var(--surface, #fff); padding: 32px; border-radius: var(--radius, 12px); box-shadow: var(--shadow, 0 1px 3px rgba(0,0,0,0.1)); border: 1px solid var(--border, #e5e7eb); width: 100%; max-width: 400px;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary, #c97a4a);"><path d="M12 3v18"/><path d="M3 21h18"/><path d="M6 8l6-5 6 5"/><path d="M6 8v9a2 2 0 0 0 2 2h2"/><path d="M18 8v9a2 2 0 0 1-2 2h-2"/></svg> Focus Areas
+                </h3>
+                <ul style="list-style: none; padding: 0; display: grid; gap: 12px;">
+                  <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted, #666);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Data Protection & Privacy
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted, #666);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Freedom of Expression
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted, #666);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Surveillance & Security
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--muted, #666);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    Platform Regulation
+                  </li>
+                </ul>
+             </div>
+        </div>
+      </div>
+    </section>
+
+    <HomeGallery />
+
+
+    <section id="contact" class="section section--premium-contact">
       <div class="container">
-        <h2 class="section__title">Early Impact</h2>
-        <p class="section__kicker">
-          Watchdog and advocate—already making dents.
-        </p>
-        <div class="grid-3">
-          <article class="card">
-            <h3 class="card__title">HRCSL Complaint</h3>
-            <p class="card__desc">
-              Challenging police‑linked blocking of activist content on
-              Facebook.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">PTA Monitoring</h3>
-            <p class="card__desc">
-              Tracking detention of Rifai Mohamed Suhail under the PTA.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">RTI to PMD</h3>
-            <p class="card__desc">
-              Transparency action on staffing at the Presidential Media
-              Division.
-            </p>
-          </article>
-        </div>
-        <p class="impact__note">
-          Supported by partners and allies; international support to date
-          includes AJWS.
-        </p>
-      </div>
-    </section>
-
-    <!-- Priorities -->
-    <section id="priorities" class="section">
-      <div class="container grid-2">
-        <div>
-          <h2 class="section__title">2025–2026 Priorities</h2>
-          <p class="section__kicker">Clear, achievable, impact‑driven.</p>
-          <ul class="list">
-            <li>Complete legal registration and strengthen governance.</li>
-            <li>
-              Deliver
-              <strong>Civil & Political Rights in the Digital Age</strong> and
-              scale <strong>Our Rights – Our Future</strong> trainings.
-            </li>
-            <li>
-              Establish <strong>CDPR</strong> as Sri Lanka’s leading voice on
-              digital rights in law and policy.
-            </li>
-            <li>
-              Run a national
-              <strong>digital rights advocacy campaign</strong> via CDPR.
-            </li>
-          </ul>
-        </div>
-        <div class="cards cards--three">
-          <article class="card">
-            <h3 class="card__title">Institutional Strength</h3>
-            <p class="card__desc">
-              Finalize incorporation; build transparent systems; publish
-              policies.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Public Education</h3>
-            <p class="card__desc">
-              Expand rights literacy and safety practices for communities and
-              defenders.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Policy Impact</h3>
-            <p class="card__desc">
-              Evidence‑based advocacy shaping digital rights frameworks.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CDPR Focus -->
-    <section id="cdpr" class="section">
-      <div class="container grid-2">
-        <div>
-          <h2 class="section__title">
-            Centre for Digital Policy Research (CDPR)
-          </h2>
-          <p class="section__kicker">
-            Legal and policy engine for digital rights.
-          </p>
-          <p style="line-height: 1.5;">
-            CDPR leads SPHERE’s legal‑policy agenda—producing research,
-            convening stakeholders, and driving advocacy on privacy, expression,
-            surveillance, platform accountability, and civic technology. CDPR
-            will front the national digital rights campaign and provide rapid
-            policy response capacity.
-          </p>
-        </div>
-        <div class="cards cards--three">
-          <article class="card">
-            <h3 class="card__title">Focus Areas</h3>
-            <p class="card__desc">
-              Data protection, platform regulation, speech & assembly online,
-              due process, transparency.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Outputs</h3>
-            <p class="card__desc">
-              Briefs, explainer notes, stakeholder roundtables, model clauses,
-              media commentary.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Community Link</h3>
-            <p class="card__desc">
-              Bridging legal work with trainings and community needs.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team -->
-    <section id="team" class="section">
-      <div class="container grid-2">
-        <div>
-          <h2 class="section__title">Team & Structure</h2>
-          <p class="section__kicker">Lean core, networked expertise.</p>
-          <ul class="list">
-            <li><strong>Board of Directors</strong> — Strategic oversight with an independent majority.</li>
-            <li><strong>Core Team</strong> — Lean staff across advocacy, research, training, and operations.</li>
-            <li><strong>Leadership</strong> — Cross‑functional co‑founders guiding programs and partnerships.</li>
-            <li><strong>Advisory Board</strong> — Subject‑matter experts and legal/technical consultants engaged as needed.</li>
-            <li><strong>Grassroots Network</strong> — Community partners, local organizers, and field trainers across Sri Lanka.</li>
-          </ul>
-        </div>
-        <div class="cards cards--three">
-          <article class="card">
-            <h3 class="card__title">How we work</h3>
-            <p class="card__desc">
-              Evidence‑first, non‑partisan, collaborative with civil society,
-              media, and legal experts.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Values</h3>
-            <p class="card__desc">
-              Rights‑centered, community‑rooted, transparent, secure by design.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Opportunities</h3>
-            <p class="card__desc">
-              Partners, volunteers, and pro‑bono advisors are welcome.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact / CTA -->
-    <section id="contact" class="section">
-      <div class="container grid-2">
-        <div>
-          <h2 class="section__title">Stay in touch</h2>
-          <p class="section__kicker">
-            Stay informed about our advocacy, research, and trainings.
-          </p>
-          <p style="line-height: 1.5">
-            Email us at
-            <a class="link" href="mailto:hello@sphereresearch.org">
-              hello@sphereresearch.org
-            </a>
-            or follow updates via our upcoming channels. For partnership
-            inquiries, please include your organization name and area of
-            interest.
-          </p>
-          <div class="btn-row mt-8">
-            <a
-              class="btn"
-              href="mailto:hello@sphereresearch.org?subject=Partnership%20Inquiry%20—%20SPHERE"
-              >Partnerships</a
-            >
-            <a class="btn btn--ghost" href="#home">Back to top</a>
+        <div class="premium-contact-card">
+          <div class="contact-info">
+            <div class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <h3 class="contact-title">Partner with SPHERE</h3>
+              <p class="contact-text">
+                Collaborate on digital rights advocacy.
+                <a href="mailto:hello@sphereresearch.org" class="link">hello@sphereresearch.org</a>
+              </p>
+            </div>
+          </div>
+          
+          <div class="divider-vertical"></div>
+          
+          <div class="newsletter-compact">
+            <div class="newsletter-content">
+              <h3 class="contact-title">Stay Updated</h3>
+              <p class="contact-text-sm">Get the latest research & news.</p>
+            </div>
+            <form class="newsletter-form-row" onsubmit="event.preventDefault(); alert('Thanks! We\'ll keep you posted.');">
+              <input type="email" placeholder="Email address" required class="input input--premium" />
+              <button class="btn btn--premium" type="submit">Subscribe</button>
+            </form>
           </div>
         </div>
-        <form
-          class="card"
-          onsubmit="event.preventDefault(); alert('Thanks! We\'ll keep you posted.');"
-        >
-          <h3 class="card__title">Get updates</h3>
-          <p class="card__desc">
-            Leave your email. We’ll reach out when the full site and campaigns
-            go live.
-          </p>
-          <div style="display: grid; gap: 10px; margin-top: 8px">
-            <label for="email" class="form__label">Email address</label>
-            <input
-              id="email"
-              type="email"
-              required
-              placeholder="you@example.org"
-              class="input"
-            />
-            <button class="btn" type="submit">Subscribe</button>
-            <small class="text--muted">
-              We respect privacy. No spam; easy opt‑out.
-            </small>
-          </div>
-        </form>
       </div>
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  /* Featured Article Card */
+  .featured-article {
+    display: block;
+    text-decoration: none;
+    border-radius: var(--radius, 12px);
+    overflow: hidden;
+    background: var(--surface, #fff);
+    border: 1px solid var(--border, #e5e7eb);
+    box-shadow: var(--shadow, 0 1px 3px rgba(0,0,0,0.1));
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .featured-article:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.15));
+  }
+
+  .featured-article__image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .featured-article__content {
+    padding: 14px;
+  }
+
+  .featured-article__label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary, #c97a4a);
+    margin-bottom: 6px;
+  }
+
+  .featured-article__title {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text, #1a1a1a);
+    line-height: 1.3;
+  }
+
+  .featured-article__desc {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted, #666);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+
+  @media (max-width: 767px) {
+    /* Hero section on mobile */
+    .page--home .section--hero {
+      padding: 32px 0 40px;
+      min-height: auto;
+    }
+
+    .page--home .hero {
+      gap: 24px;
+    }
+
+    .page--home .hero__title {
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .page--home .hero__desc {
+      font-size: 14px;
+    }
+
+    .page--home .hero__eyebrow {
+      font-size: 10px;
+    }
+
+    /* Featured article on mobile - full width */
+    .featured-article {
+      max-width: 100%;
+    }
+
+    .featured-article__image {
+      height: 200px;
+    }
+
+    /* Sections on mobile */
+    .page--home .section {
+      padding: 36px 0;
+    }
+
+    .page--home .section__title {
+      font-size: 20px;
+    }
+
+    .page--home .section__kicker {
+      font-size: 13px;
+    }
+
+    /* Grid layouts on mobile - stack vertically */
+    .page--home .grid-2 {
+      gap: 20px;
+    }
+
+    /* Cards grid on mobile */
+    .page--home .cards--three {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .page--home .card {
+      padding: 16px;
+    }
+
+    .page--home .card__title {
+      font-size: 16px;
+    }
+
+    .page--home .card__desc {
+      font-size: 13px;
+    }
+
+    /* Button rows on mobile - stack or left align */
+    .page--home .btn-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .page--home .btn-row .btn {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+
+  @media (min-width: 768px) {
+    .featured-article__image {
+      height: 180px;
+    }
+
+    .featured-article__content {
+      padding: 16px;
+    }
+
+    .featured-article__label {
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .featured-article__title {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .featured-article__desc {
+      font-size: 13px;
+    }
+  }
+
+  .section--premium-contact {
+    padding: 3rem 0;
+    background: linear-gradient(to bottom, #ffffff, #f8fafc);
+    border-top: 1px solid var(--border);
+  }
+
+  .premium-contact-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    border-radius: 20px;
+    padding: 24px 32px;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+
+  .premium-contact-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(0,0,0,0.05));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .contact-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .icon-box {
+    width: 64px;
+    height: 64px;
+    background: var(--surface-sunken, #f1f5f9);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .divider-vertical {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, var(--border), transparent);
+    display: none;
+  }
+
+  @media (min-width: 850px) {
+    .divider-vertical {
+      display: block;
+    }
+  }
+
+  .newsletter-compact {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+
+  .newsletter-content {
+    text-align: right;
+    display: none;
+  }
+  
+  @media (min-width: 640px) {
+    .newsletter-content {
+      display: block;
+    }
+  }
+
+  .contact-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text, #111827);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .contact-text {
+    font-size: 0.95rem;
+    color: var(--text-muted, #666);
+    margin: 4px 0 0;
+  }
+  
+  .contact-text-sm {
+    font-size: 0.85rem;
+    color: var(--text-muted, #666);
+    margin: 0;
+  }
+
+  .newsletter-form-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 6px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .newsletter-form-row:focus-within {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-color: var(--primary-light, #94a3b8);
+  }
+
+  .input--premium {
+    border: none;
+    background: transparent;
+    padding: 0 12px;
+    font-size: 0.95rem;
+    height: 40px;
+    flex: 1;
+    outline: none;
+  }
+
+  .btn--premium {
+    padding: 0 20px;
+    height: 40px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .btn--premium:hover {
+    background: var(--primary-700);
+  }
+
+  @media (max-width: 850px) {
+    .premium-contact-card {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2rem;
+      padding: 24px;
+    }
+
+    .contact-info {
+        justify-content: center;
+        text-align: left;
+    }
+    
+    .newsletter-compact {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .newsletter-content {
+      text-align: center;
+      display: block; /* Show on mobile stacked */
+      margin-bottom: 8px;
+    }
+    
+    .newsletter-form-row {
+        max-width: 100%;
+    }
+  }
+</style>

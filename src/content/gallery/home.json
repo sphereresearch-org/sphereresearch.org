@@ -1,0 +1,21 @@
+{
+    "title": "Image Gallery",
+    "images": [
+        {
+            "src": "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?q=80&w=2940&auto=format&fit=crop",
+            "alt": "Community Workshop"
+        },
+        {
+            "src": "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2940&auto=format&fit=crop",
+            "alt": "Digital Training Session"
+        },
+        {
+            "src": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2940&auto=format&fit=crop",
+            "alt": "Policy Discussion"
+        },
+        {
+            "src": "https://images.unsplash.com/photo-1591115765373-5207764f72e7?q=80&w=2940&auto=format&fit=crop",
+            "alt": "Research Team"
+        }
+    ]
+}

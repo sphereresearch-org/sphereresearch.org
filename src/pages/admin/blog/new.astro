@@ -1,0 +1,388 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const currentDate = new Date().toISOString().split('T')[0];
+---
+
+<BaseLayout title="Create New Blog Post — SPHERE Admin" description="Create a new blog post">
+  <main class="page">
+    <section class="section" style="padding-top: 40px;">
+      <div class="container" style="max-width: 900px;">
+        <div style="margin-bottom: 32px;">
+          <a href="/admin" class="btn btn--ghost" style="padding: 8px 16px;">← Back to Admin</a>
+        </div>
+
+        <h1 class="section__title">Create New Blog Post</h1>
+        <p class="section__kicker" style="margin-bottom: 32px;">Fill out the form below to generate a blog post template</p>
+
+        <form id="new-post-form" class="blog-form">
+          <!-- Title -->
+          <div class="form-group">
+            <label for="title" class="form-label">Title *</label>
+            <input 
+              type="text" 
+              id="title" 
+              name="title" 
+              class="form-input"
+              required
+              placeholder="Enter blog post title"
+            />
+          </div>
+
+          <!-- Description -->
+          <div class="form-group">
+            <label for="description" class="form-label">Description *</label>
+            <textarea 
+              id="description" 
+              name="description" 
+              class="form-textarea"
+              rows="3"
+              required
+              placeholder="A brief summary for blog listings (1-2 sentences)"
+            ></textarea>
+          </div>
+
+          <!-- Category -->
+          <div class="form-group">
+            <label for="category" class="form-label">Category *</label>
+            <select id="category" name="category" class="form-select" required>
+              <option value="">Select a category</option>
+              <option value="cdpr">CDPR (Digital Policy Research)</option>
+              <option value="advocacy">Advocacy</option>
+              <option value="research">Research</option>
+              <option value="training">Training</option>
+              <option value="general">General</option>
+            </select>
+            <p class="form-hint">CDPR posts will also appear on the CDPR page</p>
+          </div>
+
+          <!-- Author -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="author" class="form-label">Author Name *</label>
+              <input 
+                type="text" 
+                id="author" 
+                name="author" 
+                class="form-input"
+                required
+                placeholder="e.g., Amara Perera"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="authorRole" class="form-label">Author Role</label>
+              <input 
+                type="text" 
+                id="authorRole" 
+                name="authorRole" 
+                class="form-input"
+                placeholder="e.g., Executive Director"
+              />
+            </div>
+          </div>
+
+          <!-- Images -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="coverImage" class="form-label">Cover Image Path *</label>
+              <input 
+                type="text" 
+                id="coverImage" 
+                name="coverImage" 
+                class="form-input"
+                required
+                value="/blog/"
+                placeholder="/blog/my-image.jpg"
+              />
+              <p class="form-hint">Upload image to public/blog/ first</p>
+            </div>
+
+            <div class="form-group">
+              <label for="authorImage" class="form-label">Author Image Path</label>
+              <input 
+                type="text" 
+                id="authorImage" 
+                name="authorImage" 
+                class="form-input"
+                placeholder="/team/author.jpg"
+              />
+              <p class="form-hint">Upload to public/team/ first</p>
+            </div>
+          </div>
+
+          <!-- Date & Draft -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date" class="form-label">Publication Date *</label>
+              <input 
+                type="date" 
+                id="date" 
+                name="date" 
+                class="form-input"
+                required
+                value={currentDate}
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="draft" class="form-label">Status</label>
+              <select id="draft" name="draft" class="form-select">
+                <option value="false">Published</option>
+                <option value="true">Draft</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="form-group">
+            <label for="tags" class="form-label">Tags</label>
+            <input 
+              type="text" 
+              id="tags" 
+              name="tags" 
+              class="form-input"
+              placeholder="digital rights, policy, privacy (comma-separated)"
+            />
+            <p class="form-hint">Separate tags with commas</p>
+          </div>
+
+          <!-- Slug (filename) -->
+          <div class="form-group">
+            <label for="slug" class="form-label">Slug (Filename) *</label>
+            <input 
+              type="text" 
+              id="slug" 
+                name="slug" 
+              class="form-input"
+              required
+              placeholder="my-blog-post"
+            />
+            <p class="form-hint">URL-friendly name (lowercase, hyphens, no spaces). File will be saved as: <code id="slug-preview">my-blog-post.md</code></p>
+          </div>
+
+          <!-- Content -->
+          <div class="form-group">
+            <label for="content" class="form-label">Post Content (Markdown) *</label>
+            <textarea 
+              id="content" 
+              name="content" 
+              class="form-textarea"
+              rows="15"
+              required
+              placeholder="Write your blog post content in Markdown format...
+
+## Section Heading
+
+Your content here. Use **bold**, *italic*, and [links](https://example.com).
+
+- List item 1
+- List item 2"
+            ></textarea>
+            <p class="form-hint">Use Markdown formatting. <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Guide</a></p>
+          </div>
+
+          <!-- Actions -->
+          <div style="display: flex; gap: 12px; justify-content: flex-end; padding-top: 24px; border-top: 1px solid var(--border);">
+            <a href="/admin" class="btn btn--ghost">Cancel</a>
+            <button type="submit" class="btn">Generate Markdown File</button>
+          </div>
+        </form>
+
+        <!-- Generated output -->
+        <div id="output" style="display: none; margin-top: 40px;">
+          <div class="card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.05));">
+            <h3 class="card__title">✓ Markdown File Generated!</h3>
+            <div class="card__desc">
+              <p style="margin-bottom: 16px;">Your blog post markdown file has been generated. Follow these steps:</p>
+              <ol style="line-height: 1.8; padding-left: 24px;">
+                <li>Copy the markdown content below</li>
+                <li>Create a new file: <code id="output-filename">filename.md</code> in <code>src/content/blog/</code></li>
+                <li>Paste the content into the file</li>
+                <li>Upload any images to <code>public/blog/</code></li>
+                <li>Rebuild the site (<code>npm run build</code>) to publish</li>
+              </ol>
+              <div style="margin-top: 20px;">
+                <button id="copy-btn" class="btn">Copy to Clipboard</button>
+                <button id="download-btn" class="btn btn--ghost">Download File</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <label class="form-label">Generated Markdown:</label>
+            <textarea 
+              id="generated-markdown" 
+              readonly
+              class="form-textarea"
+              rows="20"
+              style="font-family: monospace; font-size: 13px; background: #f8fafc;"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text);
+    background: white;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    line-height: 1.6;
+  }
+
+  .form-hint {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .form-hint code,
+  code {
+    background: rgba(2, 6, 23, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+  }
+
+  .form-hint a {
+    color: var(--link);
+  }
+</style>
+
+<script>
+  // Auto-generate slug from title
+  const titleInput = document.getElementById('title') as HTMLInputElement;
+  const slugInput = document.getElementById('slug') as HTMLInputElement;
+  const slugPreview = document.getElementById('slug-preview');
+
+  titleInput?.addEventListener('input', () => {
+    if (!slugInput.value || slugInput.dataset.autoGenerated === 'true') {
+      const slug = titleInput.value
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      slugInput.value = slug;
+      slugInput.dataset.autoGenerated = 'true';
+      if (slugPreview) slugPreview.textContent = slug + '.md';
+    }
+  });
+
+  slugInput?.addEventListener('input', () => {
+    slugInput.dataset.autoGenerated = 'false';
+    if (slugPreview) slugPreview.textContent = slugInput.value + '.md';
+  });
+
+  // Form submission
+  const form = document.getElementById('new-post-form') as HTMLFormElement;
+  const output = document.getElementById('output');
+  const generatedMarkdown = document.getElementById('generated-markdown') as HTMLTextAreaElement;
+  const outputFilename = document.getElementById('output-filename');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    
+    // Parse tags
+    const tagsInput = formData.get('tags') as string;
+    const tags = tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(Boolean) : [];
+    
+    // Build frontmatter
+    const frontmatter = `---
+title: "${formData.get('title')}"
+description: "${formData.get('description')}"
+coverImage: "${formData.get('coverImage')}"
+author: "${formData.get('author')}"
+${formData.get('authorRole') ? `authorRole: "${formData.get('authorRole')}"` : ''}
+${formData.get('authorImage') ? `authorImage: "${formData.get('authorImage')}"` : ''}
+date: ${formData.get('date')}
+category: "${formData.get('category')}"
+tags: [${tags.map(t => `"${t}"`).join(', ')}]
+draft: ${formData.get('draft')}
+---
+
+${formData.get('content')}`;
+
+    generatedMarkdown.value = frontmatter;
+    if (outputFilename) outputFilename.textContent = formData.get('slug') + '.md';
+    if (output) output.style.display = 'block';
+    output?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Copy to clipboard
+  const copyBtn = document.getElementById('copy-btn');
+  copyBtn?.addEventListener('click', () => {
+    generatedMarkdown.select();
+    document.execCommand('copy');
+    copyBtn.textContent = '✓ Copied!';
+    setTimeout(() => {
+      copyBtn.textContent = 'Copy to Clipboard';
+    }, 2000);
+  });
+
+  // Download file
+  const downloadBtn = document.getElementById('download-btn');
+  downloadBtn?.addEventListener('click', () => {
+    const blob = new Blob([generatedMarkdown.value], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = slugInput.value + '.md';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+</script>

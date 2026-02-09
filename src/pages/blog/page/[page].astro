@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const postsPerPage = 1;
+  const all = (await getCollection("blog"))
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => +b.data.date - +a.data.date);
+  const totalPages = Math.ceil(all.length / postsPerPage) || 1;
+  return Array.from({ length: totalPages }, (_, i) => {
+    const page = i + 1;
+    const start = (page - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    const pagePosts = all.slice(start, end);
+    return {
+      params: { page: String(page) },
+      props: { page, pagePosts, totalPages },
+    };
+  });
+}
+
+const { page, pagePosts, totalPages: pagesTotal } = Astro.props as {
+  page: number;
+  pagePosts: any[];
+  totalPages: number;
+};
+const isFirst = page === 1;
+const [featured, ...rest] = pagePosts;
+---
+<BaseLayout title={`SPHERE — Blog (Page ${page})`} description="Updates, research, and advocacy notes from SPHERE.">
+  <section class="section">
+    <div class="container">
+      <h1 class="section__title">Blog</h1>
+      {pagePosts.length ? (
+        <div>
+          {isFirst ? (
+            <article class="card card--post card--featured mt-8">
+              {featured?.data.coverUrl && (
+                <img class="card__thumb" src={featured.data.coverUrl} alt={featured.data.title} loading="lazy" />
+              )}
+              <div class="card__content">
+                <h3 class="card__title">
+                  <a class="link" href={`/blog/${featured.slug}/`}>{featured.data.title}</a>
+                </h3>
+                {featured?.data.description && <p class="card__desc">{featured.data.description}</p>}
+                <div class="post__meta">
+                  <time class="text--muted" datetime={new Date(featured.data.date).toISOString()}>
+                    {new Date(featured.data.date).toLocaleDateString()}
+                  </time>
+                  {featured?.data.tags?.length ? (
+                    <div class="tags">
+                      {featured.data.tags.map((tag: string) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            </article>
+          ) : null}
+          <div class="cards cards--grid mt-8">
+            {(isFirst ? rest : pagePosts).map((post) => (
+              <article class="card card--post card--compact">
+                {post.data.coverUrl && (
+                  <img class="card__thumb card__thumb--sm" src={post.data.coverUrl} alt={post.data.title} loading="lazy" />
+                )}
+                <h3 class="card__title">
+                  <a class="link" href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                </h3>
+                {post.data.description && <p class="card__desc">{post.data.description}</p>}
+                <div class="post__meta">
+                  <time class="text--muted" datetime={new Date(post.data.date).toISOString()}>
+                    {new Date(post.data.date).toLocaleDateString()}
+                  </time>
+                  {post.data.tags?.length ? (
+                    <div class="tags">
+                      {post.data.tags.map((tag: string) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <nav class="pager" aria-label="Pagination">
+            <div class="pager__list" role="group" aria-label="Pages">
+              <a
+                class="pager__button"
+                aria-disabled={page === 1 ? "true" : "false"}
+                href={page === 1 ? undefined : `/blog/page/${page - 1}/`}
+              >Prev</a>
+              {Array.from({ length: pagesTotal }, (_, i) => i + 1).map((p) => (
+                <a
+                  class={`pager__link ${p === page ? "pager__link--active" : ""}`}
+                  href={`/blog/page/${p}/`}
+                  aria-current={p === page ? "page" : undefined}
+                >{p}</a>
+              ))}
+              <a
+                class="pager__button"
+                aria-disabled={page === pagesTotal ? "true" : "false"}
+                href={page === pagesTotal ? undefined : `/blog/page/${page + 1}/`}
+              >Next</a>
+            </div>
+          </nav>
+        </div>
+      ) : (
+        <p class="text--muted mt-8">No posts yet. Check back soon.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

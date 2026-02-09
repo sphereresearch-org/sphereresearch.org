@@ -1,0 +1,402 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from 'astro:content';
+
+// Get all blog posts including drafts
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const publishedPosts = sortedPosts.filter(p => !p.data.draft);
+const draftPosts = sortedPosts.filter(p => p.data.draft);
+
+// Group by category
+const categoryCounts = allPosts.reduce((acc, post) => {
+  acc[post.data.category] = (acc[post.data.category] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+---
+
+<BaseLayout title="Admin Dashboard — SPHERE Blog" description="Manage blog posts">
+  <main class="page">
+    <section class="section" style="padding-top: 40px;">
+      <div class="container" style="max-width: 1200px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h1 class="section__title" style="margin: 0;">Blog Admin</h1>
+            <p class="section__kicker" style="margin: 8px 0 0;">Manage blog posts and content</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <a href="/tina-admin/index.html" class="btn">Open CMS Editor</a>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="admin-stats">
+          <div class="stat-card">
+            <div class="stat-card__value">{publishedPosts.length}</div>
+            <div class="stat-card__label">Published</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__value">{draftPosts.length}</div>
+            <div class="stat-card__label">Drafts</div>
+          </div>
+          {Object.entries(categoryCounts).map(([cat, count]) => (
+            <div class="stat-card stat-card--small">
+              <div class="stat-card__value">{count}</div>
+              <div class="stat-card__label">{cat.toUpperCase()}</div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab tab--active" data-tab="all">All Posts</button>
+          <button class="tab" data-tab="published">Published</button>
+          <button class="tab" data-tab="drafts">Drafts</button>
+        </div>
+
+        <!-- All Posts Table -->
+        <div class="tab-content" data-content="all">
+          <div class="posts-table">
+            <div class="posts-table__header">
+              <div>Title</div>
+              <div>Category</div>
+              <div>Author</div>
+              <div>Date</div>
+              <div>Status</div>
+              <div>Actions</div>
+            </div>
+            {sortedPosts.map((post) => (
+              <div class="posts-table__row">
+                <div class="posts-table__title">
+                  <a href={`/blog/${post.slug}`} target="_blank">{post.data.title}</a>
+                  {post.data.draft && <span class="badge-draft">DRAFT</span>}
+                </div>
+                <div><span class="category-badge category-badge--{post.data.category}">{post.data.category}</span></div>
+                <div>{post.data.author}</div>
+                <div>{post.data.date.toLocaleDateString()}</div>
+                <div>
+                  {post.data.draft ? (
+                    <span class="status-badge status-badge--draft">Draft</span>
+                  ) : (
+                    <span class="status-badge status-badge--published">Published</span>
+                  )}
+                </div>
+                <div class="posts-table__actions">
+                  <a href={`/admin/blog/${post.slug}/edit`} class="btn btn--ghost" style="padding: 6px 12px; font-size: 13px;">Edit</a>
+                  <a href={`/blog/${post.slug}`} target="_blank" class="btn btn--ghost" style="padding: 6px 12px; font-size: 13px;">View</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Published Posts Table -->
+        <div class="tab-content" data-content="published" style="display: none;">
+          <div class="posts-table">
+            <div class="posts-table__header">
+              <div>Title</div>
+              <div>Category</div>
+              <div>Author</div>
+              <div>Date</div>
+              <div>Actions</div>
+            </div>
+            {publishedPosts.map((post) => (
+              <div class="posts-table__row">
+                <div class="posts-table__title">
+                  <a href={`/blog/${post.slug}`} target="_blank">{post.data.title}</a>
+                </div>
+                <div><span class="category-badge category-badge--{post.data.category}">{post.data.category}</span></div>
+                <div>{post.data.author}</div>
+                <div>{post.data.date.toLocaleDateString()}</div>
+                <div class="posts-table__actions">
+                  <a href={`/admin/blog/${post.slug}/edit`} class="btn btn--ghost" style="padding: 6px 12px; font-size: 13px;">Edit</a>
+                  <a href={`/blog/${post.slug}`} target="_blank" class="btn btn--ghost" style="padding: 6px 12px; font-size: 13px;">View</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Draft Posts Table -->
+        <div class="tab-content" data-content="drafts" style="display: none;">
+          {draftPosts.length > 0 ? (
+            <div class="posts-table">
+              <div class="posts-table__header">
+                <div>Title</div>
+                <div>Category</div>
+                <div>Author</div>
+                <div>Date</div>
+                <div>Actions</div>
+              </div>
+              {draftPosts.map((post) => (
+                <div class="posts-table__row">
+                  <div class="posts-table__title">
+                    {post.data.title}
+                  </div>
+                  <div><span class="category-badge category-badge--{post.data.category}">{post.data.category}</span></div>
+                  <div>{post.data.author}</div>
+                  <div>{post.data.date.toLocaleDateString()}</div>
+                  <div class="posts-table__actions">
+                    <a href={`/admin/blog/${post.slug}/edit`} class="btn btn--ghost" style="padding: 6px 12px; font-size: 13px;">Edit</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p class="text--muted" style="text-align: center; padding: 40px 0;">No draft posts</p>
+          )}
+        </div>
+
+        <!-- Helper -->
+        <div class="card" style="margin-top: 40px; background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(0, 163, 130, 0.05));">
+          <h3 class="card__title">How to manage blog posts</h3>
+          <div class="card__desc" style="line-height: 1.6;">
+            <p><strong>File-based content system:</strong> All blog posts are stored as markdown files in <code>src/content/blog/</code></p>
+            <ul style="margin: 12px 0; padding-left: 24px;">
+              <li>Click "Create New Post" to generate a new blog post template</li>
+              <li>Download the generated markdown file</li>
+              <li>Add the file to <code>src/content/blog/</code> directory</li>
+              <li>Upload images to <code>public/blog/</code> directory</li>
+              <li>Rebuild the site to publish changes</li>
+            </ul>
+            <p style="margin-top: 12px;"><strong>Note:</strong> This is a static site - changes require a rebuild and redeploy to go live.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-card__value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-card__label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-card--small .stat-card__value {
+    font-size: 24px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  .tab {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+  }
+
+  .tab:hover {
+    color: var(--text);
+  }
+
+  .tab--active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .posts-table {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .posts-table__header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;
+    gap: 16px;
+    padding: 16px 20px;
+    background: linear-gradient(180deg, rgba(2, 6, 23, 0.02), transparent);
+    border-bottom: 1px solid var(--border);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .posts-table__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-light);
+    align-items: center;
+    transition: background 0.2s ease;
+  }
+
+  .posts-table__row:hover {
+    background: rgba(2, 6, 23, 0.02);
+  }
+
+  .posts-table__row:last-child {
+    border-bottom: none;
+  }
+
+  .posts-table__title a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .posts-table__title a:hover {
+    text-decoration: underline;
+  }
+
+  .posts-table__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .badge-draft {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.15);
+    color: #92400e;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-left: 8px;
+  }
+
+  .category-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .category-badge--cdpr {
+    background: rgba(2, 132, 199, 0.1);
+    color: #0369a1;
+  }
+
+  .category-badge--advocacy {
+    background: rgba(16, 185, 129, 0.1);
+    color: #047857;
+  }
+
+  .category-badge--research {
+    background: rgba(139, 92, 246, 0.1);
+    color: #6d28d9;
+  }
+
+  .category-badge--training {
+    background: rgba(245, 158, 11, 0.1);
+    color: #92400e;
+  }
+
+  .category-badge--general {
+    background: rgba(107, 114, 128, 0.1);
+    color: #374151;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .status-badge--published {
+    background: rgba(16, 185, 129, 0.1);
+    color: #047857;
+  }
+
+  .status-badge--draft {
+    background: rgba(107, 114, 128, 0.1);
+    color: #374151;
+  }
+
+  code {
+    background: rgba(2, 6, 23, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 13px;
+  }
+
+  @media (max-width: 1024px) {
+    .posts-table__header,
+    .posts-table__row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .posts-table__header {
+      display: none;
+    }
+
+    .posts-table__row > div::before {
+      content: attr(data-label);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+  }
+</style>
+
+<script>
+  // Tab switching
+  const tabs = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const tabName = tab.dataset.tab;
+
+      // Update active tab
+      tabs.forEach(t => t.classList.remove('tab--active'));
+      tab.classList.add('tab--active');
+
+      // Show corresponding content
+      tabContents.forEach(content => {
+        if (content.dataset.content === tabName) {
+          content.style.display = 'block';
+        } else {
+          content.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact SPHERE — Get in Touch"
+  description="Contact SPHERE Research and Advocacy for partnerships, media inquiries, or to learn more about our human rights and digital policy work in Sri Lanka."
+>
+  <main class="page page-animate">
+    <!-- Hero Section -->
+    <section class="section section--hero">
+      <div class="container">
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+          <div class="hero__eyebrow" style="text-align: center;">Get in Touch</div>
+          <h1 class="hero__title text-balance" style="text-align: center;">
+            Let's work together
+          </h1>
+          <p class="hero__desc" style="text-align: center; max-width: 100%; margin: 0 auto;">
+            Whether you're interested in partnership, collaboration, media inquiries,
+            or just want to learn more about our work—we'd love to hear from you.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <!-- Contact Form -->
+          <div class="card">
+            <h3 class="card__title">Send us a message</h3>
+            <p class="card__desc">
+              Fill out this form and we'll get back to you as soon as possible.
+            </p>
+            <form
+              style="display: grid; gap: 16px; margin-top: 20px;"
+              onsubmit="event.preventDefault(); alert('Thanks for reaching out! We\\'ll get back to you soon.');"
+            >
+              <div>
+                <label for="name" class="form__label">Name *</label>
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  placeholder="Your name"
+                  class="input"
+                />
+              </div>
+              <div>
+                <label for="email" class="form__label">Email *</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  placeholder="you@example.org"
+                  class="input"
+                />
+              </div>
+              <div>
+                <label for="subject" class="form__label">Subject *</label>
+                <input
+                  id="subject"
+                  type="text"
+                  required
+                  placeholder="How can we help?"
+                  class="input"
+                />
+              </div>
+              <div>
+                <label for="message" class="form__label">Message *</label>
+                <textarea
+                  id="message"
+                  required
+                  placeholder="Tell us more..."
+                  class="input"
+                  rows="5"
+                  style="resize: vertical; font-family: inherit;"
+                ></textarea>
+              </div>
+              <button class="btn" type="submit" style="justify-content: center; width: 100%;">Send Message</button>
+              <small class="text--muted" style="text-align: center;">
+                We respect your privacy and will never share your information.
+              </small>
+            </form>
+          </div>
+
+            <div class="card">
+              <h3 class="card__title">Email Us</h3>
+              <p class="card__desc">
+                For general inquiries, partnerships, or media requests:
+              </p>
+              <a
+                href="mailto:hello@sphereresearch.org"
+                class="btn"
+                style="margin-top: 12px; width: fit-content;"
+              >
+                hello@sphereresearch.org
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Newsletter Signup -->
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <h2 class="section__title">Stay Updated</h2>
+            <p class="section__kicker">Get news about our advocacy and research</p>
+            <p style="line-height: 1.6; margin-top: 16px;">
+              Subscribe to receive updates on our campaigns, research publications,
+              training programs, and strategic interventions.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">Newsletter</h3>
+            <p class="card__desc">
+              Join our mailing list to stay informed about SPHERE's work.
+            </p>
+            <form
+              style="display: grid; gap: 12px; margin-top: 16px;"
+              onsubmit="event.preventDefault(); alert('Thanks for subscribing! We\\'ll keep you posted.');"
+            >
+              <div>
+                <label for="newsletter-email" class="form__label">Email address</label>
+                <input
+                  id="newsletter-email"
+                  type="email"
+                  required
+                  placeholder="you@example.org"
+                  class="input"
+                />
+              </div>
+              <button class="btn" type="submit">Subscribe</button>
+              <small class="text--muted">
+                No spam. Unsubscribe anytime. We respect your privacy.
+              </small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

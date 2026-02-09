@@ -1,0 +1,14 @@
+fragment BlogParts on Blog {
+  __typename
+  title
+  description
+  coverImage
+  author
+  authorRole
+  authorImage
+  date
+  category
+  tags
+  draft
+  body
+}
