@@ -4,8 +4,11 @@ import { defineConfig } from "tinacms";
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
 export default defineConfig({
+    // Debugging: Log partial ID to verify it's loaded (Remove in production if concerned)
+    clientId: process.env.TINA_CLIENT_ID || "",
+    token: process.env.TINA_TOKEN || "",
+    // debug output
     // console.log("Tina Client ID:", process.env.TINA_CLIENT_ID ? "Set" : "Not Set");
-    branch,
     build: {
         outputFolder: "tina-admin",
         publicFolder: "public",
