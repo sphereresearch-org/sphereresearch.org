@@ -2,11 +2,11 @@
 import { defineConfig } from "tinacms";
 var branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 var config_default = defineConfig({
-  branch,
-  clientId: null,
-  // Get this from tina.io
-  token: null,
-  // Get this from tina.io
+  // Debugging: Log partial ID to verify it's loaded (Remove in production if concerned)
+  clientId: process.env.TINA_CLIENT_ID || "",
+  token: process.env.TINA_TOKEN || "",
+  // debug output
+  // console.log("Tina Client ID:", process.env.TINA_CLIENT_ID ? "Set" : "Not Set");
   build: {
     outputFolder: "tina-admin",
     publicFolder: "public"
@@ -99,6 +99,46 @@ var config_default = defineConfig({
             name: "body",
             label: "Body",
             isBody: true
+          }
+        ]
+      },
+      {
+        name: "gallery",
+        label: "Image Gallery",
+        path: "src/content/gallery",
+        format: "json",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true
+          },
+          {
+            type: "object",
+            name: "images",
+            label: "Images",
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.alt || "Image" };
+              }
+            },
+            fields: [
+              {
+                type: "image",
+                name: "src",
+                label: "Image Source",
+                required: true
+              },
+              {
+                type: "string",
+                name: "alt",
+                label: "Alt Text",
+                required: true
+              }
+            ]
           }
         ]
       }

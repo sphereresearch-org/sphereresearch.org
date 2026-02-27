@@ -56,10 +56,13 @@ type Query {
   document(collection: String, relativePath: String): DocumentNode!
   blog(relativePath: String): Blog!
   blogConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: BlogFilter): BlogConnection!
+  gallery(relativePath: String): Gallery!
+  galleryConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GalleryFilter): GalleryConnection!
 }
 
 input DocumentFilter {
   blog: BlogFilter
+  gallery: GalleryFilter
 }
 
 type DocumentConnectionEdges {
@@ -85,7 +88,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Blog | Folder
+union DocumentNode = Blog | Gallery | Folder
 
 type Blog implements Node & Document {
   title: String!
@@ -162,6 +165,40 @@ type BlogConnection implements Connection {
   edges: [BlogConnectionEdges]
 }
 
+type GalleryImages {
+  src: String!
+  alt: String!
+}
+
+type Gallery implements Node & Document {
+  title: String!
+  images: [GalleryImages]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input GalleryImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input GalleryFilter {
+  title: StringFilter
+  images: GalleryImagesFilter
+}
+
+type GalleryConnectionEdges {
+  cursor: String!
+  node: Gallery
+}
+
+type GalleryConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [GalleryConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -170,15 +207,19 @@ type Mutation {
   createFolder(collection: String, relativePath: String!): DocumentNode!
   updateBlog(relativePath: String!, params: BlogMutation!): Blog!
   createBlog(relativePath: String!, params: BlogMutation!): Blog!
+  updateGallery(relativePath: String!, params: GalleryMutation!): Gallery!
+  createGallery(relativePath: String!, params: GalleryMutation!): Gallery!
 }
 
 input DocumentUpdateMutation {
   blog: BlogMutation
+  gallery: GalleryMutation
   relativePath: String
 }
 
 input DocumentMutation {
   blog: BlogMutation
+  gallery: GalleryMutation
 }
 
 input BlogMutation {
@@ -193,6 +234,16 @@ input BlogMutation {
   tags: [String]
   draft: Boolean
   body: JSON
+}
+
+input GalleryImagesMutation {
+  src: String
+  alt: String
+}
+
+input GalleryMutation {
+  title: String
+  images: [GalleryImagesMutation]
 }
 
 schema {

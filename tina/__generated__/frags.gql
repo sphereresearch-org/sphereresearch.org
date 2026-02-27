@@ -12,3 +12,13 @@ fragment BlogParts on Blog {
   draft
   body
 }
+
+fragment GalleryParts on Gallery {
+  __typename
+  title
+  images {
+    __typename
+    src
+    alt
+  }
+}
