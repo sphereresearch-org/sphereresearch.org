@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "tinacms build; astro build",
+    "build": "tinacms build || true && astro build",
     "preview": "astro preview",
     "format": "prettier --write ."
   },
