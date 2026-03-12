@@ -23,8 +23,11 @@
   --container: 1180px;
   --gradient-primary: linear-gradient(135deg, #00a382 0%, #0284c7 100%);
   --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-  --gradient-bg: radial-gradient(1200px 600px at 80% -10%, rgba(2, 132, 199, 0.06), transparent 60%),
-    radial-gradient(1000px 600px at 10% 10%, rgba(0, 163, 130, 0.08), transparent 60%);
+  --gradient-bg:
+    radial-gradient(ellipse 900px 600px at 90% -5%, rgba(153, 246, 228, 0.22), transparent 65%),
+    radial-gradient(ellipse 800px 500px at 5% 15%, rgba(186, 230, 253, 0.18), transparent 65%),
+    radial-gradient(ellipse 600px 400px at 50% 95%, rgba(153, 246, 228, 0.12), transparent 60%);
+
 }
 
 * {
@@ -202,7 +205,8 @@ body {
   white-space: nowrap;
 }
 
-.nav__link:hover {
+.nav__link:hover,
+.nav__link.active {
   color: var(--link);
 }
 
@@ -220,7 +224,8 @@ body {
   border-radius: 999px;
 }
 
-.nav__link:hover::after {
+.nav__link:hover::after,
+.nav__link.active::after {
   transform: scaleX(1);
 }
 

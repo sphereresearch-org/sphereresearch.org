@@ -13,185 +13,179 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
   title="Centre for Digital Policy Research (CDPR) — SPHERE"
   description="CDPR is SPHERE's legal and policy engine for digital rights, focusing on privacy, expression, surveillance, platform accountability, and civic technology in Sri Lanka."
 >
-  <main class="page page-animate">
-
-    <section class="section section--hero">
-      <div class="container">
-        <div class="hero">
-          <div>
-            <div class="hero__eyebrow">Centre for Digital Policy Research</div>
-            <h1 class="hero__title text-balance">
-              CDPR: Advancing Rights in the Digital Age
-            </h1>
-            <p class="hero__desc">
-              The Centre for Digital Policy and Rights (CDPR) serves as the specialized arm of SPHERE, dedicated to ensuring that Sri Lanka's technological evolution strengthens democratic values rather than undermining them. We bridge the gap between complex digital shifts and fundamental human rights through rigorous legal analysis, evidence-based research, and proactive policy advocacy.
-            </p>
-          </div>
-          <div class="hero__image">
-            <img 
-              src="/cdpr-hero-placeholder.jpg" 
-              alt="CDPR Digital Rights"
-            />
+  <main class="page">
+  <section class="cdpr-hero">
+    <div class="cdpr-hero__blob cdpr-hero__blob--1"></div>
+    <div class="cdpr-hero__blob cdpr-hero__blob--2"></div>
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="cdpr-hero__grid">
+        <div class="cdpr-hero__image-wrap">
+          <div class="cdpr-hero__image-frame">
+            <img src="/cdpr-hero.jpg" alt="CDPR — Advocacy Programme, Kalutara" class="cdpr-hero__image" />
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Mission -->
-    <section class="section">
-      <div class="container">
-        <div class="section__header section__header--center">
-          <h2 class="section__title">Why CDPR?</h2>
-          <p class="section__subtitle">Our strategic pillars and distinctive value</p>
-        </div>
-        <div class="why-cdpr-intro">
-          <p style="line-height: 1.6; margin-bottom: 32px; text-align:center; max-width: 780px; margin-left:auto; margin-right:auto;">
-            Our work is built upon three strategic pillars: <strong>Digital Rights</strong> — defending freedom of expression, information access, and democratic participation in online spaces through legal support and policy reform; <strong>Digital Security and Privacy</strong> — promoting robust data protection frameworks and equipping citizens with the tools to secure their personal information; and <strong>Digital Wellbeing</strong> — advocating for healthy digital ecosystems that prioritize mental health, safety, and inclusive connectivity.
-          </p>
-        </div>
-        <div class="why-cdpr-grid">
-          <div class="why-cdpr-item">
-            <div class="why-cdpr-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-            </div>
-            <div>
-              <h3 class="why-cdpr-title">Bridging the Gap</h3>
-              <p class="why-cdpr-desc">Translates complex technological shifts into clear, actionable human rights frameworks.</p>
-            </div>
-          </div>
-          <div class="why-cdpr-item">
-            <div class="why-cdpr-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            </div>
-            <div>
-              <h3 class="why-cdpr-title">Evidence-Based Advocacy</h3>
-              <p class="why-cdpr-desc">Combines rigorous legal analysis with field research to influence national policy and digital governance.</p>
-            </div>
-          </div>
-          <div class="why-cdpr-item">
-            <div class="why-cdpr-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div>
-              <h3 class="why-cdpr-title">Protection &amp; Defense</h3>
-              <p class="why-cdpr-desc">Provides direct legal support to individuals and groups whose rights are violated in digital spaces.</p>
-            </div>
-          </div>
-          <div class="why-cdpr-item">
-            <div class="why-cdpr-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div>
-              <h3 class="why-cdpr-title">Strategic Holistic Focus</h3>
-              <p class="why-cdpr-desc">Addresses the digital experience through three critical lenses: Rights, Security, and Wellbeing.</p>
-            </div>
-          </div>
-          <div class="why-cdpr-item">
-            <div class="why-cdpr-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <div>
-              <h3 class="why-cdpr-title">Democratic Safeguard</h3>
-              <p class="why-cdpr-desc">Acts as a watchdog to ensure that Sri Lanka's digital evolution strengthens—rather than weakens—democratic participation.</p>
-            </div>
-          </div>
-          <div class="why-cdpr-item">
-            <div class="why-cdpr-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div>
-              <h3 class="why-cdpr-title">Empowerment</h3>
-              <p class="why-cdpr-desc">Equips a resilient and informed citizenry with the tools to navigate privacy risks and online surveillance.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="focus" class="section focus-section">
-      <div class="focus-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-      </div>
-      <div class="container relative-z">
-        <div class="section__header section__header--center">
-          <h2 class="section__title">Focus Areas</h2>
-          <p class="section__subtitle">Core domains of research and advocacy</p>
-        </div>
-        <div class="focus-grid">
-          <!-- Data Protection & Privacy -->
-          <div class="focus-item">
-            <div class="focus-item__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h3 class="focus-item__title">Data Protection & Privacy</h3>
-            <p class="focus-item__desc">
-              Analyzing data protection frameworks, advocating for comprehensive privacy legislation, and monitoring surveillance practices.
+        <div class="cdpr-hero__text">
+          <span class="cdpr-hero__eyebrow">Centre for Digital Policy Research</span>
+          <h1 class="cdpr-hero__title">CDPR: <em>Advancing Rights</em> in the Digital Age</h1>
+          <div class="cdpr-hero__desc">
+            <p>
+              The Centre for Digital Policy and Rights (CDPR) serves as the specialized arm of SPHERE, dedicated to ensuring that Sri Lanka’s technological evolution strengthens democratic values rather than undermining them. We bridge the gap between complex digital shifts and fundamental human rights through rigorous legal analysis, evidence-based research, and proactive policy advocacy.
             </p>
-          </div>
-
-          <!-- Freedom of Expression -->
-          <div class="focus-item">
-            <div class="focus-item__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <h3 class="focus-item__title">Freedom of Expression</h3>
-            <p class="focus-item__desc">
-              Defending online speech, challenging content restrictions, and ensuring platform accountability.
-            </p>
-          </div>
-
-          <!-- Surveillance & Security -->
-          <div class="focus-item">
-            <div class="focus-item__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
-            <h3 class="focus-item__title">Surveillance & Security</h3>
-            <p class="focus-item__desc">
-              Examining state surveillance capabilities, facial recognition deployment, and the balance between security and civil liberties.
-            </p>
-          </div>
-
-          <!-- Platform Regulation -->
-          <div class="focus-item">
-            <div class="focus-item__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="2" x2="9" y2="22"/></svg>
-            </div>
-            <h3 class="focus-item__title">Platform Regulation</h3>
-            <p class="focus-item__desc">
-              Advocating for transparency in content moderation, algorithmic accountability, and user rights on social media.
-            </p>
-          </div>
-
-          <!-- Digital Democracy -->
-          <div class="focus-item">
-            <div class="focus-item__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <h3 class="focus-item__title">Digital Democracy</h3>
-            <p class="focus-item__desc">
-              Promoting transparency in government digital services, open data policies, and protection against election interference.
-            </p>
-          </div>
-
-          <!-- Due Process Online -->
-          <div class="focus-item">
-            <div class="focus-item__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <h3 class="focus-item__title">Due Process Online</h3>
-            <p class="focus-item__desc">
-              Ensuring legal safeguards for digital evidence, protecting against arbitrary account shutdowns, and fair procedures.
+            <p style="margin-top: 12px;">
+              Beyond our research, CDPR conducts grassroots advocacy programs and provides essential legal assistance to those whose rights have been infringed upon in the digital sphere, fostering a resilient and informed digital citizenry.
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
+  <style>
+  .cdpr-hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0fdf8 0%, #f0f9ff 60%, #fafafa 100%);
+    padding: 64px 0 56px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .cdpr-hero__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .cdpr-hero__blob--1 {
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, #bae6fd, transparent);
+    bottom: -160px; left: -80px;
+  }
+  .cdpr-hero__blob--2 {
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, #99f6e4, transparent);
+    top: -120px; right: -60px;
+  }
+  .cdpr-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .cdpr-hero__eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #0d9488;
+    background: rgba(13, 148, 136, 0.08);
+    border: 1px solid rgba(13, 148, 136, 0.2);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 20px;
+  }
+  .cdpr-hero__title {
+    font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 0 0 18px;
+  }
+  .cdpr-hero__title em {
+    font-style: italic;
+    background: linear-gradient(90deg, #0d9488 0%, #0284c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cdpr-hero__desc {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 460px;
+  }
+  .cdpr-hero__image-wrap { position: relative; }
+  .cdpr-hero__image-frame {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 24px 48px rgba(15,23,42,0.1);
+  }
+  .cdpr-hero__image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .cdpr-hero { padding: 48px 0; }
+    .cdpr-hero__grid { grid-template-columns: 1fr; gap: 32px; }
+    .cdpr-hero__image { height: 220px; }
+  }
+  </style>
 
-
-    <!-- CDPR Publications -->
+<!-- Why CDPR — editorial numbered layout -->
+<section class="why-cdpr-editorial">
+  <div class="wce-header">
+    <div class="container">
+      <p class="wce-eyebrow">Why CDPR?</p>
+      <h2 class="wce-title">Our work is built upon <em>three strategic pillars</em></h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="wce-grid wce-grid--three">
+      <div class="wce-item">
+        <span class="wce-num">01</span>
+        <div class="wce-content">
+          <h3 class="wce-item-title">Digital Rights</h3>
+          <p class="wce-item-desc">Defending freedom of expression, information access, and democratic participation in online spaces through legal support and policy reform ensuring that the human rights are being protected in digital evolution.</p>
+        </div>
+      </div>
+      <div class="wce-item">
+        <span class="wce-num">02</span>
+        <div class="wce-content">
+          <h3 class="wce-item-title">Digital Security and Privacy</h3>
+          <p class="wce-item-desc">Promoting robust data protection frameworks and equipping citizens with the tools to secure their personal information against surveillance and breaches.</p>
+        </div>
+      </div>
+      <div class="wce-item">
+        <span class="wce-num">03</span>
+        <div class="wce-content">
+          <h3 class="wce-item-title">Digital Wellbeing</h3>
+          <p class="wce-item-desc">Addressing the social impact of technology by advocating for healthy digital ecosystems that prioritize mental health, safety, and inclusive connectivity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Photo Gallery — Our Work in Action -->
+<section class="section" style="background: #f8fafc; padding-top: 56px; padding-bottom: 56px;"> 
+  <div class="container"> 
+    <div class="section__header section__header--center" style="margin-bottom: 48px;"> 
+      <h2 class="section__title">Our Work in Action</h2> 
+      <p class="section__subtitle">Subtopic - Know your rights in the digital age - Advocacy program on Digital rights, Privacy,Security and Digital wellbeing</p> 
+    </div> 
+    
+    <div class="cdpr-bento-gallery"> 
+      <div class="cdpr-bento__item cdpr-bento__item--featured"> 
+        <img src="/cdpr-group.jpg" alt="CDPR group photo with SPHERE banner — Kalutara" loading="lazy"> 
+      </div> 
+      <div class="cdpr-bento__item cdpr-bento__item--tall"> 
+        <img src="/cdpr-event-1.jpg" alt="CDPR presenter at advocacy programme" loading="lazy"> 
+      </div> 
+      <div class="cdpr-bento__item"> 
+        <img src="/cdpr-event-2.jpg" alt="CDPR audience at advocacy programme" loading="lazy"> 
+      </div> 
+      <div class="cdpr-bento__item"> 
+        <img src="/cdpr-event-3.jpg" alt="CDPR participants engaged at workshop" loading="lazy"> 
+      </div> 
+    </div> 
+    
+  </div> 
+</section> <section id="focus" class="section focus-section"> <div class="focus-bg"> <div class="orb orb-1"></div> <div class="orb orb-2"></div> </div> <div class="container relative-z"> <div class="section__header" style="margin-bottom: 48px;"> <h2 class="section__title">Focus Areas</h2> <p class="section__subtitle" style="margin-left: 0; text-align: left; max-width: 100%;">Core domains of research and advocacy</p> </div> <div class="wce-grid" style="position: relative; z-index: 2; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 24px; padding: 24px; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);"> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">01</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Freedom of Expression</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Protecting the right to share ideas and opinions without censorship.</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">02</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Legal Framework</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Advocate on the legal framework which governs digital interactions, ensuring freedom , security and safety of everyone.</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">03</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Digital Privacy and Security</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Safeguarding personal data and defending systems against unauthorized digital threats.</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">04</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Digital Wellbeing</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Promoting a healthy balance between technology use and mental health.</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">05</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Digital Democracy</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Using technology to enhance civic participation and transparent government processes and ensure free and fair elections in the digital age .</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">06</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Digital Citizenship and Ethics</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Encouraging responsible, respectful behavior and integrity within the online community.</p> </div> </div> </div> </div> </section> <!-- CDPR Publications -->
     {cdprPosts.length > 0 && (
       <section class="section" style="background: linear-gradient(180deg, transparent, rgba(255,255,255,0.5));">
         <div class="container">
@@ -200,7 +194,7 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
               <h2 class="section__title">Latest CDPR Publications</h2>
               <p class="section__subtitle">Research, policy briefs, and analysis</p>
             </div>
-            <a href="/blog?category=cdpr" class="btn btn--ghost">View all CDPR posts →</a>
+            <a href="/blog?category=cdpr" class="btn btn--ghost">View all articles by CDPR →</a>
           </div>
           <div class="blog-grid">
             {cdprPosts.map((post) => (
@@ -209,287 +203,79 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
           </div>
         </div>
       </section>
-    )}
+    )} <!-- Get Involved --> <section class="section" style="padding-top: 24px; padding-bottom: 24px;"> <div class="container"> <div style="max-width: 600px; margin: 0 auto; text-align: center;"> <h2 class="section__title" style="font-size: 1.3rem; margin-bottom: 6px;">Get Involved</h2> <p class="section__subtitle" style="margin-bottom: 14px; font-size: 0.88rem;">Collaborate with CDPR on digital rights research and advocacy in Sri Lanka.</p> <div class="btn-row" style="justify-content: center;"> <a class="btn" href="/contact">Partner with CDPR</a> <a class="btn btn--ghost" href="/blog">Read articles</a> </div> </div> </div> </section> 
 
-    <!-- Get Involved -->
-    <section class="section">
-      <div class="container">
-        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-          <h2 class="section__title">Get Involved</h2>
-          <p class="section__subtitle">Collaborate on digital rights research and advocacy</p>
-          <p style="line-height: 1.6; margin: 24px 0;">
-            We welcome collaboration from researchers, legal experts, technologists,
-            journalists, and organizations working on digital rights in Sri Lanka.
-          </p>
-          <div class="btn-row" style="justify-content: center;">
-            <a class="btn" href="/contact">Partner with CDPR</a>
-            <a class="btn btn--ghost" href="/blog">Read our analysis</a>
-          </div>
-        </div>
-      </div>
-    </section>
+
   </main>
 </BaseLayout>
 
 <style>
-  /* Hero Image - Mobile Responsive */
-  .hero__image {
-    display: none;
+.hero__image{display:none}.hero__image img{width:100%;height:auto;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl)}@media (min-width: 768px){.hero__image{display:block}}.section__header{margin-bottom:24px}.section__header--center{text-align:center;margin-bottom:48px}.section__subtitle{color:var(--color-text-muted, #666);font-size:1.1rem;margin-top:8px;line-height:1.5}.section__header--center .section__subtitle{max-width:600px;margin-left:auto;margin-right:auto}.why-cdpr-editorial{padding:0 0 40px}.wce-header{background:linear-gradient(135deg,#fdf6f0,#f0f4ff);border-top:1px solid #ede9e5;border-bottom:1px solid #ede9e5;padding:40px 0 32px;margin-bottom:32px}.wce-eyebrow{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--primary, #c97a4a);margin:0 0 12px}.wce-title{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;color:#111827;line-height:1.2;letter-spacing:-.02em;max-width:680px;margin:0 0 12px}.wce-title em{font-style:italic;color:var(--accent, #0284c7);background:linear-gradient(90deg,var(--primary, #c97a4a),var(--accent, #0284c7));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.wce-sub{font-size:.9rem;color:#6b7280;margin:0;line-height:1.5}.wce-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}.wce-item{padding:24px 24px 24px 0;border-right:1px solid #e5e7eb;position:relative;transition:background .2s ease}.wce-item:nth-child(3n){border-right:none;padding-right:0}.wce-item:nth-child(n+4){border-top:1px solid #e5e7eb}.wce-item:not(:nth-child(3n)){padding-left:0;padding-right:24px}.wce-item:nth-child(3n+2){padding-left:24px;padding-right:24px}.wce-item:nth-child(3n){padding-left:24px}.wce-num{display:block;font-size:2.5rem;font-weight:900;line-height:1;letter-spacing:-.04em;background:linear-gradient(135deg,#e0e7ff,#dbeafe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;transition:background .3s ease;user-select:none}.wce-item:hover .wce-num{background:linear-gradient(135deg,var(--primary, #c97a4a),var(--accent, #0284c7));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.wce-item-title{font-size:1rem;font-weight:700;color:#111827;margin:0 0 6px;letter-spacing:-.01em}.wce-item-desc{font-size:.85rem;color:#6b7280;line-height:1.5;margin:0}@media (max-width: 768px){.why-cdpr-editorial{padding-bottom:32px}.wce-header{padding:24px 0;margin-bottom:24px}.wce-title{font-size:1.25rem}.wce-grid{grid-template-columns:repeat(2,1fr)}.wce-item:nth-child(3n){border-right:1px solid #e5e7eb;padding-right:16px}.wce-item:nth-child(2n){border-right:none}.wce-item:nth-child(n+3){border-top:1px solid #e5e7eb}.wce-item{padding:16px 16px 16px 0}.wce-item:nth-child(2n){padding-left:16px;padding-right:0}.wce-num{font-size:2rem;margin-bottom:6px}.wce-item-title{font-size:.9rem}.wce-item-desc{font-size:.8rem}}@media (max-width: 480px){.wce-header{padding:20px 0;margin-bottom:16px}.wce-title{font-size:1.1rem}.wce-grid{grid-template-columns:1fr}.wce-item,.wce-item:nth-child(n){border-right:none!important;border-top:1px solid #e5e7eb;padding:16px 0!important}.wce-item:first-child{border-top:none}.wce-num{font-size:1.8rem;margin-bottom:4px}}
+.focus-section{position:relative;overflow:hidden;padding:6rem 0}@media (max-width: 768px){.focus-section{padding:3rem 0}}.relative-z{position:relative;z-index:10}.focus-bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.2;animation:float 20s infinite alternate ease-in-out}.orb-1{width:400px;height:400px;background:#bae6fd;top:5%;right:0%;animation-delay:-5s}.orb-2{width:500px;height:500px;background:#a7f3d0;bottom:5%;left:-5%}@keyframes float{0%{transform:translate(0) scale(1)}to{transform:translate(30px,50px) scale(1.1)}}
+
+.cdpr-bento-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 260px);
+  gap: 16px;
+  border-radius: 20px;
+}
+.cdpr-bento__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+  background: #e2e8f0;
+}
+.cdpr-bento__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cdpr-bento__item:hover img {
+  transform: scale(1.06);
+}
+.cdpr-bento__item--featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.cdpr-bento__item--tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+@media (max-width: 900px) {
+  .cdpr-bento-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
   }
-
-  .hero__image img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-xl);
+  .cdpr-bento__item--featured {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: 340px;
   }
-
-  @media (min-width: 768px) {
-    .hero__image {
-      display: block;
-    }
+  .cdpr-bento__item--tall {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 240px;
   }
-
-  /* Section Headers */
-  .section__header {
-    margin-bottom: 24px;
+  .cdpr-bento__item:not(.cdpr-bento__item--featured):not(.cdpr-bento__item--tall) {
+    height: 240px;
   }
+}
 
-  .section__header--center {
-    text-align: center;
-    margin-bottom: 48px;
-  }
-
-  .section__subtitle {
-    color: var(--color-text-muted, #666);
-    font-size: 1.1rem;
-    margin-top: 8px;
-    line-height: 1.5;
-  }
-
-  .section__header--center .section__subtitle {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Why CDPR Grid */
-  .why-cdpr-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 16px;
-  }
-
-  .why-cdpr-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    background: var(--surface, #fff);
-    border: 1px solid var(--border, #e5e7eb);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .why-cdpr-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  }
-
-  .why-cdpr-icon {
-    width: 52px;
-    height: 52px;
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.1), rgba(2, 132, 199, 0.05));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent, #0284c7);
-    flex-shrink: 0;
-  }
-
-  .why-cdpr-title {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text, #111827);
-    margin: 0 0 6px;
-  }
-
-  .why-cdpr-desc {
-    font-size: 0.9rem;
-    color: var(--text-muted, #4b5563);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  @media (max-width: 640px) {
-    .why-cdpr-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-
-  /* Premium Focus Section */
-  .focus-section {
-    position: relative;
-    overflow: hidden;
-    padding: 6rem 0;
-  }
-
-  .relative-z {
-    position: relative;
-    z-index: 10;
-  }
-
-  /* Animated Background Orbs */
-  .focus-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
-    animation: float 20s infinite alternate ease-in-out;
-  }
-
-  .orb-1 {
-    width: 300px;
-    height: 300px;
-    background: var(--accent, #0284c7);
-    top: 10%;
-    right: 5%;
-    animation-delay: -5s;
-  }
-
-  .orb-2 {
-    width: 400px;
-    height: 400px;
-    background: var(--primary-600, #00a382); 
-    bottom: 10%;
-    left: -10%;
-  }
-
-  @keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(30px, 50px) scale(1.1); }
-  }
-
-  /* Grid Layout */
-  .focus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 24px;
-  }
-
-  /* Glassmorphism Card */
-  .focus-item {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    padding: 32px;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    height: 100%;
-  }
-
-  .focus-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    background: rgba(255, 255, 255, 0.95);
-    border-color: var(--accent, #0284c7);
-  }
-
-  /* Icon Style */
-  .focus-item__icon {
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.1), rgba(2, 132, 199, 0.05));
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent, #0284c7);
-    margin-bottom: 20px;
-    transition: transform 0.4s ease;
-  }
-
-  .focus-item:hover .focus-item__icon {
-    transform: scale(1.1) rotate(5deg);
-    background: linear-gradient(135deg, var(--accent), var(--accent-light));
-    color: white;
-  }
-
-  /* Text Styles */
-  .focus-item__title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text, #111827);
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-
-  .focus-item__desc {
-    font-size: 0.95rem;
-    color: var(--text-muted, #4b5563);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Mobile Adjustments */
-  @media (max-width: 768px) {
-    .focus-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .focus-item {
-      padding: 24px;
-    }
-  }
-
-  /* Inline Outputs */
-  .outputs-inline {
-    color: var(--color-text-muted, #666);
-    line-height: 1.6;
-    font-style: italic;
-    margin-top: 8px;
-  }
-
-  .outputs-inline strong {
-    font-style: normal;
-    color: var(--color-text, #1a1a1a);
-  }
-
-  /* Blog Grid */
-  .blog-grid {
-    display: grid;
+@media (max-width: 600px) {
+  .cdpr-bento-gallery {
     grid-template-columns: 1fr;
-    gap: 24px;
   }
+  .cdpr-bento__item {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    height: 260px !important;
+  }
+}
+.outputs-inline{color:var(--color-text-muted, #666);line-height:1.6;font-style:italic;margin-top:8px}.outputs-inline strong{font-style:normal;color:var(--color-text, #1a1a1a)}.blog-grid{display:grid;grid-template-columns:1fr;gap:24px}@media (min-width: 768px){.blog-grid{grid-template-columns:repeat(2,1fr)}}@media (min-width: 1024px){.blog-grid{grid-template-columns:repeat(3,1fr)}}
 
-  @media (min-width: 768px) {
-    .blog-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .blog-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
 </style>

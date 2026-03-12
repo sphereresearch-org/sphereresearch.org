@@ -22,9 +22,12 @@ const categoryColors: Record<string, string> = {
   training: 'background: rgba(245, 158, 11, 0.1); color: #92400e; border-color: rgba(245, 158, 11, 0.3);',
   general: 'background: rgba(107, 114, 128, 0.1); color: #374151; border-color: rgba(107, 114, 128, 0.3);',
 };
+
+// URL Prefix based on collection
+const collectionType = post.collection || 'blog';
 ---
 
-<a href={`/blog/${post.slug}`} class={`blog-card ${compact ? 'blog-card--compact' : ''}`}>
+<a href={`/${collectionType}/${post.slug}`} class={`blog-card ${compact ? 'blog-card--compact' : ''}`}>
   <div class="blog-card__image-wrapper">
     <img 
       src={post.data.coverImage} 
