@@ -2,7 +2,7 @@
 title: "Digital Rights in Sri Lanka: 2024 Policy Brief"
 description: "A comprehensive analysis of emerging digital rights challenges and policy recommendations for the coming year."
 author: "Praveen D. Fernando"
-authorRole: "Director of Digital Policy"
+authorRole: "Social Activist"
 authorImage: "/team/praveen.jpg"
 date: 2024-03-01
 category: "cdpr"
