@@ -8,7 +8,7 @@ date: 2026-03-13
 category: "advocacy"
 tags: ["Digital Rights"]
 coverImage: "/blog/digital-sinhala.png"
-draft: true
+draft: false
 ---
 
 ## 1. අදහස් ප්‍රකාශ කිරීමේ නිදහස සහ සබැඳි ආරක්ෂණ පනත (Online Safety Act)
