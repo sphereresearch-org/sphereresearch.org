@@ -245,20 +245,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </form>
           </div>
 
-          <!-- Right: Dark Info Panel -->
-          <div class="newsletter-split__info">
-            <div class="newsletter-split__info-blob"></div>
-            <div class="newsletter-split__info-content">
-              <p class="newsletter-split__eyebrow">Why subscribe?</p>
-              <h3 class="newsletter-split__heading">Stay connected to the movement</h3>
-              <p class="newsletter-split__body">
-                Receive updates on our digital rights campaigns, research publications, training programmes, and strategic legal interventions — direct to your inbox.
-              </p>
-              <blockquote class="newsletter-split__quote">
-                "An informed citizenry is the foundation of democratic participation."
-              </blockquote>
-            </div>
-          </div>
+
 
         </div>
       </div>
@@ -267,14 +254,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <style>
     .newsletter-split {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
       border-radius: 24px;
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(15,23,42,0.1);
     }
     .newsletter-split__form {
       background: #ffffff;
-      padding: 36px 32px;
+      padding: 48px 40px;
+      text-align: center;
     }
     .newsletter-split__form-title {
       font-size: 1.4rem;
@@ -289,57 +279,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       margin: 0;
       line-height: 1.55;
     }
-    .newsletter-split__info {
-      position: relative;
-      background: #0f172a;
-      padding: 36px 32px;
-      overflow: hidden;
-    }
-    .newsletter-split__info-blob {
-      position: absolute;
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, rgba(255,255,255,0.05), transparent);
-      border-radius: 50%;
-      bottom: -80px; right: -60px;
-      pointer-events: none;
-    }
-    .newsletter-split__info-content {
-      position: relative;
-      z-index: 2;
-    }
-    .newsletter-split__eyebrow {
-      font-size: 0.68rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(255,255,255,0.5);
-      margin: 0 0 12px;
-    }
-    .newsletter-split__heading {
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: #ffffff;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin: 0 0 14px;
-    }
-    .newsletter-split__body {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.7;
-      margin: 0 0 24px;
-    }
-    .newsletter-split__quote {
-      margin: 0;
-      padding: 14px 16px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-style: italic;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.6;
-      border: none;
-    }
+
+
+
     @media (max-width: 768px) {
       .newsletter-split { grid-template-columns: 1fr; }
       .newsletter-split__form { padding: 28px 24px; }

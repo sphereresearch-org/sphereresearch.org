@@ -639,11 +639,11 @@ body {
 
 /* Footer */
 .footer {
-  padding: 36px 0 60px;
+  padding: 48px 0 64px;
   color: #475569;
   font-size: 14px;
-  border-top: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
   text-align: center;
 }
 
