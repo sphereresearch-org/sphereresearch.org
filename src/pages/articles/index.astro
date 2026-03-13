@@ -149,7 +149,7 @@ const categories = ['all', ...new Set(posts.map(p => p.data.category))];
           if (category === 'all') {
             post.style.display = 'block';
           } else {
-            const postCategory = post.querySelector('.blog-card__category')?.textContent?.toLowerCase();
+            const postCategory = post.querySelector('.blog-card__category')?.textContent?.trim().toLowerCase();
             post.style.display = postCategory === category ? 'block' : 'none';
           }
         });
