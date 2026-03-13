@@ -7,7 +7,7 @@ authorImage: "/team/anuruddha_bandara.png"
 date: 2026-03-12
 category: "general"
 tags: ["Digital Rights"]
-coverImage: "/blog/freedome-of-expression"
+coverImage: "/blog/freedome-of-expression.png"
 draft: false
 ---
 
