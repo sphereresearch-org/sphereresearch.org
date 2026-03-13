@@ -8,8 +8,25 @@ const allPosts = await getCollection('blog', ({ data }) => {
   return data.draft !== true;
 });
 
-// Sort by date (newest first)
-const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+// Category priority mapping
+const categoryPriority: Record<string, number> = {
+  cdpr: 1,
+  advocacy: 2,
+  training: 3,
+  general: 4,
+};
+
+// Sort by category priority first, then by date (newest first)
+const posts = allPosts.sort((a, b) => {
+  const priorityA = categoryPriority[a.data.category] || 99;
+  const priorityB = categoryPriority[b.data.category] || 99;
+  
+  if (priorityA !== priorityB) {
+    return priorityA - priorityB;
+  }
+  
+  return b.data.date.getTime() - a.data.date.getTime();
+});
 
 // Get unique categories
 const categories = ['all', ...new Set(posts.map(p => p.data.category))];
