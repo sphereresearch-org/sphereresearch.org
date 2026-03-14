@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ViewTransitions } from 'astro:transitions';
 
 export interface Props {
   title?: string;
@@ -9,6 +10,9 @@ const {
   title = 'SPHERE — Human & Digital Rights',
   description = 'SPHERE: Human rights, digital rights, and community action in Sri Lanka.',
 } = Astro.props as Props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const activePath = pathname.split('/')[1] || 'home';
 ---
 <html lang="en">
   <head>
@@ -16,9 +20,10 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <header class="header">
@@ -32,17 +37,13 @@ const {
         </a>
         <div class="header__wrap-right">
           <nav class="nav" id="primary-nav" aria-label="Primary">
-            <a class="nav__link" href="/#mission">Mission</a>
-            <a class="nav__link" href="/#impact">Impact</a>
-            <a class="nav__link" href="/#priorities">2025-2026</a>
-            <a class="nav__link" href="/#cdpr">CDPR</a>
-            <a class="nav__link" href="/#team">Team</a>
-            <a class="nav__link" href="/blog">Blog</a>
-            <a class="nav__link nav__link--mobile" href="/#contact">Contact</a>
+            <a class={`nav__link ${activePath === 'home' || activePath === '' ? 'active' : ''}`} href="/">Home</a>
+            <a class={`nav__link ${activePath === 'about' ? 'active' : ''}`} href="/about">About Us</a>
+            <a class={`nav__link ${activePath === 'cdpr' ? 'active' : ''}`} href="/cdpr">CDPR</a>
+            <a class={`nav__link ${activePath === 'articles' ? 'active' : ''}`} href="/articles">Articles</a>
+            <a class={`nav__link ${activePath === 'blog' ? 'active' : ''}`} href="/blog">Blog</a>
+            <a class={`nav__link ${activePath === 'contact' ? 'active' : ''}`} href="/contact">Contact</a>
           </nav>
-          <div class="header__cta">
-            <a class="btn" href="/#contact">Get in touch</a>
-          </div>
           <button
             class="menu"
             id="nav-toggle"
@@ -59,7 +60,7 @@ const {
     <slot />
     <footer class="footer">
       <div class="container footer__grid">
-        <div class="footer__brandtext nowrap">
+        <div class="footer__brandtext">
           <strong>SPHERE</strong> — Society for the Progress, Human Rights,
           Empowerment & Equity<br />
           <span>
@@ -67,30 +68,60 @@ const {
           </span>
         </div>
         <div class="footer__meta">
-          <span class="block">Legal status: Incorporation pending (Section 32)</span>
           <span class="block">Focus: Sri Lanka</span>
+          <span class="block">
+            <a href="mailto:hello@sphereresearch.org">hello@sphereresearch.org</a>
+          </span>
         </div>
       </div>
     </footer>
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-      const navToggle = document.getElementById("nav-toggle");
-      const primaryNav = document.getElementById("primary-nav");
-      if (navToggle && primaryNav) {
-        navToggle.addEventListener("click", () => {
-          const isOpen = primaryNav.classList.toggle("is-open");
-          navToggle.setAttribute("aria-expanded", String(isOpen));
-        });
-        document.addEventListener("click", (event) => {
-          if (
-            !primaryNav.contains(event.target) &&
-            !navToggle.contains(event.target)
-          ) {
-            primaryNav.classList.remove("is-open");
-            navToggle.setAttribute("aria-expanded", "false");
-          }
-        });
+    <script is:inline>
+      // Initialize menu on page load and after view transitions
+      function initMenu() {
+        document.getElementById("year").textContent = new Date().getFullYear();
+        
+        const navToggle = document.getElementById("nav-toggle");
+        const primaryNav = document.getElementById("primary-nav");
+        
+        if (navToggle && primaryNav) {
+          // Remove any existing listeners by cloning the button
+          const newNavToggle = navToggle.cloneNode(true);
+          navToggle.parentNode.replaceChild(newNavToggle, navToggle);
+          
+          // Add click listener to toggle menu
+          newNavToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = primaryNav.classList.toggle("is-open");
+            newNavToggle.setAttribute("aria-expanded", String(isOpen));
+          });
+          
+          // Close menu when clicking outside
+          document.addEventListener("click", (event) => {
+            if (
+              !primaryNav.contains(event.target) &&
+              !newNavToggle.contains(event.target)
+            ) {
+              primaryNav.classList.remove("is-open");
+              newNavToggle.setAttribute("aria-expanded", "false");
+            }
+          });
+          
+          // Close menu when clicking a nav link
+          const navLinks = primaryNav.querySelectorAll('.nav__link');
+          navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              primaryNav.classList.remove("is-open");
+              newNavToggle.setAttribute("aria-expanded", "false");
+            });
+          });
+        }
       }
+      
+      // Run on initial page load
+      initMenu();
+      
+      // Re-run after each page transition
+      document.addEventListener('astro:after-swap', initMenu);
     </script>
   </body>
 </html>

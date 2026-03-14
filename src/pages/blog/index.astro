@@ -1,39 +1,162 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from 'astro:content';
+import BlogCard from '../../components/BlogCard.astro';
 
-const posts = (await getCollection('blog'))
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+// Get all published blog posts
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
+
+// Category priority mapping
+const categoryPriority: Record<string, number> = {
+  cdpr: 1,
+  advocacy: 2,
+  training: 3,
+  general: 4,
+};
+
+// Sort by category priority first, then by date (newest first)
+const posts = allPosts.sort((a, b) => {
+  const priorityA = categoryPriority[a.data.category] || 99;
+  const priorityB = categoryPriority[b.data.category] || 99;
+  
+  if (priorityA !== priorityB) {
+    return priorityA - priorityB;
+  }
+  
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+
+// Get unique categories
+const categories = ['all', ...new Set(posts.map(p => p.data.category))];
+
+
 ---
-<BaseLayout title="SPHERE — Blog" description="Updates, research, and advocacy notes from SPHERE.">
-  <section class="section">
-    <div class="container">
-      <h1 class="hero__title" style="font-size:28px;">Blog</h1>
-      {posts.length ? (
-        <div class="cards mt-8">
-          {posts.map((post) => (
-            <article class="card card--post">
-              <h3 class="card__title">
-                <a class="link" href={`/blog/${post.slug}/`}>{post.data.title}</a>
-              </h3>
-              {post.data.description && <p class="card__desc">{post.data.description}</p>}
-              <div class="post__meta">
-                <span class="text--muted">{new Date(post.data.pubDate).toLocaleDateString()}</span>
-                {post.data.tags?.length ? (
-                  <div class="tags">
-                    {post.data.tags.map((tag) => (
-                      <span class="tag">{tag}</span>
-                    ))}
-                  </div>
-                ) : null}
+
+<BaseLayout title="SPHERE Blog — Insights & Updates" description="Latest updates, research findings, policy briefs, and advocacy insights from SPHERE.">
+  <main class="page page-animate">
+    {posts.length > 0 ? (
+      <>
+        <!-- All Posts -->
+        <section class="section" style="padding-top: 60px;">
+          <div class="container">
+            <div style="margin: 0 0 48px; max-width: 1000px; text-align: left;">
+              <h1 class="section__title" style="margin: 0 0 16px;">The SPHERE Blog: Voices of Change</h1>
+              <p style="font-size: 1.15rem; color: #475569; line-height: 1.6; margin: 0;">
+                We believe in the power of shared knowledge. This blog features guest contributions from our community and partners, bridging the gap between grassroots advocacy and academic research.
+              </p>
+            </div>
+            
+            <div style="margin-bottom: 32px;">
+              <!-- Category Filter -->
+              <div class="category-filter">
+                {categories.map((cat) => (
+                  <button 
+                    class={`category-filter__btn ${cat === 'all' ? 'category-filter__btn--active' : ''}`}
+                    data-category={cat}
+                  >
+                    {cat === 'all' ? 'All' : cat.toUpperCase()}
+                  </button>
+                ))}
               </div>
-            </article>
-          ))}
+            </div>
+
+            <div class="blog-grid" id="blog-grid">
+              {posts.map((post) => (
+                <BlogCard post={post} showCategory={true} compact={false} />
+              ))}
+            </div>
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="section">
+        <div class="container">
+          <p class="text--muted" style="text-align: center; padding: 60px 0;">
+            No blog posts yet. Check back soon for updates from SPHERE.
+          </p>
         </div>
-      ) : (
-        <p class="text--muted mt-8">No posts yet. Check back soon.</p>
-      )}
-    </div>
-  </section>
+      </section>
+    )}
+  </main>
 </BaseLayout>
+
+<style>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .blog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .category-filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .category-filter__btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .category-filter__btn:hover {
+    border-color: var(--accent);
+    background: rgba(2, 132, 199, 0.05);
+    color: var(--accent);
+  }
+
+  .category-filter__btn--active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+</style>
+
+<script>
+  // Client-side category filtering
+  const filterButtons = document.querySelectorAll('.category-filter__btn');
+  const blogGrid = document.getElementById('blog-grid');
+  
+  if (filterButtons && blogGrid) {
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+        
+        // Update active state
+        filterButtons.forEach(b => b.classList.remove('category-filter__btn--active'));
+        btn.classList.add('category-filter__btn--active');
+        
+        // Filter posts
+        const posts = blogGrid.querySelectorAll('.blog-card');
+        posts.forEach((post: HTMLElement) => {
+          if (category === 'all') {
+            post.style.display = 'block';
+          } else {
+            const postCategory = post.querySelector('.blog-card__category')?.textContent?.trim().toLowerCase();
+            post.style.display = postCategory === category ? 'block' : 'none';
+          }
+        });
+      });
+    });
+  }
+</script>

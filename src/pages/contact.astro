@@ -1,0 +1,445 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact SPHERE — Get in Touch"
+  description="Contact SPHERE Research and Advocacy for partnerships, media inquiries, or to learn more about our human rights and digital policy work in Sri Lanka."
+>
+  <main class="page page-animate">
+    <!-- Hero Section - compact -->
+    <section style="padding: 28px 0 24px; text-align: center;">
+      <div class="container">
+        <div class="hero__eyebrow" style="text-align: center; margin-bottom: 6px;">Get in Touch</div>
+        <h1 style="font-size: 1.8rem; font-weight: 900; color: #0f172a; margin: 0; letter-spacing: -0.03em;">Let's work together</h1>
+      </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section style="padding: 0 0 48px;">
+      <div class="container">
+        <div class="contact-split">
+
+          <!-- Left: Info Panel -->
+          <div class="contact-split__info">
+            <div class="contact-split__info-blob"></div>
+            <div class="contact-split__info-content">
+              <p class="contact-split__eyebrow">Get in touch</p>
+              <h2 class="contact-split__heading">We'd love to<br />hear from you</h2>
+              <p class="contact-split__body">
+                Whether you're a researcher, journalist, activist, or just curious about digital rights in Sri Lanka — reach out and let's talk.
+              </p>
+
+              <div class="contact-split__items">
+                <div class="contact-split__item">
+                  <div class="contact-split__item-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </div>
+                  <div>
+                    <p class="contact-split__item-label">Email us directly</p>
+                    <a href="mailto:hello@sphereresearch.org" class="contact-split__item-value">hello@sphereresearch.org</a>
+                  </div>
+                </div>
+                <div class="contact-split__item">
+                  <div class="contact-split__item-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <p class="contact-split__item-label">Based in</p>
+                    <p class="contact-split__item-value">Colombo, Sri Lanka</p>
+                  </div>
+                </div>
+                <div class="contact-split__item">
+                  <div class="contact-split__item-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <div>
+                    <p class="contact-split__item-label">We respond within</p>
+                    <p class="contact-split__item-value">2–3 business days</p>
+                  </div>
+                </div>
+              </div>
+
+              <blockquote class="contact-split__quote">
+                "Working at the intersection of law, technology, and human rights — your collaboration matters."
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <div class="contact-split__form">
+            <h3 class="contact-split__form-title">Send us a message</h3>
+            <p class="contact-split__form-sub">Fill out this form and we'll get back to you as soon as possible.</p>
+            <form
+              id="contact-form"
+              style="display: grid; gap: 16px; margin-top: 20px;"
+              action="https://formspree.io/f/mvgzqlqv"
+              method="POST"
+            >
+              <div>
+                <label for="name" class="form__label">Name *</label>
+                <input id="name" name="name" type="text" required placeholder="Your name" class="input" />
+              </div>
+              <div>
+                <label for="email" class="form__label">Email *</label>
+                <input id="email" name="email" type="email" required placeholder="you@example.org" class="input" />
+              </div>
+              <div>
+                <label for="subject" class="form__label">Subject *</label>
+                <input id="subject" name="subject" type="text" required placeholder="How can we help?" class="input" />
+              </div>
+              <div>
+                <label for="message" class="form__label">Message *</label>
+                <textarea id="message" name="message" required placeholder="Tell us more..." class="input" rows="5" style="resize: vertical; font-family: inherit;"></textarea>
+              </div>
+              <button id="contact-submit" class="btn" type="submit" style="justify-content: center; width: 100%;">Send Message</button>
+              <div id="contact-status" style="display: none; padding: 12px; border-radius: 8px; font-size: 0.85rem; text-align: center; margin-top: 8px;"></div>
+              <small class="text--muted" style="text-align: center;">We respect your privacy and will never share your information.</small>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <style>
+    .contact-split {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(15,23,42,0.1);
+    }
+    .contact-split__info {
+      position: relative;
+      background: #0f172a;
+      padding: 36px 32px;
+      overflow: hidden;
+    }
+    .contact-split__info-blob {
+      position: absolute;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(255,255,255,0.05), transparent);
+      border-radius: 50%;
+      top: -80px; right: -80px;
+      pointer-events: none;
+    }
+    .contact-split__info-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .contact-split__eyebrow {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.65);
+      margin: 0 0 14px;
+    }
+    .contact-split__heading {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 0 0 18px;
+    }
+    .contact-split__body {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.68;
+      margin: 0 0 32px;
+    }
+    .contact-split__items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+    .contact-split__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .contact-split__item-icon {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.9);
+    }
+    .contact-split__item-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
+      margin: 0 0 2px;
+    }
+    .contact-split__item-value {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0;
+    }
+    a.contact-split__item-value:hover { text-decoration: underline; }
+    .contact-split__quote {
+      margin: 32px 0 0;
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.65;
+      border: none;
+    }
+    .contact-split__form {
+      background: #ffffff;
+      padding: 36px 32px;
+    }
+    .contact-split__form-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 6px;
+    }
+    .contact-split__form-sub {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .contact-split { grid-template-columns: 1fr; }
+      .contact-split__info { padding: 36px 28px; }
+      .contact-split__form { padding: 32px 28px; }
+    }
+    </style>
+
+
+
+
+    <!-- Newsletter Signup -->
+    <section style="padding: 0 0 48px;">
+      <div class="container">
+        <div class="newsletter-split">
+
+          <!-- Left: Form -->
+          <div class="newsletter-split__form">
+            <h2 class="newsletter-split__form-title">Stay Updated</h2>
+            <p class="newsletter-split__form-sub">Get news about our campaigns, research, and advocacy work.</p>
+            <form
+              id="newsletter-form"
+              style="display: grid; gap: 14px; margin-top: 20px;"
+              action="https://formspree.io/f/mvgzqlqv"
+              method="POST"
+            >
+              <div>
+                <label for="newsletter-email" class="form__label">Email address</label>
+                <input id="newsletter-email" name="email" type="email" required placeholder="you@example.org" class="input" />
+              </div>
+              <input type="hidden" name="subject" value="Newsletter Subscription Request" />
+              <button id="newsletter-submit" class="btn" type="submit" style="justify-content: center; width: 100%;">Subscribe</button>
+              <div id="newsletter-status" style="display: none; padding: 10px; border-radius: 8px; font-size: 0.8rem; text-align: center; margin-top: 4px;"></div>
+              <small class="text--muted" style="text-align:center;">No spam. Unsubscribe anytime. We respect your privacy.</small>
+            </form>
+          </div>
+
+
+
+        </div>
+      </div>
+    </section>
+
+    <style>
+    .newsletter-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(15,23,42,0.1);
+    }
+    .newsletter-split__form {
+      background: #ffffff;
+      padding: 32px 40px;
+      text-align: left;
+    }
+    .newsletter-split__form-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin: 0 0 6px;
+      letter-spacing: -0.02em;
+    }
+    .newsletter-split__form-sub {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.55;
+    }
+
+
+
+    @media (max-width: 768px) {
+      .newsletter-split { grid-template-columns: 1fr; }
+      .newsletter-split__form { padding: 28px 24px; }
+      .newsletter-split__info { padding: 28px 24px; }
+    }
+    </style>
+
+  </main>
+</BaseLayout>
+
+<style>
+.contact-info-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.contact-info-card__header {
+  background: linear-gradient(135deg, #f0fdf8 0%, #f0f9ff 100%);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 28px 28px 22px;
+}
+.contact-info-card__title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+.contact-info-card__sub {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0;
+}
+.contact-info-card__body {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.contact-info-item__icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  background: #f0fdf8;
+  border: 1px solid #d1fae5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d9488;
+}
+.contact-info-item__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  margin: 0 0 3px;
+}
+.contact-info-item__value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  margin: 0;
+  line-height: 1.4;
+}
+a.contact-info-item__value:hover { color: #0d9488; }
+.contact-info-divider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 4px 0;
+}
+.contact-info-quote {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #64748b;
+  line-height: 1.65;
+  margin: 0;
+  padding-left: 14px;
+  border-left: 3px solid #99f6e4;
+}
+</style>
+
+<script>
+  // Handle Form Submissions via AJAX
+  async function handleFormSubmit(formId: string, statusId: string, submitBtnId: string) {
+    const form = document.getElementById(formId) as HTMLFormElement;
+    const status = document.getElementById(statusId);
+    const submitBtn = document.getElementById(submitBtnId) as HTMLButtonElement;
+
+    if (!form || !status || !submitBtn) return;
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      
+      const formData = new FormData(form);
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Sending...";
+      
+      status.style.display = "block";
+      status.innerText = "Sending your message...";
+      status.style.background = "#f1f5f9";
+      status.style.color = "#475569";
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          status.innerText = "Thanks! Your message has been sent successfully.";
+          status.style.background = "#f0fdf4";
+          status.style.color = "#166534";
+          form.reset();
+        } else {
+          const data = await response.json();
+          if (data.errors) {
+            status.innerText = data.errors.map((error: any) => error.message).join(", ");
+          } else {
+            status.innerText = "Oops! There was a problem submitting your form.";
+          }
+          status.style.background = "#fef2f2";
+          status.style.color = "#991b1b";
+        }
+      } catch (error) {
+        status.innerText = "Oops! There was a problem submitting your form.";
+        status.style.background = "#fef2f2";
+        status.style.color = "#991b1b";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = submitBtnId === 'contact-submit' ? "Send Message" : "Subscribe";
+      }
+    });
+  }
+
+  // Initialize forms
+  handleFormSubmit("contact-form", "contact-status", "contact-submit");
+  handleFormSubmit("newsletter-form", "newsletter-status", "newsletter-submit");
+</script>

@@ -1,0 +1,24 @@
+fragment BlogParts on Blog {
+  __typename
+  title
+  description
+  coverImage
+  author
+  authorRole
+  authorImage
+  date
+  category
+  tags
+  draft
+  body
+}
+
+fragment GalleryParts on Gallery {
+  __typename
+  title
+  images {
+    __typename
+    src
+    alt
+  }
+}

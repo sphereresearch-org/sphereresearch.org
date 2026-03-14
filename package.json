@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "tinacms build || true && astro build",
     "preview": "astro preview",
     "format": "prettier --write ."
   },
@@ -17,7 +17,10 @@
     "tinacms": "^2.9.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.7",
+    "firebase-tools": "^15.5.1",
     "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3"
   }
 }
