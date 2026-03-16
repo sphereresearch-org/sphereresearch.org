@@ -3,7 +3,7 @@ title: "ශ්‍රී ලංකාවේ ඩිජිටල් අයිති
 description: "වර්තමාන ඩිජිටල් ලෝකය තුළ පුද්ගල නිදහස සහ ප්‍රජාතන්ත්‍රවාදය තීරණය කරන ප්‍රධාන සාධකයක් බවට ඩිජිටල් අයිතිවාසිකම් (Digital Rights) පත්ව ඇත. ශ්‍රී ලංකාව 2026 වසර වන විට වේගවත් ඩිජිටල් පරිවර්තනයකට ලක්වෙමින් පවතින අතර, ඒ හා සමගාමීව ඩිජිටල් අවකාශය තුළ පුරවැසියාගේ අයිතිවාසිකම් පිළිබඳව දැඩි සංවාදයක් මතු වී තිබේ."
 author: "Lahiru Lakmina Fernando"
 authorRole: "Technology & Digital Platforms"
-authorImage: "/team/lahiru_lakmina.png"
+authorImage: "/team/lahiru_lakmina.jpg"
 date: 2026-03-13
 category: "advocacy"
 tags: ["Digital Rights"]
