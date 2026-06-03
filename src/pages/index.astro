@@ -632,6 +632,161 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
       </style>
     </section>
 
+    <!-- YouTube Video Bar -->
+    <section class="video-section" style="background: linear-gradient(135deg, #f0fdf8 0%, #f0f9ff 60%, #fafafa 100%); padding: 20px 0 !important; border-top: 1px solid #e2e8f0;">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 16px;">
+          <h2 class="section__title" style="color: #0f172a; margin: 0 0 10px; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; letter-spacing: -0.02em;">Watch Our Videos</h2>
+          <p style="color: #475569; font-size: 0.95rem; max-width: 560px; margin: 0 auto; line-height: 1.65;">Empowering citizens, professionals, and students to navigate the digital landscape — because in today's world, understanding your digital rights isn't just an advantage, it's a necessity.</p>
+        </div>
+
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-card__embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/PivTk5HfEE0"
+                title="SPHERE Video 1"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-card__embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/lZCNWrnRQTo"
+                title="SPHERE Video 2"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-card__embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/ev8iA0ng6cw"
+                title="SPHERE Video 3"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-card__embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/bVozcYyInOY"
+                title="SPHERE Video 4"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 12px;">
+          <a href="https://www.youtube.com/@SLDigitalWatch" target="_blank" rel="noopener noreferrer" class="video-section__cta">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;"><path d="M21.8 8.0a2.75 2.75 0 0 0-1.9-1.9C18.2 5.7 12 5.7 12 5.7s-6.2 0-7.9.4A2.75 2.75 0 0 0 2.2 8.0 28.4 28.4 0 0 0 1.8 12a28.4 28.4 0 0 0 .4 4 2.75 2.75 0 0 0 1.9 1.9c1.7.4 7.9.4 7.9.4s6.2 0 7.9-.4a2.75 2.75 0 0 0 1.9-1.9 28.4 28.4 0 0 0 .4-4 28.4 28.4 0 0 0-.4-4zM9.7 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            View All on YouTube
+          </a>
+        </div>
+      </div>
+
+      <style>
+        .video-section__eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.7rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: #0d9488;
+          background: rgba(13, 148, 136, 0.08);
+          border: 1px solid rgba(13, 148, 136, 0.2);
+          border-radius: 100px;
+          padding: 5px 14px;
+        }
+        .video-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+        }
+        .video-card {
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid #e2e8f0;
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255,255,255,0.9);
+          transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .video-card:hover {
+          transform: translateY(-6px);
+          border-color: rgba(13, 148, 136, 0.3);
+          box-shadow: 0 20px 40px rgba(13, 148, 136, 0.12), 0 0 0 1px rgba(13, 148, 136, 0.15), inset 0 1px 0 rgba(255,255,255,1);
+        }
+        .video-card__embed {
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%;
+          height: 0;
+          overflow: hidden;
+          border-radius: 20px;
+        }
+        .video-card__embed iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: block;
+        }
+        .video-section__cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: linear-gradient(135deg, #0d9488 0%, #0284c7 100%);
+          color: #fff;
+          font-weight: 700;
+          font-size: 0.95rem;
+          padding: 13px 28px;
+          border-radius: 100px;
+          text-decoration: none;
+          transition: all 0.25s ease;
+          box-shadow: 0 4px 20px rgba(13, 148, 136, 0.3);
+        }
+        .video-section__cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 28px rgba(13, 148, 136, 0.4);
+          filter: brightness(1.08);
+        }
+        @media (max-width: 1024px) {
+          .video-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+        }
+        @media (max-width: 600px) {
+          .video-grid {
+            grid-template-columns: 1fr;
+            max-width: 480px;
+            margin: 0 auto;
+            gap: 16px;
+          }
+        }
+      </style>
+    </section>
+
+
     <!-- Latest Insights Carousel -->
     <section class="section" style="background: #fafafa; border-top: 1px solid #f1f5f9; padding: 80px 0;">
       <div class="container">
