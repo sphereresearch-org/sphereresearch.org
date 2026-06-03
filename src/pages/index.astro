@@ -676,6 +676,18 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
               ></iframe>
             </div>
           </div>
+
+          <div class="video-card">
+            <div class="video-card__embed">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/bVozcYyInOY"
+                title="SPHERE Video 4"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
         </div>
 
         <div style="text-align: center; margin-top: 12px;">
@@ -703,8 +715,8 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
         }
         .video-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
         }
         .video-card {
           background: rgba(255, 255, 255, 0.85);
@@ -757,16 +769,18 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
           box-shadow: 0 8px 28px rgba(13, 148, 136, 0.4);
           filter: brightness(1.08);
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
           .video-grid {
-            grid-template-columns: 1fr;
-            max-width: 560px;
-            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
           }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
           .video-grid {
-            max-width: 100%;
+            grid-template-columns: 1fr;
+            max-width: 480px;
+            margin: 0 auto;
+            gap: 16px;
           }
         }
       </style>
