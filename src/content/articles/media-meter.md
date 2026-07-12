@@ -66,7 +66,7 @@ Note: Certain segments, such as headlines and cabinet press briefs, were strictl
 This rigorous monitoring effort was driven entirely by a dedicated core group of volunteers:
 
 * **Anuruddha Bandara** – Operations Coordinator and Analyst  
-* **Kasun Indika** – Data and Visualization specialist and Analyst  
+* **Kasun Benthara** – Data and Visualization specialist and Analyst  
 * **Jayantha Dehiattage** – Analyst and Legal Advisor  
 * **DM Dissanayake** – Analyst and Legal Advisor  
 * **Minali Fernando** – Analyst  
