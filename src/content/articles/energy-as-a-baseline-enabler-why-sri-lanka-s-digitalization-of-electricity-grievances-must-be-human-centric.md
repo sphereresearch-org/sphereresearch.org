@@ -1,15 +1,17 @@
 ---
-title: >-
-  Energy as a Baseline Enabler: Why Sri Lanka’s Digitalization of Electricity
-  Grievances Must Be Human-Centric
-author: Anuruddha Bandara
-date: '2026-07-10'
-tags:
-  - PUCSL
-  - Electricity
+title: "Energy as a Baseline Enabler: Why Sri Lanka’s Digitalization of Electricity Grievances Must Be Human-Centric"
+description: "At the PUCSL stakeholder consultation on Sri Lanka’s draft Consumer Grievances Redressal Forum rules, SPHERE argued that electricity is not merely a utility service but a baseline enabler of civic participation and digital rights. Mandating a digital-first grievance process risks isolating the very consumers it is meant to protect."
+author: "Anuruddha Bandara"
+authorRole: "Digital Rights Advocate"
+authorImage: "/team/anuruddha_bandara.png"
+date: 2026-07-10
+category: "advocacy"
+tags: ["PUCSL", "Electricity"]
+coverImage: "/images/whatsapp-image-2026-07-20-at-09-14-49-9474b043.jpg"
+draft: false
 ---
 
-![WhatsApp Image 2026-07-20 at 09.14.49](/images/whatsapp-image-2026-07-20-at-09-14-49-9474b043.jpg)On July 9, 2026, regulators, utility providers, legal scholars, and civil society advocates gathered at the Sri Lanka Foundation Institute in Colombo for a landmark stakeholder consultation. Organized by the Public Utilities Commission of Sri Lanka (PUCSL), the session focused on two critical regulatory drafts under the newly enacted *Sri Lanka Electricity Act No. 36 of 2024*: the proposed **Rules on the Consumer Grievances Redressal Forum (GRF)** and the **Regulations on Dispute Resolution Procedures**.
+On July 9, 2026, regulators, utility providers, legal scholars, and civil society advocates gathered at the Sri Lanka Foundation Institute in Colombo for a landmark stakeholder consultation. Organized by the Public Utilities Commission of Sri Lanka (PUCSL), the session focused on two critical regulatory drafts under the newly enacted *Sri Lanka Electricity Act No. 36 of 2024*: the proposed **Rules on the Consumer Grievances Redressal Forum (GRF)** and the **Regulations on Dispute Resolution Procedures**.
 
 While much of the public debate centered on technical timelines and formal procedural pathways, SPHERE Research and Advocacy brought a fundamental perspective to the room: **In today’s connected society, electricity is not merely a utility service—it is a baseline enabler of civic participation, digital rights, and economic equity.**
 

@@ -72,7 +72,7 @@ git push origin main
 3. Click **Add file** -> **Upload files**, drag your downloaded `.md` file, and commit.
 4. Navigate to `public/blog/` (or `public/articles/`), upload your cover image, and commit.
 
-Once pushed, the hosting platform (Vercel) will build and deploy the changes automatically in 1–2 minutes.
+Once pushed, GitHub Actions will build the site and deploy it to GitHub Pages automatically in 1–2 minutes. You can watch the run under the repository's **Actions** tab; if a post's frontmatter is missing a required field, the build fails there and the site is not updated.
 
 ---
 

@@ -19,6 +19,4 @@ pnpm-debug.log*
 
 .env
 
-# Tina admin build output
-/public/admin/
 .vercel

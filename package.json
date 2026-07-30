@@ -5,16 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "tinacms build || true && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@tinacms/cli": "^1.11.0",
     "astro": "^4.15.0",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "tinacms": "^2.9.0"
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.7",
