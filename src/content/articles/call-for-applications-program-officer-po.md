@@ -1,7 +1,8 @@
 ---
-title: 'Call for Applications: Program Officer (PO)'
-author: Admin
+title: "Call for Applications: Program Officer (PO)"
+author: "Admin"
 date: 2026-10-18
+draft: false
 ---
 
 **SPHERE Research and Advocacy** is looking for a passionate and dedicated individual to join our team as a **Program Officer (PO)**. In addition to core programmatic responsibilities, this role will also be appointed in charge of administrative duties.
