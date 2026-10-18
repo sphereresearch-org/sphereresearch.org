@@ -3,7 +3,7 @@ title: "Call for Applications: Program Officer (PO)"
 description: "SPHERE Research and Advocacy is looking for a passionate and dedicated individual to join our team as a Program Officer (PO)."
 author: "Admin"
 date: 2026-10-18
-category: "hr"
+category: "general"
 coverImage: "/images/yellow-modern-job-vacancy-instagram-post-a84ce8a4.png"
 draft: false
 ---
