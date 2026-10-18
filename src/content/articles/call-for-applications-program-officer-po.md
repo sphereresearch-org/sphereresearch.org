@@ -1,14 +1,16 @@
 ---
-title: "Call for Applications: Program Officer (PO)"
-description: "SPHERE Research and Advocacy is looking for a passionate and dedicated individual to join our team as a Program Officer (PO)."
-author: "Admin"
+title: 'Call for Applications: Program Officer (PO)'
+description: >-
+  SPHERE Research and Advocacy is looking for a passionate and dedicated
+  individual to join our team as a Program Officer (PO).
+author: Admin
 date: 2026-10-18
-category: "general"
-coverImage: "/images/yellow-modern-job-vacancy-instagram-post-a84ce8a4.png"
+category: general
+coverImage: ''
 draft: false
 ---
 
-**SPHERE Research and Advocacy** is looking for a passionate and dedicated individual to join our team as a **Program Officer (PO)**. In addition to core programmatic responsibilities, this role will also be appointed in charge of administrative duties.
+![SPHERE Vacancy PO](/images/sphere-vacancy-po-1c16770f.png)**SPHERE Research and Advocacy** is looking for a passionate and dedicated individual to join our team as a **Program Officer (PO)**. In addition to core programmatic responsibilities, this role will also be appointed in charge of administrative duties.
 
 If you have a background in human rights, social sciences, or development work and are eager to bridge analytical policy research with grassroots community mobilization, we want to hear from you!
 
