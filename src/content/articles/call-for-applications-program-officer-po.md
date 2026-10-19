@@ -1,12 +1,10 @@
 ---
 title: 'Call for Applications: Program Officer (PO)'
-description: >-
-  SPHERE Research and Advocacy is looking for a passionate and dedicated
-  individual to join our team as a Program Officer (PO).
-author: Admin
+description: "SPHERE Research and Advocacy is looking for a passionate and dedicated individual to join our team as a Program Officer (PO)."
+author: HR
 date: 2026-10-18
 category: general
-coverImage: ''
+coverImage: "/images/job-vacancy-po.png"
 draft: false
 ---
 
@@ -60,4 +58,4 @@ If you have a background in human rights, social sciences, or development work a
 
 Eligible candidates are invited to submit their **Curriculum Vitae (CV)** along with a **Brief Expression of Interest** outlining their suitability for the role to [**contact@sphereresearch.org**](mailto:contact@sphereresearch.org).
 
-![Yellow Modern Job Vacancy Instagram Post](/images/yellow-modern-job-vacancy-instagram-post-a84ce8a4.png)
+![Yellow Modern Job Vacancy Instagram Post](/images/job-vacancy-po.png)
