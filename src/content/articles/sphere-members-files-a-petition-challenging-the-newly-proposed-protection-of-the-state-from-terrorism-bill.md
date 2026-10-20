@@ -1,10 +1,8 @@
 ---
-title: >-
-  SPHERE members files a petition challenging the newly proposed "Protection of
-  the State from Terrorism" Bill
-author: Admin
-authorRole: Admin
-category: Public Litigation
+title: SPHERE members files a petition challenging the newly proposed "Protection of the State from Terrorism" Bill
+author: "Admin"
+authorRole: "Admin"
+category: "advocacy"
 date: 2026-10-20
 tags:
   - public litigation
