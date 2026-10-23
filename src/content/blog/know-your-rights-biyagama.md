@@ -6,6 +6,7 @@ authorRole: "Technology & Digital Platforms"
 authorImage: "/team/lahiru_lakmina.jpg"
 date: 2025-08-31
 category: "cdpr"
+lang: "si"
 tags: ["CDPR", "Digital Rights"]
 coverImage: "/blog/Know Your Rights in Digital Age.jpg"
 draft: false

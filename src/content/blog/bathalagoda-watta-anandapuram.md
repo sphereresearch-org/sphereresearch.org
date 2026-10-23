@@ -6,6 +6,7 @@ authorRole: "Attorney At Law"
 authorImage: "/team/tharushi_dishara.png"
 date: 2025-09-15
 category: "advocacy"
+lang: "si"
 tags: ["Advocacy", "Human Rights", "Land Rights"]
 coverImage: "/blog/bathalagoda_1.jpg"
 draft: false

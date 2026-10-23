@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { CONTACT_FORM_URL, NEWSLETTER_FORM_URL } from "../lib/forms";
 ---
 
 <BaseLayout
@@ -11,12 +12,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section style="padding: 28px 0 24px; text-align: center;">
       <div class="container">
         <div class="hero__eyebrow" style="text-align: center; margin-bottom: 6px;">Get in Touch</div>
-        <h1 style="font-size: 1.8rem; font-weight: 900; color: #0f172a; margin: 0; letter-spacing: -0.03em;">Let's work together</h1>
+        <h1 style="font-size: 1.6rem; font-weight: 800; color: #0f172a; margin: 0; letter-spacing: -0.03em;">Let's work together</h1>
       </div>
     </section>
 
     <!-- Contact Methods -->
-    <section style="padding: 0 0 48px;">
+    <section class="u-pb-48">
       <div class="container">
         <div class="contact-split">
 
@@ -73,9 +74,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <form
               id="contact-form"
               style="display: grid; gap: 16px; margin-top: 20px;"
-              action="https://formspree.io/f/mvgzqlqv"
+              action={CONTACT_FORM_URL}
               method="POST"
             >
+              <input class="u-offscreen" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <input type="hidden" name="_form" value="contact" />
               <div>
                 <label for="name" class="form__label">Name *</label>
                 <input id="name" name="name" type="text" required placeholder="Your name" class="input" />
@@ -92,7 +95,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 <label for="message" class="form__label">Message *</label>
                 <textarea id="message" name="message" required placeholder="Tell us more..." class="input" rows="5" style="resize: vertical; font-family: inherit;"></textarea>
               </div>
-              <button id="contact-submit" class="btn" type="submit" style="justify-content: center; width: 100%;">Send Message</button>
+              <button id="contact-submit" class="btn u-btn-block" type="submit">Send Message</button>
               <div id="contact-status" style="display: none; padding: 12px; border-radius: 8px; font-size: 0.85rem; text-align: center; margin-top: 8px;"></div>
               <small class="text--muted" style="text-align: center;">We respect your privacy and will never share your information.</small>
             </form>
@@ -227,7 +230,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     <!-- Newsletter Signup -->
-    <section style="padding: 0 0 48px;">
+    <section class="u-pb-48">
       <div class="container">
         <div class="newsletter-split">
 
@@ -238,15 +241,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <form
               id="newsletter-form"
               style="display: grid; gap: 14px; margin-top: 20px;"
-              action="https://formspree.io/f/mvgzqlqv"
+              action={NEWSLETTER_FORM_URL}
               method="POST"
             >
+              <input class="u-offscreen" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <div>
                 <label for="newsletter-email" class="form__label">Email address</label>
                 <input id="newsletter-email" name="email" type="email" required placeholder="you@example.org" class="input" />
               </div>
               <input type="hidden" name="subject" value="Newsletter Subscription Request" />
-              <button id="newsletter-submit" class="btn" type="submit" style="justify-content: center; width: 100%;">Subscribe</button>
+              <input type="hidden" name="_form" value="newsletter" />
+              <button id="newsletter-submit" class="btn u-btn-block" type="submit">Subscribe</button>
               <div id="newsletter-status" style="display: none; padding: 10px; border-radius: 8px; font-size: 0.8rem; text-align: center; margin-top: 4px;"></div>
               <small class="text--muted" style="text-align:center;">No spam. Unsubscribe anytime. We respect your privacy.</small>
             </form>
@@ -385,6 +390,8 @@ a.contact-info-item__value:hover { color: #0d9488; }
 
 <script>
   // Handle Form Submissions via AJAX
+  const email = "hello@sphereresearch.org";
+
   async function handleFormSubmit(formId: string, statusId: string, submitBtnId: string) {
     const form = document.getElementById(formId) as HTMLFormElement;
     const status = document.getElementById(statusId);
@@ -404,6 +411,15 @@ a.contact-info-item__value:hover { color: #0d9488; }
       status.style.background = "#f1f5f9";
       status.style.color = "#475569";
 
+      const showError = () => {
+        const link = document.createElement("a");
+        link.href = `mailto:${email}`;
+        link.textContent = email;
+        status.replaceChildren("Sorry, we could not send this right now. Please email us at ", link, ".");
+        status.style.background = "#fef2f2";
+        status.style.color = "#991b1b";
+      };
+
       try {
         const response = await fetch(form.action, {
           method: form.method,
@@ -419,19 +435,10 @@ a.contact-info-item__value:hover { color: #0d9488; }
           status.style.color = "#166534";
           form.reset();
         } else {
-          const data = await response.json();
-          if (data.errors) {
-            status.innerText = data.errors.map((error: any) => error.message).join(", ");
-          } else {
-            status.innerText = "Oops! There was a problem submitting your form.";
-          }
-          status.style.background = "#fef2f2";
-          status.style.color = "#991b1b";
+          showError();
         }
       } catch (error) {
-        status.innerText = "Oops! There was a problem submitting your form.";
-        status.style.background = "#fef2f2";
-        status.style.color = "#991b1b";
+        showError();
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerText = submitBtnId === 'contact-submit' ? "Send Message" : "Subscribe";
@@ -440,6 +447,8 @@ a.contact-info-item__value:hover { color: #0d9488; }
   }
 
   // Initialize forms
-  handleFormSubmit("contact-form", "contact-status", "contact-submit");
-  handleFormSubmit("newsletter-form", "newsletter-status", "newsletter-submit");
+  document.addEventListener("astro:page-load", () => {
+    handleFormSubmit("contact-form", "contact-status", "contact-submit");
+    handleFormSubmit("newsletter-form", "newsletter-status", "newsletter-submit");
+  });
 </script>

@@ -4,6 +4,7 @@ description: "පසුගිය ඔක්තෝබර් 27 සඳුදා ද
 author: "R.M. Ravi Fleming Ranasinghe"
 date: 2025-11-15
 category: "advocacy"
+lang: "si"
 tags: ["Advocacy", "Human Rights", "Families of the Disappeared"]
 coverImage: "/blog/image5_b.png"
 draft: false

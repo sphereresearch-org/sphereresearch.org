@@ -1,13 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import FeaturedPost from "../components/FeaturedPost.astro";
-
 import { getCollection } from 'astro:content';
 
 // Get recent articles
-const recentArticles = (await getCollection('articles', ({ data }) => {
+const recentArticles = (await getCollection('blog', ({ data }) => {
   return data.draft !== true;
-})).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+})).filter((a) => a.data.category !== 'careers')
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 4);
+
+// Text-heavy covers (posters) must not be cropped
+const fitStyle = (a: (typeof recentArticles)[number]) =>
+  a.data.coverFit === 'contain' ? 'object-fit: contain; background: #f1f5f9;' : undefined;
 ---
 
 <BaseLayout
@@ -23,7 +26,7 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
         <div class="home-hero__blob home-hero__blob--3"></div>
       </div>
       
-      <div class="container" style="position:relative; z-index:2;">
+      <div class="container u-above">
         <div class="home-hero__grid">
           <div class="home-hero__text">
             <span class="home-hero__eyebrow">Society for Progress, Human Rights, Empowerment &amp; Equity</span>
@@ -35,14 +38,16 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
               advancing digital rights, and empowering communities to shape a just, democratic future.
             </p>
             <div class="home-hero__actions">
-                <a href="/about" class="btn btn--primary btn--lg">About Us</a>
+                <a href="/about" class="btn btn--primary btn--lg">About</a>
             </div>
           </div>
           <div class="home-hero__panel-container">
             {recentArticles.length > 0 && (
-              <a href={"/articles/" + recentArticles[0].slug} class="featured-article-glass">
-                <div class="featured-article-glass__image-wrapper">
-                  <img src={recentArticles[0].data.coverImage} alt={recentArticles[0].data.title} class="featured-article-glass__image" />
+              <a href={"/blog/" + recentArticles[0].slug} class="featured-article-glass">
+                <div class="featured-article-glass__image-wrapper" style={recentArticles[0].data.coverImage ? undefined : 'background: linear-gradient(135deg, #e0f2fe, #f1f5f9);'}>
+                  {recentArticles[0].data.coverImage && (
+                    <img src={recentArticles[0].data.coverImage} alt={recentArticles[0].data.title} class="featured-article-glass__image" style={fitStyle(recentArticles[0])} />
+                  )}
                   <div class="featured-article-glass__badge">Official Publication</div>
                 </div>
                 <div class="featured-article-glass__content">
@@ -127,24 +132,23 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.75rem;
-      font-weight: 800;
+      font-size: 0.72rem;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #0d9488;
-      background: rgba(13, 148, 136, 0.08);
-      border: 1px solid rgba(13, 148, 136, 0.2);
+      letter-spacing: 0.08em;
+      color: #0f766e;
+      background: rgba(13, 148, 136, 0.07);
+      border: 1px solid rgba(13, 148, 136, 0.18);
       border-radius: 100px;
-      padding: 6px 16px;
-      margin-bottom: 24px;
-      box-shadow: 0 0 20px rgba(13, 148, 136, 0.1);
+      padding: 6px 14px;
+      margin-bottom: 20px;
     }
     .home-hero__title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      font-weight: 800;
       color: #0f172a;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
       margin: 0 0 24px;
     }
     .text-gradient {
@@ -154,10 +158,10 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
       background-clip: text;
     }
     .home-hero__desc {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #475569;
       line-height: 1.7;
-      margin: 0 0 40px;
+      margin: 0 0 32px;
       max-width: 540px;
     }
     
@@ -168,8 +172,8 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
     }
     
     .btn--lg {
-        padding: 14px 28px;
-        font-size: 1.05rem;
+        padding: 10px 22px;
+        font-size: 0.95rem;
     }
     
     /* Glassmorphism Article Card */
@@ -225,7 +229,7 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
         color: #0f172a;
         padding: 6px 12px;
         border-radius: 100px;
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         font-weight: 700;
         letter-spacing: 0.05em;
         text-transform: uppercase;
@@ -249,9 +253,9 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
     
     .featured-article-glass__title {
         color: #0f172a;
-        font-size: 1.5rem;
-        font-weight: 800;
-        line-height: 1.3;
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 1.35;
         margin: 0 0 12px;
     }
     
@@ -283,7 +287,7 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
     @media (max-width: 992px) {
       .home-hero { padding: 60px 0 40px; min-height: auto; }
       .home-hero__grid { grid-template-columns: 1fr; gap: 36px; }
-      .home-hero__title { font-size: 2.4rem; margin-bottom: 16px; }
+      .home-hero__title { font-size: 2.1rem; margin-bottom: 16px; }
       .home-hero__desc { font-size: 1rem; margin-bottom: 28px; }
       .featured-article-glass { transform: none; max-width: 500px; }
       .featured-article-glass:hover { transform: translateY(-5px); }
@@ -297,7 +301,7 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
       .home-hero { padding: 40px 0 32px; }
       .home-hero__grid { gap: 28px; }
       .home-hero__eyebrow {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
         padding: 5px 12px;
         letter-spacing: 0.08em;
         margin-bottom: 16px;
@@ -313,14 +317,14 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
         margin-bottom: 24px;
       }
       .home-hero__actions { gap: 12px; }
-      .btn--lg { padding: 12px 22px; font-size: 0.95rem; }
+      .btn--lg { padding: 9px 18px; font-size: 0.9rem; }
       .featured-article-glass { max-width: 100%; }
       .featured-article-glass__image-wrapper { height: 160px; }
       .featured-article-glass__content { padding: 20px; }
       .featured-article-glass__title { font-size: 1.1rem; margin-bottom: 8px; }
       .featured-article-glass__desc { font-size: 0.85rem; margin-bottom: 16px; }
-      .featured-article-glass__label { font-size: 0.7rem; margin-bottom: 8px; }
-      .featured-article-glass__badge { font-size: 0.6rem; padding: 4px 10px; }
+      .featured-article-glass__label { font-size: 0.75rem; margin-bottom: 8px; }
+      .featured-article-glass__badge { font-size: 0.7rem; padding: 4px 10px; }
       /* CDPR Section Mobile */
       .home-hero__grid--cdpr { grid-template-columns: 1fr !important; gap: 24px; }
       .about-hero__image-wrap { order: -1; }
@@ -332,7 +336,7 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
       .home-hero { padding: 28px 0 24px; }
       .home-hero__grid { gap: 20px; }
       .home-hero__eyebrow {
-        font-size: 0.52rem;
+        font-size: 0.7rem;
         padding: 4px 10px;
         letter-spacing: 0.06em;
         margin-bottom: 12px;
@@ -345,7 +349,7 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
         font-size: 0.85rem;
         margin-bottom: 20px;
       }
-      .btn--lg { padding: 11px 20px; font-size: 0.88rem; }
+      .btn--lg { padding: 8px 16px; font-size: 0.85rem; }
       .featured-article-glass__image-wrapper { height: 140px; }
       .featured-article-glass__content { padding: 16px; }
       .featured-article-glass__title { font-size: 1rem; }
@@ -457,7 +461,7 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
         <div class="home-hero__blob home-hero__blob--2" style="background: radial-gradient(circle, #e0e7ff, transparent 70%);"></div>
       </div>
       
-      <div class="container" style="position:relative; z-index:2;">
+      <div class="container u-above">
         <div class="home-hero__grid home-hero__grid--cdpr">
           <div class="home-hero__text">
             <span class="home-hero__eyebrow" style="color: #0284c7; background: rgba(2, 132, 199, 0.08); border-color: rgba(2, 132, 199, 0.2);">Advancing Rights in the Digital Age</span>
@@ -469,7 +473,7 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
             </p>
             <div class="home-hero__actions">
               <a class="btn btn--primary btn--lg" href="/cdpr">Explore CDPR</a>
-              <a class="btn btn--outline btn--lg" href="/articles">Read Publications</a>
+              <a class="btn btn--outline btn--lg" href="/blog">Read the Blog</a>
             </div>
           </div>
           <div class="about-hero__image-wrap">
@@ -739,14 +743,16 @@ const recentArticles = (await getCollection('articles', ({ data }) => {
             <p class="section__kicker">Latest Insights</p>
             <h2 class="section__title" style="margin: 0;">Recent Articles</h2>
           </div>
-          <a href="/articles" class="btn btn--outline">View All</a>
+          <a href="/blog" class="btn btn--outline">View All</a>
         </div>
         
         <div class="article-carousel">
-          {recentArticles.length > 0 ? recentArticles.map((article) => (
-            <a href={"/articles/" + article.slug} class="featured-article-glass" style="transform: none; transform-origin: center;">
-              <div class="featured-article-glass__image-wrapper" style="height: 200px;">
-                <img src={article.data.coverImage} alt={article.data.title} class="featured-article-glass__image" />
+          {recentArticles.length > 1 ? recentArticles.slice(1).map((article) => (
+            <a href={"/blog/" + article.slug} class="featured-article-glass" style="transform: none; transform-origin: center;">
+              <div class="featured-article-glass__image-wrapper" style={`height: 200px;${article.data.coverImage ? '' : ' background: linear-gradient(135deg, #e0f2fe, #f1f5f9);'}`}>
+                {article.data.coverImage && (
+                  <img src={article.data.coverImage} alt={article.data.title} class="featured-article-glass__image" style={fitStyle(article)} loading="lazy" decoding="async" />
+                )}
               </div>
               <div class="featured-article-glass__content" style="padding: 24px;">
                 <h3 class="featured-article-glass__title" style="font-size: 1.25rem; color: #0f172a;">{article.data.title}</h3>

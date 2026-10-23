@@ -1,6 +1,9 @@
 ---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, type Category } from '../lib/content';
+
 interface Props {
-  post: any;
+  post: CollectionEntry<'blog'>;
   showCategory?: boolean;
   compact?: boolean;
 }
@@ -8,33 +11,31 @@ interface Props {
 const { post, showCategory = true, compact = false } = Astro.props;
 
 // Format date
-const formattedDate = post.data.date.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
+const formattedDate = formatDate(post.data.date);
 
 // Category colors
-const categoryColors: Record<string, string> = {
+const categoryColors: Record<Category, string> = {
   cdpr: 'background: rgba(2, 132, 199, 0.1); color: #0369a1; border-color: rgba(2, 132, 199, 0.3);',
   advocacy: 'background: rgba(16, 185, 129, 0.1); color: #047857; border-color: rgba(16, 185, 129, 0.3);',
   research: 'background: rgba(139, 92, 246, 0.1); color: #6d28d9; border-color: rgba(139, 92, 246, 0.3);',
   training: 'background: rgba(245, 158, 11, 0.1); color: #92400e; border-color: rgba(245, 158, 11, 0.3);',
   general: 'background: rgba(107, 114, 128, 0.1); color: #374151; border-color: rgba(107, 114, 128, 0.3);',
+  careers: 'background: rgba(236, 72, 153, 0.1); color: #9d174d; border-color: rgba(236, 72, 153, 0.3);',
 };
 
-// URL Prefix based on collection
-const collectionType = post.collection || 'blog';
 ---
 
-<a href={`/${collectionType}/${post.slug}`} class={`blog-card ${compact ? 'blog-card--compact' : ''}`}>
-  <div class="blog-card__image-wrapper">
-    <img 
-      src={post.data.coverImage} 
-      alt={post.data.title}
-      class="blog-card__image"
-      loading="lazy"
-    />
+<a href={`/blog/${post.slug}`} lang={post.data.lang} class={`blog-card ${compact ? 'blog-card--compact' : ''}`}>
+  <div class="blog-card__image-wrapper" style={post.data.coverImage ? undefined : 'background: linear-gradient(135deg, #e0f2fe, #f1f5f9);'}>
+    {post.data.coverImage && (
+      <img 
+        src={post.data.coverImage} 
+        alt={post.data.title}
+        class="blog-card__image"
+        style={post.data.coverFit === 'contain' ? 'object-fit: contain; background: #f1f5f9;' : undefined}
+        loading="lazy"
+      />
+    )}
     {showCategory && (
       <span class="blog-card__category" style={categoryColors[post.data.category]}>
         {post.data.category.toUpperCase()}
@@ -69,7 +70,7 @@ const collectionType = post.collection || 'blog';
     
     {post.data.tags && post.data.tags.length > 0 && (
       <div class="blog-card__tags">
-        {post.data.tags.slice(0, 3).map((tag: string) => (
+        {post.data.tags.slice(0, 3).map((tag) => (
           <span class="blog-card__tag">{tag}</span>
         ))}
       </div>
@@ -227,5 +228,17 @@ const collectionType = post.collection || 'blog';
     color: #475569;
     font-size: 11px;
     font-weight: 600;
+  }
+
+  /* Sinhala and Tamil cards: looser spacing, no negative tracking */
+  .blog-card:lang(si) .blog-card__title,
+  .blog-card:lang(ta) .blog-card__title {
+    letter-spacing: 0;
+    line-height: 1.5;
+  }
+
+  .blog-card:lang(si) .blog-card__description,
+  .blog-card:lang(ta) .blog-card__description {
+    line-height: 1.8;
   }
 </style>

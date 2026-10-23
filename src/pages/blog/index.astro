@@ -1,32 +1,16 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from 'astro:content';
-import BlogCard from '../../components/BlogCard.astro';
+import PostCard from '../../components/PostCard.astro';
+import { sortPosts } from '../../lib/content';
 
-// Get all published blog posts
+// Get all published posts
 const allPosts = await getCollection('blog', ({ data }) => {
   return data.draft !== true;
 });
 
-// Category priority mapping
-const categoryPriority: Record<string, number> = {
-  cdpr: 1,
-  advocacy: 2,
-  training: 3,
-  general: 4,
-};
-
-// Sort by category priority first, then by date (newest first)
-const posts = allPosts.sort((a, b) => {
-  const priorityA = categoryPriority[a.data.category] || 99;
-  const priorityB = categoryPriority[b.data.category] || 99;
-  
-  if (priorityA !== priorityB) {
-    return priorityA - priorityB;
-  }
-  
-  return b.data.date.getTime() - a.data.date.getTime();
-});
+// Category priority first, then newest
+const posts = sortPosts(allPosts);
 
 // Get unique categories
 const categories = ['all', ...new Set(posts.map(p => p.data.category))];
@@ -34,21 +18,76 @@ const categories = ['all', ...new Set(posts.map(p => p.data.category))];
 
 ---
 
-<BaseLayout title="SPHERE Blog — Insights & Updates" description="Latest updates, research findings, policy briefs, and advocacy insights from SPHERE.">
+<BaseLayout title="SPHERE Blog — Reports, Articles & Updates" description="Reports, articles, event summaries, and community voices from SPHERE on human rights and digital policy in Sri Lanka.">
   <main class="page page-animate">
     {posts.length > 0 ? (
       <>
-        <!-- All Posts -->
-        <section class="section" style="padding-top: 60px;">
+        <!-- Reports Section -->
+        <section class="section" style="padding-top: 60px; padding-bottom: 0;">
           <div class="container">
-            <div style="margin: 0 0 48px; max-width: 1000px; text-align: left;">
-              <h1 class="section__title" style="margin: 0 0 16px;">The SPHERE Blog: Voices of Change</h1>
-              <p style="font-size: 1.15rem; color: #475569; line-height: 1.6; margin: 0;">
-                We believe in the power of shared knowledge. This blog features guest contributions from our community and partners, bridging the gap between grassroots advocacy and academic research.
-              </p>
+            <div class="u-mb-48">
+              <h1 class="section__title u-m-0-0-16">Blog</h1>
+              <p class="text--muted" style="max-width: 720px; margin: 0;">News, research and community voices from SPHERE, along with our full reports.</p>
             </div>
             
-            <div style="margin-bottom: 32px;">
+            <div class="reports-grid">
+              <!-- Report 1 -->
+              <div class="report-card">
+                <div class="report-card__image">
+                  <img src="/reports/digital_frontier_cover.jpg" alt="Navigating Sri Lanka’s Digital Frontier" />
+                </div>
+                <div class="report-card__content">
+                  <h3 class="report-card__title">Navigating Sri Lanka’s Digital Frontier</h3>
+                  <div class="report-card__desc-wrapper">
+                    <p class="report-card__desc">As cyberspace transitions from a technical luxury into our primary arena for daily life, the gap between citizens' vulnerabilities and the state's protective capacity has widened significantly. This comprehensive mapping exercise by digital rights researchers explores the deeply intertwined realities of cybersecurity, online crime, and human rights in Sri Lanka.</p>
+                    <div class="report-card__desc-more" style="display: none;">
+                      <p class="report-card__desc">Drawing from extensive stakeholder consultations and institutional audits, the report unpacks the critical challenges plaguing our digital ecosystem:</p>
+                      <ul class="report-card__list">
+                        <li><strong>Legislative Overreach & Ambiguity:</strong> Explores the systemic friction surrounding the Online Safety Act (OSA) and the enforcement paralysis of the Personal Data Protection Act (PDPA).</li>
+                        <li><strong>Institutional Bottlenecks:</strong> Documents the severe resource constraints within Sri Lanka CERT and the geographic limitations and cultural hurdles facing victims at the Computer Crime Investigation Division (CCID).</li>
+                        <li><strong>Corporate Accountability:</strong> Examines the context-agnostic moderation and linguistic blindspots of global tech monopolies like Meta, TikTok, and YouTube.</li>
+                      </ul>
+                      <p class="report-card__desc">Moving beyond critique, the publication offers a concrete, rights-respecting roadmap—advocating for empathy-driven school curricula, decentralized law enforcement, and a unified South Asian regional coalition to hold global tech platforms accountable.</p>
+                    </div>
+                    <button class="btn btn--outline btn--read-more u-btn-sm-mb">Read More</button>
+                  </div>
+                  <div class="u-mt-auto">
+                    <a href="/reports/navigating-digital-frontier.pdf" download class="btn btn--primary">Download Full PDF Report</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Report 2 -->
+              <div class="report-card">
+                <div class="report-card__image">
+                  <img src="/reports/human_rights_cover.png" alt="Reimagining Human Rights in the Digital Age" />
+                </div>
+                <div class="report-card__content">
+                  <h3 class="report-card__title">Reimagining Human Rights in the Digital Age</h3>
+                  <div class="report-card__desc-wrapper">
+                    <p class="report-card__desc">As our personal, professional, and civic lives increasingly shift into online spaces, safeguarding fundamental liberties has become more critical than ever. This comprehensive report explores how digital transformation is redefining human rights, from free speech and peaceful assembly to the emerging demands for data protection and informational autonomy.</p>
+                    <div class="report-card__desc-more" style="display: none;">
+                      <p class="report-card__desc">While Sri Lanka's 1978 Constitution guarantees essential civil liberties, these pre-digital frameworks face unprecedented challenges from algorithmic governance, online surveillance, and arbitrary network shutdowns. Dive into this timely analysis to examine the delicate, complex balance between state-led public security and individual privacy in a hyper-connected society.</p>
+                    </div>
+                    <button class="btn btn--outline btn--read-more u-btn-sm-mb">Read More</button>
+                  </div>
+                  <div class="u-mt-auto">
+                    <a href="/reports/reimagining-human-rights.pdf" download class="btn btn--primary">Download Full PDF Report</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- All Posts -->
+        <section class="section u-pt-60">
+          <div class="container">
+            <div style="margin-bottom: 48px; max-width: 800px;">
+              <h2 class="section__title u-m-0-0-16">Latest posts</h2>
+            </div>
+            
+            <div class="u-mb-32">
               <!-- Category Filter -->
               <div class="category-filter">
                 {categories.map((cat) => (
@@ -64,7 +103,7 @@ const categories = ['all', ...new Set(posts.map(p => p.data.category))];
 
             <div class="blog-grid" id="blog-grid">
               {posts.map((post) => (
-                <BlogCard post={post} showCategory={true} compact={false} />
+                <PostCard post={post} showCategory={true} compact={false} />
               ))}
             </div>
           </div>
@@ -73,8 +112,8 @@ const categories = ['all', ...new Set(posts.map(p => p.data.category))];
     ) : (
       <section class="section">
         <div class="container">
-          <p class="text--muted" style="text-align: center; padding: 60px 0;">
-            No blog posts yet. Check back soon for updates from SPHERE.
+          <p class="text--muted u-empty-state">
+            No posts yet. Check back soon.
           </p>
         </div>
       </section>
@@ -99,6 +138,68 @@ const categories = ['all', ...new Set(posts.map(p => p.data.category))];
     .blog-grid {
       grid-template-columns: repeat(3, 1fr);
     }
+  }
+
+  .reports-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  @media (min-width: 768px) {
+    .reports-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .report-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .report-card__image {
+    width: 100%;
+    height: 300px;
+    background: #f8fafc;
+  }
+  .report-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  .report-card__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 32px;
+  }
+  @media (max-width: 767px) {
+    .report-card__content {
+      padding: 24px;
+    }
+  }
+  .report-card__title {
+    margin: 0 0 16px;
+    font-size: 24px;
+    line-height: 1.3;
+  }
+  .report-card__desc {
+    opacity: 0.8;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .report-card__list {
+    margin: 0 0 16px 20px;
+    opacity: 0.8;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .report-card__list li {
+    margin-bottom: 8px;
   }
 
   .category-filter {
@@ -133,30 +234,17 @@ const categories = ['all', ...new Set(posts.map(p => p.data.category))];
 </style>
 
 <script>
-  // Client-side category filtering
-  const filterButtons = document.querySelectorAll('.category-filter__btn');
-  const blogGrid = document.getElementById('blog-grid');
-  
-  if (filterButtons && blogGrid) {
-    filterButtons.forEach(btn => {
+  import "../../scripts/categoryFilter";
+
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('.btn--read-more').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const category = btn.dataset.category;
-        
-        // Update active state
-        filterButtons.forEach(b => b.classList.remove('category-filter__btn--active'));
-        btn.classList.add('category-filter__btn--active');
-        
-        // Filter posts
-        const posts = blogGrid.querySelectorAll('.blog-card');
-        posts.forEach((post: HTMLElement) => {
-          if (category === 'all') {
-            post.style.display = 'block';
-          } else {
-            const postCategory = post.querySelector('.blog-card__category')?.textContent?.trim().toLowerCase();
-            post.style.display = postCategory === category ? 'block' : 'none';
-          }
-        });
+        const moreContent = btn.previousElementSibling as HTMLElement | null;
+        if (!moreContent) return;
+        const hidden = moreContent.style.display === 'none';
+        moreContent.style.display = hidden ? 'block' : 'none';
+        btn.textContent = hidden ? 'Read Less' : 'Read More';
       });
     });
-  }
+  });
 </script>

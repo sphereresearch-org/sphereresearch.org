@@ -20,3 +20,6 @@ pnpm-debug.log*
 .env
 
 .vercel
+
+# Local Claude Code config
+.claude/

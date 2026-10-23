@@ -3,6 +3,8 @@ title: SPHERE members files a petition challenging the newly proposed "Protectio
 author: "Admin"
 authorRole: "Admin"
 category: "advocacy"
+coverImage: "/images/sphere-vacancies-blue-yellow-white-4-cf2b2229.png"
+coverFit: "contain"
 date: 2026-10-20
 tags:
   - public litigation
@@ -14,9 +16,7 @@ Members of SPHERE has been filed a petition in the Supreme Court of Sri Lanka ch
 
 The petition was submitted under Articles 120 and 121 of the Constitution by SPHERE members, Anuruddha Bandara and Lahiru Lakmina .The legal drafting was settled by Attorney-at-Law Tharushi Dishara, represented by Registered Attorney-at-Law Srinath Perera.
 
-The proposed Bill seeks to repeal an
-
-![SPHERE Vacancies  Blue_Yellow_White (4)](/images/sphere-vacancies-blue-yellow-white-4-cf2b2229.png)d replace the Prevention of Terrorism (Temporary Provisions) Act No. 48 of 1979 (PTA), a long-standing piece of legislation criticized domestically and internationally for facilitating arbitrary arrests, prolonged executive detention, and human rights abuses. However, the petitioners argue that the proposed framework merely re-packages many of the draconian aspects of the old law while threatening fundamental democratic rights.
+The proposed Bill seeks to repeal and replace the Prevention of Terrorism (Temporary Provisions) Act No. 48 of 1979 (PTA), a long-standing piece of legislation criticized domestically and internationally for facilitating arbitrary arrests, prolonged executive detention, and human rights abuses. However, the petitioners argue that the proposed framework merely re-packages many of the draconian aspects of the old law while threatening fundamental democratic rights.
 
 **Key Legal Challenges Raised in the Petition**
 

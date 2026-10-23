@@ -1,54 +1,49 @@
 # SPHERE Content Publishing Guide
 
-This guide explains how to create, format, and publish **Articles** and **Blog Posts** on the SPHERE website. 
+This guide explains how to create, format, and publish **Blog posts** (articles, event summaries and updates) on the SPHERE website. They all live in one section, `/blog`. 
 
 ---
 
-## 🔑 1. Accessing the Admin Dashboard
+## 📝 1. Writing Content
 
-The website includes a dedicated admin panel to write, format, preview, and generate your article files.
+Posts are Markdown files with a block of metadata ("front matter") at the top. Copy an existing file from `src/content/blog/` and edit it, or start from this template:
 
-* **URL**: `/admin` (e.g., `https://sphereresearch.org/admin` or `http://localhost:4321/admin` when running locally)
-* **Access Password**: `sphere@admin2024`
+```markdown
+---
+title: "Your title"
+description: "One or two sentences summarising the post."
+author: "Author Name"
+authorRole: "Role (optional)"
+authorImage: "/team/photo.jpg"   # optional
+category: "advocacy"             # cdpr | advocacy | research | training | general | careers
+date: 2026-01-31
+coverImage: "/images/my-post-cover.jpg"   # optional
+tags:
+  - Digital Rights
+  - Sri Lanka
+lang: "en"                       # en (default) | si (Sinhala) | ta (Tamil)
+draft: false                     # true hides the post from public lists
+---
+
+Write the post here in Markdown.
+```
+
+Required fields: `title`, `description`, `author`, `category` and `date`. If any is missing, the build fails and the site is not updated. Name the file after the title in lowercase with hyphens (e.g. `my-new-article.md`).
 
 ---
 
-## 📝 2. Writing and Generating Content
+## 🚀 2. Publishing Content (Making it Live)
 
-1. Navigate to the admin URL and enter the password.
-2. Click the **"Create New"** button in the top right.
-3. Choose the **Content Type**:
-   * **Article**: Academic research, policy briefs, or formal project publications.
-   * **Blog Post**: Shorter, opinion pieces, updates, or community news.
-4. Fill in the metadata:
-   * **Title**: The main title of your post.
-   * **Description**: A short summary (1-2 sentences) of the post.
-   * **Author**: Select a pre-configured team member from the grid, or open the details dropdown to input custom author details.
-   * **Category**: Choose one of CDPR, Advocacy, Research, Training, or General.
-   * **Date**: The publication date.
-   * **Cover Image URL**: Path to your cover image (e.g., `/blog/my-post-cover.jpg`). *Note: see section 3 below on image placement.*
-   * **Tags**: Add relevant tags, separated by commas.
-   * **Save as Draft**: Check this if you want the post to be saved as a draft (hidden from the public list).
-5. Write your **Article Content** in the editor using Markdown. Use the toolbar buttons to quickly insert headings, bold text, links, and images.
-6. Click **"Preview"** to check the layout.
-7. Click **"Generate & Download"** once done. This will download a `.md` file named after your title (e.g., `my-new-article.md`) to your computer.
-
----
-
-## 🚀 3. Publishing Content (Making it Live)
-
-Astro uses static files to manage content. To make your generated file live on the site, you need to add the files to the codebase and push to GitHub.
+Astro uses static files to manage content. To make your file live on the site, you need to add the files to the codebase and push to GitHub.
 
 ### Step A: Place the Markdown File
-Move your downloaded `.md` file into the correct folder:
-* **Articles**: `src/content/articles/`
-* **Blog Posts**: `src/content/blog/`
+Move your `.md` file into the correct folder:
+`src/content/blog/`
 
 ### Step B: Place the Cover Image
 1. Upload your cover image file to the corresponding folder inside the `public/` directory:
-   * Put blog covers in `public/blog/`
-   * Put article covers in `public/articles/`
-2. Ensure the filename matches what you entered in the **Cover Image URL** field (e.g., `/blog/my-post-cover.jpg`).
+   * Put cover images in `public/images/`
+2. Ensure the filename matches what you entered in the **Cover Image URL** field (e.g., `/images/my-post-cover.jpg`).
 
 ### Step C: Deploy (Push to GitHub)
 Use Git to add, commit, and push the files, or upload them directly via GitHub:
@@ -68,15 +63,15 @@ git push origin main
 
 #### Option 2: Uploading via GitHub Website
 1. Go to the SPHERE organization repository on GitHub.
-2. Navigate to `src/content/articles/` (or `blog/`).
-3. Click **Add file** -> **Upload files**, drag your downloaded `.md` file, and commit.
-4. Navigate to `public/blog/` (or `public/articles/`), upload your cover image, and commit.
+2. Navigate to `src/content/blog/`.
+3. Click **Add file** -> **Upload files**, drag your `.md` file, and commit.
+4. Navigate to `public/images/`, upload your cover image, and commit.
 
 Once pushed, GitHub Actions will build the site and deploy it to GitHub Pages automatically in 1–2 minutes. You can watch the run under the repository's **Actions** tab; if a post's frontmatter is missing a required field, the build fails there and the site is not updated.
 
 ---
 
-## ✍️ 4. Markdown Formatting Cheatsheet
+## ✍️ 3. Markdown Formatting Cheatsheet
 
 Here's a quick guide to common markdown styles you can use in the editor:
 
@@ -99,5 +94,5 @@ This is a regular paragraph with **bold text** and *italic text*.
 
 ### Links & Images
 [Clickable Link Text](https://sphereresearch.org)
-![Image Description](/blog/my-post-cover.jpg)
+![Image Description](/images/my-post-cover.jpg)
 ```

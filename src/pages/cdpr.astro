@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from 'astro:content';
-import BlogCard from '../components/BlogCard.astro';
+import PostCard from '../components/PostCard.astro';
 
-// Get CDPR blog posts
+// Get CDPR posts
 const cdprPosts = (await getCollection('blog', ({ data }) => {
   return data.category === 'cdpr' && data.draft !== true;
 })).sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
@@ -85,8 +85,8 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
     margin-bottom: 20px;
   }
   .cdpr-hero__title {
-    font-size: clamp(1.8rem, 3.2vw, 2.7rem);
-    font-weight: 900;
+    font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+    font-weight: 800;
     color: #0f172a;
     line-height: 1.15;
     letter-spacing: -0.03em;
@@ -138,7 +138,7 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
   <div class="container">
     <div class="wce-grid wce-grid--three">
       <div class="wce-item">
-        <span class="wce-icon" style="display:inline-block; margin-bottom:12px; color: #0284c7;">
+        <span class="wce-icon u-back-link">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
           </svg>
@@ -149,7 +149,7 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
         </div>
       </div>
       <div class="wce-item">
-        <span class="wce-icon" style="display:inline-block; margin-bottom:12px; color: #0284c7;">
+        <span class="wce-icon u-back-link">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
@@ -160,7 +160,7 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
         </div>
       </div>
       <div class="wce-item">
-        <span class="wce-icon" style="display:inline-block; margin-bottom:12px; color: #0284c7;">
+        <span class="wce-icon u-back-link">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
           </svg>
@@ -176,7 +176,7 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
 <!-- Photo Gallery — Our Work in Action -->
 <section class="section" style="background: #f8fafc; padding-top: 56px; padding-bottom: 56px;"> 
   <div class="container"> 
-    <div class="section__header section__header--center" style="margin-bottom: 48px;"> 
+    <div class="section__header section__header--center u-mb-48"> 
       <h2 class="section__title">Our Work in Action</h2> 
       <p class="section__subtitle">Subtopic - Know your rights in the digital age - Advocacy program on Digital rights, Privacy,Security and Digital wellbeing</p> 
     </div> 
@@ -197,20 +197,20 @@ const cdprPosts = (await getCollection('blog', ({ data }) => {
     </div> 
     
   </div> 
-</section> <section id="focus" class="section focus-section"> <div class="focus-bg"> <div class="orb orb-1"></div> <div class="orb orb-2"></div> </div> <div class="container relative-z"> <div class="section__header" style="margin-bottom: 48px;"> <h2 class="section__title">Focus Areas</h2> <p class="section__subtitle" style="margin-left: 0; text-align: left; max-width: 100%;">Core domains of research and advocacy</p> </div> <div class="wce-grid" style="position: relative; z-index: 2; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 24px; padding: 24px; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);"> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">01</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Freedom of Expression</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Protecting the right to share ideas and opinions without censorship.</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">02</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Legal Framework</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Advocate on the legal framework which governs digital interactions, ensuring freedom , security and safety of everyone.</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">03</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Digital Privacy and Security</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Safeguarding personal data and defending systems against unauthorized digital threats.</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">04</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Digital Wellbeing</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Promoting a healthy balance between technology use and mental health.</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">05</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Digital Democracy</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Using technology to enhance civic participation and transparent government processes and ensure free and fair elections in the digital age .</p> </div> </div> <div class="wce-item"> <span class="wce-num" style="background: linear-gradient(135deg, #bae6fd, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">06</span> <div class="wce-content"> <h3 class="wce-item-title" style="font-size: 1.15rem; margin-bottom: 8px;">Digital Citizenship and Ethics</h3> <p class="wce-item-desc" style="font-size: 0.95rem; line-height: 1.5;">Encouraging responsible, respectful behavior and integrity within the online community.</p> </div> </div> </div> </div> </section> <!-- CDPR Publications -->
+</section> <section id="focus" class="section focus-section"> <div class="focus-bg"> <div class="orb orb-1"></div> <div class="orb orb-2"></div> </div> <div class="container relative-z"> <div class="section__header u-mb-48"> <h2 class="section__title">Focus Areas</h2> <p class="section__subtitle" style="margin-left: 0; text-align: left; max-width: 100%;">Core domains of research and advocacy</p> </div> <div class="wce-grid" style="position: relative; z-index: 2; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 24px; padding: 24px; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);"> <div class="wce-item"> <span class="wce-num u-gradient-text">01</span> <div class="wce-content"> <h3 class="wce-item-title u-h-sm">Freedom of Expression</h3> <p class="wce-item-desc u-text-sm">Protecting the right to share ideas and opinions without censorship.</p> </div> </div> <div class="wce-item"> <span class="wce-num u-gradient-text">02</span> <div class="wce-content"> <h3 class="wce-item-title u-h-sm">Legal Framework</h3> <p class="wce-item-desc u-text-sm">Advocate on the legal framework which governs digital interactions, ensuring freedom , security and safety of everyone.</p> </div> </div> <div class="wce-item"> <span class="wce-num u-gradient-text">03</span> <div class="wce-content"> <h3 class="wce-item-title u-h-sm">Digital Privacy and Security</h3> <p class="wce-item-desc u-text-sm">Safeguarding personal data and defending systems against unauthorized digital threats.</p> </div> </div> <div class="wce-item"> <span class="wce-num u-gradient-text">04</span> <div class="wce-content"> <h3 class="wce-item-title u-h-sm">Digital Wellbeing</h3> <p class="wce-item-desc u-text-sm">Promoting a healthy balance between technology use and mental health.</p> </div> </div> <div class="wce-item"> <span class="wce-num u-gradient-text">05</span> <div class="wce-content"> <h3 class="wce-item-title u-h-sm">Digital Democracy</h3> <p class="wce-item-desc u-text-sm">Using technology to enhance civic participation and transparent government processes and ensure free and fair elections in the digital age .</p> </div> </div> <div class="wce-item"> <span class="wce-num u-gradient-text">06</span> <div class="wce-content"> <h3 class="wce-item-title u-h-sm">Digital Citizenship and Ethics</h3> <p class="wce-item-desc u-text-sm">Encouraging responsible, respectful behavior and integrity within the online community.</p> </div> </div> </div> </div> </section> <!-- CDPR Publications -->
     {cdprPosts.length > 0 && (
       <section class="section" style="background: linear-gradient(180deg, transparent, rgba(255,255,255,0.5));">
         <div class="container">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
             <div>
-              <h2 class="section__title">Latest CDPR Publications</h2>
+              <h2 class="section__title">Latest CDPR Posts</h2>
               <p class="section__subtitle">Research, policy briefs, and analysis</p>
             </div>
-            <a href="/blog?category=cdpr" class="btn btn--ghost">View all articles by CDPR →</a>
+            <a href="/blog" class="btn btn--ghost">View all posts →</a>
           </div>
           <div class="blog-grid">
             {cdprPosts.map((post) => (
-              <BlogCard post={post} showCategory={false} compact={true} />
+              <PostCard post={post} showCategory={false} compact={true} />
             ))}
           </div>
         </div>

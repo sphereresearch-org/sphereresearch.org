@@ -94,8 +94,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       margin-bottom: 20px;
     }
     .about-hero__title {
-      font-size: clamp(1.8rem, 3.2vw, 2.7rem);
-      font-weight: 900;
+      font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+      font-weight: 800;
       color: #0f172a;
       line-height: 1.15;
       letter-spacing: -0.03em;
@@ -186,7 +186,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <!-- What We Do -->
     <section class="section">
       <div class="container">
-        <h2 class="section__title" style="text-align: center; margin-bottom: 32px;">
+        <h2 class="section__title u-center-mb-32">
           What We Do
         </h2>
         <div class="grid-3">
@@ -243,10 +243,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <!-- Vision, Mission & Values -->
     <section class="section" style="background: linear-gradient(180deg, rgba(2, 132, 199, 0.04), rgba(255, 255, 255, 0.6), rgba(0, 163, 130, 0.04)); position: relative;">
       <div class="container">
-        <h2 class="section__title" style="text-align: center; margin-bottom: 8px;">
+        <h2 class="section__title u-center-mb-8">
           Vision, Mission & Values
         </h2>
-        <p class="section__kicker" style="text-align: center; margin-bottom: 40px;">
+        <p class="section__kicker u-center-mb-40">
           Our guiding principles and purpose
         </p>
         
@@ -334,14 +334,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <!-- Our Team -->
     <section class="section team-section">
       <div class="container">
-        <h2 class="section__title" style="text-align: center; margin-bottom: 8px;">Our Team</h2>
-        <p class="section__kicker" style="text-align: center; margin-bottom: 40px;">Passionate advocates for justice and digital rights</p>
+        <h2 class="section__title u-center-mb-8">Our Team</h2>
+        <p class="section__kicker u-center-mb-40">Passionate advocates for justice and digital rights</p>
         <div class="team-grid">
 
 
           <div class="member-card" data-name="Anuruddha Bandara" data-img="/team/anuruddha_bandara.png" data-fullbio="Anuruddha, a graduate with a BSc (Hons) in Science and Management from the University of Colombo and currently reading for Attorney-At-Law at Sri Lanka Law College. He is a passionate social activist and is a major advocate for digital rights. Anuruddha’s professional experience spans roles in election monitoring, political advocacy. He has been actively involved in promoting youth participation in politics. He has also participated in international electoral missions in and fellowships in Nepal, Indonesia and Australia.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/anuruddha_bandara.png" alt="Anuruddha Bandara" class="member-card__avatar" />
+              <img src="/team/anuruddha_bandara.png" alt="Anuruddha Bandara" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Anuruddha Bandara</h3>
@@ -350,12 +350,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </div>
           </div>
 
-          <div class="member-card" data-name="Kasun Indika" data-img="/team/kasun_indika.png" data-fullbio="Kasun is a software engineering professional and technology consultant with a strong passion for political and social justice, human rights, digital freedom, and cyber activism. He is a co-founder of the Internet Freedom Movement – Sri Lanka, a platform dedicated to defending online rights and promoting internet freedom.">
+          <div class="member-card" data-name="Kasun Benthara" data-img="/team/kasun_benthara.jpg" data-fullbio="Kasun is a software engineering professional and technology consultant with a strong passion for political and social justice, human rights, digital freedom, and cyber activism. He is a co-founder of the Internet Freedom Movement – Sri Lanka, a platform dedicated to defending online rights and promoting internet freedom.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/kasun_indika.png" alt="Kasun Indika" class="member-card__avatar" />
+              <img src="/team/kasun_benthara.jpg" alt="Kasun Benthara" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
-              <h3 class="member-card__name">Kasun Indika</h3>
+              <h3 class="member-card__name">Kasun Benthara</h3>
               <p class="member-card__bio">Experienced software engineer and co-founder of the Internet Freedom Movement – Sri Lanka. Dedicated to defending online rights and cybersecurity education.</p>
               <button class="member-card__readmore" onclick="openTeamModal(this.closest('.member-card'))">Read More →</button>
             </div>
@@ -363,7 +363,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <div class="member-card" data-name="Tharushi Dishara" data-img="/team/tharushi_dishara.png" data-fullbio="Tharushi is an Attorney-at-Law and a dedicated human rights defender committed to justice and equality. She has worked with local and international organizations on women’s rights, labor rights, and grave human rights violations. She is currently reading for her Master’s degree in Human Rights and Democratization as a student of the Global Human Rights Campus. She has gained her knowledge of human rights law through various domestic human rights programs and international programs, especially UN human rights mechanism training in Geneva.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/tharushi_dishara.png" alt="Tharushi Dishara" class="member-card__avatar" />
+              <img src="/team/tharushi_dishara.png" alt="Tharushi Dishara" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Tharushi Dishara</h3>
@@ -374,7 +374,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <div class="member-card" data-name="Nathali Rangajeewa" data-img="/team/nathali_rangajeewa.png" data-fullbio="Nathali Rangajeewa is a political and social activist and she has recently completed BSc in Psychology and Counseling. Nathali is committed to creating lasting, positive change in our community with a mission to bridge the gap between mental well-being and societal development, recognizing that both are integral to the progress of any nation.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/nathali_rangajeewa.png" alt="Nathali Rangajeewa" class="member-card__avatar" />
+              <img src="/team/nathali_rangajeewa.png" alt="Nathali Rangajeewa" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Nathali Rangajeewa</h3>
@@ -385,7 +385,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <div class="member-card" data-name="Angela Nanayakkara" data-img="/team/angela_nanayakkara.png" data-fullbio="Angela Nanayakkara is a passionate human rights enthusiast and a dedicated volunteer at the Kandy Human Rights Office, where she has emerged as a prominent advocate for justice and equality. Angela’s unwavering commitment to amplifying the voices of marginalized communities has made her a key figure in Sri Lanka’s contemporary social justice movements.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/angela_nanayakkara.png" alt="Angela Nanayakkara" class="member-card__avatar" />
+              <img src="/team/angela_nanayakkara.png" alt="Angela Nanayakkara" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Angela Nanayakkara</h3>
@@ -398,7 +398,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 He is a passionate specialist in social media campaigning, leveraging digital platforms as powerful tools for social equity and justice. His career is defined by a commitment to using professional marketing excellence to drive both commercial success and positive societal change.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/sathya_charith.png" alt="Sathya Charith" class="member-card__avatar" />
+              <img src="/team/sathya_charith.png" alt="Sathya Charith" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Sathya Charith</h3>
@@ -409,7 +409,7 @@ He is a passionate specialist in social media campaigning, leveraging digital pl
 
           <div class="member-card" data-name="Lahiru Lakmina Fernando" data-img="/team/lahiru_lakmina.jpg" data-fullbio="Lahiru is a Business Information Systems undergraduate at the University of Sri Jayewardenepura (USJP), specializing in social media and digital solutions. A passionate advocate for digital rights, he is dedicated to leveraging technology to champion online freedom and ethical digital practices.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/lahiru_lakmina.jpg" alt="Lahiru Lakmina Fernando" class="member-card__avatar" />
+              <img src="/team/lahiru_lakmina.jpg" alt="Lahiru Lakmina Fernando" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Lahiru Lakmina Fernando</h3>
@@ -420,7 +420,7 @@ He is a passionate specialist in social media campaigning, leveraging digital pl
 
           <div class="member-card" data-name="Sherene Dias" data-img="/team/placeholder_1.png" data-fullbio="Sherene is an Information Systems undergraduate at the University of Colombo School of Computing and an AAT Passed Finalist, currently pursuing CA. She has completed 3 years of articles at a leading audit firm in Sri Lanka and is passionate about human rights, with an interest in accounting, auditing, and technology-driven solutions.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/placeholder_1.png" alt="Sherene Dias" class="member-card__avatar" />
+              <img src="/team/placeholder_1.png" alt="Sherene Dias" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Sherene Dias</h3>
@@ -431,7 +431,7 @@ He is a passionate specialist in social media campaigning, leveraging digital pl
 
           <div class="member-card" data-name="Pubudu Viduranga" data-img="/team/placeholder_2.png" data-fullbio="Pubudu Viduranga is a Mass Media graduate from the University of Colombo and holds a Master’s Degree in Sociology from the University of Sri Jayewardenepura. He also possesses professional qualifications in Human Resource Management and Marketing, with expertise in communication, public relations, marketing, and social development. He has conducted sociological research in Sri Lanka on areas including gender representation in advertising, school dropout trends, and socio-economic conditions of traditional tribal communities. Pubudu previously served as a Project Officer and Life Skills Coach for children, where he implemented school and community development programmes focusing on leadership, counselling, nutrition awareness, and child protection. Pubudu is  passionate about community empowerment, youth development and social impact.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/placeholder_2.png" alt="Pubudu Viduranga" class="member-card__avatar" />
+              <img src="/team/placeholder_2.png" alt="Pubudu Viduranga" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Pubudu Viduranga</h3>
@@ -442,7 +442,7 @@ He is a passionate specialist in social media campaigning, leveraging digital pl
 
           <div class="member-card" data-name="Praveen D Fernando" data-img="/team/praveen.jpg" data-fullbio="Praveen is a dynamic professional and advocate dedicated to Disability Rights, Digital Rights, and RTI.\n\nNavigating life with Arthrogryposis, he utilizes a wheelchair for mobility and lived experience to champion Disability Inclusion.\n\nCurrently an RTI Officer at Citizen Collective and a Project Coordinator for the Diocese of Chilaw, Praveen bridges the gap between policy and accessibility. Despite physical limitations, he is a highly skilled Graphic Designer proficient in Adobe Photoshop. His work ensures that digital platforms and democratic processes remain inclusive, empowering marginalized communities through strategic, high-level advocacy.">
             <div class="member-card__avatar-wrap">
-              <img src="/team/praveen.jpg" alt="Praveen D Fernando" class="member-card__avatar" />
+              <img src="/team/praveen.jpg" alt="Praveen D Fernando" class="member-card__avatar" loading="lazy" decoding="async" />
             </div>
             <div class="member-card__body">
               <h3 class="member-card__name">Praveen D Fernando</h3>
@@ -461,7 +461,7 @@ He is a passionate specialist in social media campaigning, leveraging digital pl
         <button class="team-modal__close" onclick="closeTeamModal()" aria-label="Close">&times;</button>
         <div class="team-modal__header">
           <div class="team-modal__avatar-wrap">
-            <img id="modalAvatar" src="" alt="" class="team-modal__avatar" />
+            <img id="modalAvatar" alt="" class="team-modal__avatar" />
           </div>
           <h3 class="team-modal__name" id="modalName"></h3>
         </div>
@@ -537,6 +537,7 @@ He is a passionate specialist in social media campaigning, leveraging digital pl
   font-weight: 700;
   cursor: pointer;
   padding: 0;
+  min-height: 44px;
   transition: color 0.2s ease;
 }
 .member-card__readmore:hover {
@@ -673,7 +674,11 @@ function openTeamModal(card) {
   
   // Convert \n to paragraph tags
   const paragraphs = fullbio.split('\\n\\n').filter(p => p.trim());
-  document.getElementById('modalBio').innerHTML = paragraphs.map(p => '<p>' + p.trim() + '</p>').join('');
+  document.getElementById('modalBio').replaceChildren(...paragraphs.map(text => {
+    const p = document.createElement('p');
+    p.textContent = text.trim();
+    return p;
+  }));
   
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';

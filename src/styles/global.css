@@ -40,8 +40,12 @@ html {
 
 body {
   margin: 0;
+  /* Per-glyph fallback: Latin from Inter, Sinhala from Noto Serif Sinhala,
+     Tamil from Noto Sans Tamil, so mixed-script pages need no extra markup. */
   font-family:
     Inter,
+    "Noto Serif Sinhala",
+    "Noto Sans Tamil",
     system-ui,
     -apple-system,
     Segoe UI,
@@ -56,6 +60,16 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sinhala and Tamil need looser line spacing than Latin text, and the tight
+   heading letter-spacing used for Latin breaks their conjuncts. Line-height
+   is set on the content (see PostPage and PostCard), not on <html>, which
+   would also change the English header and footer. */
+:lang(si) :is(h1, h2, h3, h4, .section__title),
+:lang(ta) :is(h1, h2, h3, h4, .section__title) {
+  letter-spacing: 0;
+  line-height: 1.5;
 }
 
 .container {
@@ -258,13 +272,14 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
+  gap: 8px;
+  padding: 8px 14px;
   border-radius: 999px;
   text-decoration: none;
   color: #fff;
   background: var(--primary);
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   border: 1px solid rgba(2, 6, 23, 0.06);
   box-shadow: var(--shadow);
   cursor: pointer;
@@ -456,7 +471,7 @@ body {
 
 .section__title {
   margin: 0 0 8px;
-  font-size: 28px;
+  font-size: 26px;
   letter-spacing: -0.01em;
 }
 
@@ -661,8 +676,9 @@ body {
 }
 
 .footer__brandtext {
-  line-height: 1.6;
+  line-height: 1.4;
   text-align: center;
+  font-size: smaller;
 }
 
 .footer__meta {
@@ -1218,5 +1234,39 @@ body {
 @media (min-width: 641px) {
   .hide-desktop {
     display: none !important;
+  }
+}
+/* ── Utilities ──
+   Replace repeated inline styles. !important keeps the precedence inline styles had. */
+.u-h-sm { font-size: 1.15rem !important; margin-bottom: 8px !important; }
+.u-text-sm { font-size: 0.95rem !important; line-height: 1.5 !important; }
+.u-gradient-text { background: linear-gradient(135deg, #bae6fd, #0ea5e9) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+.u-maxw-800 { max-width: 800px !important; }
+.u-m-0-0-16 { margin: 0 0 16px !important; }
+.u-mb-48 { margin-bottom: 48px !important; }
+.u-mb-32 { margin-bottom: 32px !important; }
+.u-back-link { display: inline-block !important; margin-bottom: 12px !important; color: #0284c7 !important; }
+.u-empty-state { text-align: center !important; padding: 60px 0 !important; }
+.u-center-mb-8 { text-align: center !important; margin-bottom: 8px !important; }
+.u-center-mb-40 { text-align: center !important; margin-bottom: 40px !important; }
+.u-center-mb-32 { text-align: center !important; margin-bottom: 32px !important; }
+.u-above { position: relative !important; z-index: 2 !important; }
+.u-offscreen { position: absolute !important; left: -9999px !important; }
+.u-pb-48 { padding: 0 0 48px !important; }
+.u-pt-60 { padding-top: 60px !important; }
+.u-mt-auto { margin-top: auto !important; }
+.u-btn-sm-mb { margin-bottom: 24px !important; padding: 6px 12px !important; font-size: 13px !important; }
+.u-btn-block { justify-content: center !important; width: 100% !important; }
+
+/* ── Touch targets ── */
+@media (max-width: 768px) {
+  .menu { height: 44px; width: 44px; }
+  .category-filter__btn,
+  .btn--read-more,
+  .blog-post__back,
+  .contact-split__item-value {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }
