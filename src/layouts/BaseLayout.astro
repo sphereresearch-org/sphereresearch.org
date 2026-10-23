@@ -13,7 +13,7 @@ export interface Props {
 const {
   title = 'SPHERE — Human & Digital Rights',
   description = 'SPHERE: Human rights, digital rights, and community action in Sri Lanka.',
-  image = '/logo.png',
+  image = '/og-default.png',
   type = 'website',
   noindex = false,
   lang = 'en',
@@ -49,6 +49,9 @@ const navLinks = [
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={imageURL} />
+    <meta property="og:image:alt" content={title} />
+    {image === '/og-default.png' && <meta property="og:image:width" content="1200" />}
+    {image === '/og-default.png' && <meta property="og:image:height" content="630" />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
