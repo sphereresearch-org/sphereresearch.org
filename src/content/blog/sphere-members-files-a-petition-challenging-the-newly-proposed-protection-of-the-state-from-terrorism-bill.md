@@ -1,7 +1,7 @@
 ---
 title: SPHERE members files a petition challenging the newly proposed "Protection of the State from Terrorism" Bill
-author: "Admin"
-authorRole: "Admin"
+author: "SPHERE"
+authorRole: "Sphere Research and Advocacy"
 category: "advocacy"
 coverImage: "/images/sphere-vacancies-blue-yellow-white-4-cf2b2229.png"
 coverFit: "contain"
