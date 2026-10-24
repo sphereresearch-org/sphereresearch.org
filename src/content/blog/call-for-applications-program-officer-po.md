@@ -57,6 +57,8 @@ If you have a background in human rights, social sciences, or development work a
 
 ### How to Apply
 
-Eligible candidates are invited to submit their **Curriculum Vitae (CV)** along with a **Brief Expression of Interest** outlining their suitability for the role to [**contact@sphereresearch.org**](mailto:contact@sphereresearch.org).
+Eligible candidates are invited to submit their **Curriculum Vitae (CV)** along with a **Brief Expression of Interest** outlining their suitability for the role to [**contact@sphereresearch.org**](mailto:contact@sphereresearch.org).\
+\
+**Application Deadline : 25th of October 2026**
 
 ![Yellow Modern Job Vacancy Instagram Post](/images/job-vacancy-po.png)
